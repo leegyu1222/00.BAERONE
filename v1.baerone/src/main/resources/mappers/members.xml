@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.work.mapper.MemberMapper">
+	<resultMap id="memberResult" type="com.work.dto.Member">
+		<result property = "userid" column="userid" />
+		<result property = "userpw" column="userpw" />
+		<result property = "name" column="name" />
+		<result property = "birthday" column="birthday" />
+		<result property = "gender" column = "gender" />
+		<result property = "phone" column="phone" />
+		<result property = "email" column="email" />
+		<result property = "postNo" column="postNo" />
+		<result property = "addressOld" column="address_old" />
+		<result property = "addressNew" column="address_new" />
+		<result property = "addressMisc" column="address_misc" />
+		<result property = "mileage" column="mileage" />
+		<result property = "grade" column="grade" />
+	</resultMap>
+	
+	<!-- select -->
+		<!-- 로그인 -->
+		<select id="login" parameterType="hashmap" resultType="String">
+			select grade from members where userid=#{userid} and userpw=#{userpw}
+		</select>
+		
+		<!-- 회원정보 조회 -->
+		<select id="myinfo" parameterType="String" resultMap="memberResult" >
+			select * from members where userid = #{userid}
+		</select>
+		
+		<!-- 회원전체 조회(관리자) -->
+		<select id="selectAllMember" resultMap="memberResult">
+			select *from members
+		</select>
+	
+	<!-- delete -->
+		<!-- 회원탈퇴 -->
+		<delete id="deleteMember" parameterType="String">
+			delete members where userid=#{userid}
+		</delete>	
+	
+	<!-- join -->
+	<insert id="join" parameterType="com.work.dto.Member">
+		insert into members 
+		values (#{userid}, #{userpw}, #{name}, #{birthday} , #{gender}, #{phone}, #{email}, #{postNo}, #{addressOld}, #{addressNew}, #{addressMisc}, #{mileage}, #{grade})
+	</insert>
+	
+	<!-- update -->
+		<!-- 회원정보 수정 -->
+		<update id="myinfoModify" parameterType="com.work.dto.Member" >
+			update members set userpw = #{userpw}, name=#{name}, birthday=#{birthday}, gender=#{gender}, phone=#{phone}, email=#{email}, postNo=#{postNo}, address_old=#{addressOld}, address_new=#{addressNew}, address_misc=#{addressMisc} where userid=#{userid} 
+		</update>
+
+</mapper>

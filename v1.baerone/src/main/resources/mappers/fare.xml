@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.work.mapper.MemberMapper">
+	<resultMap id="fareResult" type="com.work.dto.Fare">
+		<result property = "fareNo" column="fare_no" />
+		<result property = "distanceFrom" column="distnace_from" />
+		<result property = "distanceTo" column="distnace_to" />
+		<result property = "fare" column="fare" />
+	</resultMap>
+	
+	<!-- select -->
+		<!-- 요금계산 -->
+		<select id="fareCalc" parameterType="double" resultType="string">
+			select fare
+			from fare
+			where distance_from <![CDATA[<=]]> #{distance}
+			and distance_to <![CDATA[>]]> #{distance}
+
+		</select>
+		
+</mapper>

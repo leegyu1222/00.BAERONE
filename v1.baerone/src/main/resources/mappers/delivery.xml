@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.work.mapper.MemberMapper">
+	<resultMap id="deliveryResult" type="com.work.dto.Delivery">
+		<result property="deliveryNo" column="delivery_no" />
+		<result property="deliveryDate" column="delivery_date" />
+		<result property="senderId"   column="sender_id" />
+		<result property="senderName" column="sender_name" />
+		<result property="senderPhone" column="sender_phone" />
+		<result property="senderPostNo" column="sender_post_no" />
+		<result property="senderAddrOld" column="sender_addr_old" />
+		<result property="senderAddrNew" column="sender_addr_new" />
+		<result property="senderAddrMisc" column="sender_addr_misc" />
+		<result property="receiverId" column="receiver_id" />
+		<result property="receiverName" column="receiver_name" />
+		<result property="receiverPhone" column="receiver_phone" />
+		<result property="receiverPostNo" column="receiver_post_no" />
+		<result property="receiverAddrOld" column="receiver_addr_old" />
+		<result property="receiverAddrNew" column="receiver_addr_new" />
+		<result property="receiverAddrMisc" column="receiver_addr_misc" />
+		<result property="productDetail" column="product_detail" />
+		<result property="fare" column="fare" />
+		<result property="deliveryStatus" column="delivery_status" />
+	</resultMap>
+	
+	<!-- insert -->
+		<!-- 드론 배달 신청서 등록 요청 -->
+			<insert id="deliveryService" parameterType="hashMap">
+				insert into delivery values (delivery_seq.nextval, #{deliveryDate}, #{senderId}, 
+				#{senderName}, #{senderPhone}, #{senderPostNo}, #{senderAddrNew},  #{senderAddrOld}, #{senderAddrMisc}, 
+				#{receiverId}, #{receiverName}, #{receiverPhone}, #{receiverPostNo}, #{receiverAddrNew}, 
+				#{receiverAddrOld}, #{receiverAddrMisc},#{productDetail}, #{fare}, #{deliveryStatus})
+			</insert>
+		
+	<!-- select -->
+		<!-- 내 배송 목록 조회 -->
+			<select id="myDelivery" resultMap="deliveryResult" parameterType="String">
+				select * from delivery where sender_id = #{senderId}
+			</select>
+			
+	<!-- delete -->
+		<!-- 배송 취소 -->
+			<delete id="cancelDelivery" parameterType="int">
+				delete *from delivery where delivery_no = #{deliveryNo}
+			</delete>
+
+</mapper>
