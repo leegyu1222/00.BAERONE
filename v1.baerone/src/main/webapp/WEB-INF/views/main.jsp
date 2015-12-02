@@ -95,7 +95,29 @@
 									</div>
 									<div>
 										<ul>
-											<li><a href="page-portfolio-2-columns-2.html">배송 조회</a></li>
+											<li><a href="myDelivery.do">배송 조회</a></li>
+										</ul>
+										
+									</div>
+                                </div><!-- /mainmenu-submenu-inner -->
+							</div><!-- /mainmenu-submenu -->
+						</li>
+						<li class="has-submenu">
+							<a href="#">관리자</a>
+							<div class="mainmenu-submenu" style="
+    padding-bottom: 1px;
+    padding-top: 2px;
+">
+								<div class="mainmenu-submenu-inner"> 
+									<div>
+										<ul>
+											<li><a href="#">회원관리</a></li>
+										</ul>
+										
+									</div>
+									<div>
+										<ul>
+											<li><a href="deliveryReadyView.do">배송 준비</a></li>
 										</ul>
 										
 									</div>

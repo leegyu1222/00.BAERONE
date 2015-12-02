@@ -182,6 +182,13 @@ public class DeliveryController {
 		return mv;
 	}
 	
+	@RequestMapping(value="deliveryReadyView.do")
+	public ModelAndView deliveryReady(){
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("admin/deliveryReady");
+		
+		return mv;
+	}
 	
 
 }
