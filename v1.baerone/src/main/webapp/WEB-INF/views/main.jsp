@@ -120,14 +120,17 @@
 									</ul>
 
 								</div>
+								<div>
+									<ul>
+										<li><a href="deliveryList.do">배송 목록</a></li>
+									</ul>
+
+								</div>
 							</div>
 							<!-- /mainmenu-submenu-inner -->
 						</div>
 						<!-- /mainmenu-submenu --></li>
 						</c:if>	
-						
-						
-						
 					<li class="has-submenu"><a href="#">고객센터</a>
 						<div class="mainmenu-submenu"
 							style="padding-bottom: 1px; padding-top: 2px;">

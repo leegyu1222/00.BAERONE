@@ -228,4 +228,21 @@ public class DeliveryController {
 		}
 		return mv;
 	}
+	
+	/**
+	 * 드론 출발 준비 목록
+	 * @param senderId
+	 * @return
+	 */
+	@RequestMapping(value="deliveryList.do")
+	public ModelAndView deliveryList(HttpSession session){
+		String senderId = (String)session.getAttribute("userid");
+		ModelAndView mv = new ModelAndView();
+		List<Delivery> list = deliveryService.deliveryList();
+		if( list != null) {
+			mv.addObject("list", list);
+			mv.setViewName("admin/deliveryReady");
+		}
+		return mv;
+	}
 }
