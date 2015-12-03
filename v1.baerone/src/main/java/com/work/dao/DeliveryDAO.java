@@ -18,5 +18,9 @@ public interface DeliveryDAO {
 	public List<Delivery> myDelivery(String senderId);
 	
 	public List<Delivery> myDeliveryUpdate(int deliveryNo);
+	
+	public List<Delivery> deliveryReady();
+	
+	public List<Delivery> sendDrone(Delivery dto);
 
 }

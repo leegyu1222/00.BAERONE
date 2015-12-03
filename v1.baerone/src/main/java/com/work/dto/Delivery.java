@@ -20,7 +20,17 @@ public class Delivery {
 	private String productDetail;
 	private String fare;
 	private String deliveryStatus;	
+	private String beaconName;
 	
+	
+	public String getBeaconName() {
+		return beaconName;
+	}
+
+	public void setBeaconName(String beaconName) {
+		this.beaconName = beaconName;
+	}
+
 	public int getDeliveryNo() {
 		return deliveryNo;
 	}
@@ -178,7 +188,8 @@ public class Delivery {
 	public Delivery(int deliveryNo, String deliveryDate, String senderId, String senderName, String senderPhone,
 			String senderPostNo, String senderAddrOld, String senderAddrNew, String senderAddrMisc, String receiverId,
 			String receiverName, String receiverPhone, String receiverPostNo, String receiverAddrOld,
-			String receiverAddrNew, String receiverAddrMisc, String productDetail, String fare, String deliveryStatus) {
+			String receiverAddrNew, String receiverAddrMisc, String productDetail, String fare, String deliveryStatus,
+			String beaconName) {
 		super();
 		this.deliveryNo = deliveryNo;
 		this.deliveryDate = deliveryDate;
@@ -199,19 +210,19 @@ public class Delivery {
 		this.productDetail = productDetail;
 		this.fare = fare;
 		this.deliveryStatus = deliveryStatus;
+		this.beaconName = beaconName;
 	}
 
 	@Override
 	public String toString() {
-		return "deliveryNo=" + deliveryNo + ", deliveryDate=" + deliveryDate + ", senderId=" + senderId
+		return "Delivery [deliveryNo=" + deliveryNo + ", deliveryDate=" + deliveryDate + ", senderId=" + senderId
 				+ ", senderName=" + senderName + ", senderPhone=" + senderPhone + ", senderPostNo=" + senderPostNo
 				+ ", senderAddrOld=" + senderAddrOld + ", senderAddrNew=" + senderAddrNew + ", senderAddrMisc="
 				+ senderAddrMisc + ", receiverId=" + receiverId + ", receiverName=" + receiverName + ", receiverPhone="
 				+ receiverPhone + ", receiverPostNo=" + receiverPostNo + ", receiverAddrOld=" + receiverAddrOld
 				+ ", receiverAddrNew=" + receiverAddrNew + ", receiverAddrMisc=" + receiverAddrMisc + ", productDetail="
-				+ productDetail + ", fare=" + fare + ", deliveryStatus=" + deliveryStatus;
+				+ productDetail + ", fare=" + fare + ", deliveryStatus=" + deliveryStatus + ", beaconName=" + beaconName
+				+ "]";
 	}
 	
-	
-
 }

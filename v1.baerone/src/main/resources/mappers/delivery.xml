@@ -21,6 +21,7 @@
 		<result property="productDetail" column="product_detail" />
 		<result property="fare" column="fare" />
 		<result property="deliveryStatus" column="delivery_status" />
+		<result property="beaconName" column="beacon_name" />
 	</resultMap>
 	
 	<!-- insert -->
@@ -29,7 +30,7 @@
 				insert into delivery values (delivery_seq.nextval, #{deliveryDate}, #{senderId}, 
 				#{senderName}, #{senderPhone}, #{senderPostNo}, #{senderAddrNew},  #{senderAddrOld}, #{senderAddrMisc}, 
 				#{receiverId}, #{receiverName}, #{receiverPhone}, #{receiverPostNo}, #{receiverAddrNew}, 
-				#{receiverAddrOld}, #{receiverAddrMisc},#{productDetail}, #{fare}, #{deliveryStatus})
+				#{receiverAddrOld}, #{receiverAddrMisc},#{productDetail}, #{fare}, #{deliveryStatus}, 'D')
 			</insert>
 		
 	<!-- select -->
@@ -38,10 +39,23 @@
 				select * from delivery where sender_id = #{senderId}
 			</select>
 			
+		<!-- 드론 출발 준비 목록 -->
+			<select id="deliveryReady" resultMap="deliveryResult">
+				select * from delivery where delivery_status = '결제완료'
+			</select>
+			
 	<!-- delete -->
 		<!-- 배송 취소 -->
 			<delete id="cancelDelivery" parameterType="int">
 				delete *from delivery where delivery_no = #{deliveryNo}
 			</delete>
+			
+	<!-- update -->
+		<!-- 배송상태 업데이트 -->
+			<update id="sendDrone" parameterType="com.work.dto.Delivery">
+				update delivery 
+				set delivery_status = '배송준비', beacon_name = #{beaconName}
+				where delivery_no = #{deliveryNo} 
+			</update>
 
 </mapper>

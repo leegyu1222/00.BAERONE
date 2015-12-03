@@ -19,5 +19,9 @@ public interface DeliveryService {
 	public List<Delivery> myDeliveryUpdate(int deliveryNo);
 	
 	public int cancelDelivery(int deliveryNo);
+	
+	public List<Delivery> deliveryReady();
+	
+	public List<Delivery> sendDrone(Delivery dto);
 
 }

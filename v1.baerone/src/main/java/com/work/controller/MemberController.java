@@ -40,6 +40,8 @@ public class MemberController {
 			session.setAttribute("userid", userid);
 			session.setAttribute("grade", grade);
 			mv.setViewName("main");
+			
+			System.out.println("###########"+grade);
 		}else {
 			mv.addObject("message","로그인 정보를 다시 확인하시기 바랍니다.");
 		}

@@ -49,5 +49,13 @@ public class DeliveryDAOImpl implements DeliveryDAO {
 	public int cancelDelivery(int deliveryNo){
 		return sqlSession.delete("cancelDelivery", deliveryNo);
 	}
+	
+	public List<Delivery> deliveryReady() {
+		return sqlSession.selectList("deliveryReady");
+	}
+	
+	public List<Delivery> sendDrone(Delivery dto) {
+		return sqlSession.selectList("sendDrone", dto);
+	}
 
 }

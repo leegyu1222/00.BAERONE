@@ -48,6 +48,7 @@ public class DeliveryServiceImpl implements DeliveryService {
 		hashMap.put("productDetail", dto.getProductDetail());
 		hashMap.put("fare", dto.getFare());
 		hashMap.put("deliveryStatus", dto.getDeliveryStatus());
+		hashMap.put("beaconName", dto.getBeaconName());
 		return deliveryDAO.deliveryService(hashMap);
 	}
 	
@@ -69,6 +70,16 @@ public class DeliveryServiceImpl implements DeliveryService {
 	
 	public int cancelDelivery(int deliveryNo){
 		return deliveryDAO.cancelDelivery(deliveryNo);
+	}
+
+	@Override
+	public List<Delivery> deliveryReady() {
+		return deliveryDAO.deliveryReady();
+	}
+
+	@Override
+	public List<Delivery> sendDrone(Delivery dto) {
+		return deliveryDAO.sendDrone(dto);
 	}
 
 }

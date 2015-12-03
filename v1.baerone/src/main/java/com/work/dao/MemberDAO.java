@@ -1,7 +1,9 @@
 package com.work.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
+import com.work.dto.Delivery;
 import com.work.dto.Member;
 
 public interface MemberDAO {

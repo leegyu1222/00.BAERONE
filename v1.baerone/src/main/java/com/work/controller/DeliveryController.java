@@ -190,5 +190,42 @@ public class DeliveryController {
 		return mv;
 	}
 	
-
+	/**
+	 * 드론 출발 준비 목록
+	 * @param senderId
+	 * @return
+	 */
+	@RequestMapping(value="deliveryReady.do")
+	public ModelAndView deliveryReady(HttpSession session){
+		String senderId = (String)session.getAttribute("userid");
+		ModelAndView mv = new ModelAndView();
+		List<Delivery> list = deliveryService.deliveryReady();
+		if( list != null) {
+			mv.addObject("list", list);
+			mv.setViewName("admin/deliveryReady");
+		}
+		return mv;
+	}
+	
+	/**
+	 * 배송신청 취소
+	 * @param session
+	 * @param deliveryNo
+	 * @return
+	 */
+	@RequestMapping(value="sendDrone.do")
+	public ModelAndView sendDrone(HttpSession session, int deliveryNo, String beaconName){
+		ModelAndView mv = new ModelAndView();
+		Delivery dto = new Delivery();
+		dto.setDeliveryNo(deliveryNo);
+		dto.setBeaconName(beaconName);
+		List<Delivery> list = deliveryService.deliveryReady();
+//		List<Delivery> alist = deliveryService.sendDrone(deliveryNo, beaconName);
+		deliveryService.sendDrone(dto);
+		if( list != null) {
+			mv.addObject("list", list);
+			mv.setViewName("delivery/deliveryReady");
+		}
+		return mv;
+	}
 }
