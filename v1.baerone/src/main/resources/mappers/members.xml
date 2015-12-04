@@ -29,9 +29,32 @@
 		</select>
 		
 		<!-- 회원전체 조회(관리자) -->
-		<select id="selectAllMember" resultMap="memberResult">
+		<select id="memberList" resultMap="memberResult">
 			select *from members
 		</select>
+		
+		<!-- 조건검색 (관리자) -->
+		<select id="memberSelectList" parameterType="hashmap" resultMap="memberResult">
+			select * from members 
+			<choose>
+				<when test="memberListSelect == 'userid'">
+					where userid like '%' || #{memberListInput} || '%'
+				</when>
+				<when test="memberListSelect == 'birthday'">
+					where birthday like '%' || #{memberListInput} || '%'
+				</when>
+				<when test="memberListSelect == 'email'">
+					where email like '%' || #{memberListInput} || '%'
+				</when>
+			</choose>
+		</select>
+		
+		
+		<!-- 조건검색 (관리자) 이렇게하면 셀렉트시 none 이나 값을 입력하지 않았을때 SQL구문오류
+		<select id="memberSelectList" parameterType="hashmap" resultMap="memberResult">
+			select * from members where ${memberListSelect } like '%' || #{memberListInput } || '%' 
+		</select>
+		-->
 	
 	<!-- delete -->
 		<!-- 회원탈퇴 -->

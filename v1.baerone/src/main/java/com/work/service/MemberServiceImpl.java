@@ -1,6 +1,7 @@
 package com.work.service;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,22 +28,46 @@ public class MemberServiceImpl implements MemberService {
 		hashmap.put("userpw", userpw);
 		return dao.login(hashmap);
 	}
-	
+	/**
+	 * 회원가입
+	 */
 	public int join(Member member) {
 		return dao.join(member);
 	}
-	
+	/**
+	 * 내정보조회
+	 */
 	public Member myinfo(String userid) {
 		System.out.println("#####service"+userid);
 		return dao.myinfo(userid);
 	}
-	
+	/**
+	 * 내정보수정
+	 */
 	public int myinfoModify(Member member) {
 		return dao.myinfoModify(member);
 	}
-	
+	/**
+	 * 회원탈퇴
+	 */
 	public int deleteMember(String userid) {
 		return dao.deleteMember(userid);
 	}
+	/**
+	 * 회원조회(관리자)
+	 */
+	public List<Member> memberList() {
+		return dao.memberList();
+	}
 
+	/**
+	 * 회원검색(관리자)
+	 */
+	public List<Member> memberListChoose(String memberListSelect, String memeberListInput) {
+		HashMap<String, String> hashmap = new HashMap<String, String>();
+		hashmap.put("memberListSelect", memberListSelect);
+		hashmap.put("memberListInput", memeberListInput);
+		return dao.memberListChoose(hashmap);
+	}
+	
 }
