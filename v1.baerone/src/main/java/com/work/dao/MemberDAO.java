@@ -12,5 +12,6 @@ public interface MemberDAO {
 	public Member myinfo(String userid);
 	public int myinfoModify(Member member);
 	public int deleteMember(String userid);
-
+	public List<Member> memberList();
+	public List<Member> memberListChoose(HashMap<String,String> hashmap);
 }

@@ -1,5 +1,7 @@
 package com.work.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -146,4 +148,45 @@ public class MemberController {
 		
 	}
 
+	/**
+	 * 멤버리스트 들어갈때 
+	 * @param userid
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="memberListView.do")
+	public ModelAndView MemberList(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView();
+		List<Member> list = service.memberList();
+		
+		if(list != null) {
+			mv.addObject("memberList",list);
+			mv.setViewName("admin/memberList");
+		}
+		return mv;
+	}
+	
+	/**
+	 * 조건검색 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="memberListSelect.do", method=RequestMethod.POST)
+	public ModelAndView MemberListChoose(String memberListSelect, String memberListInput , HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView();
+		
+		if(memberListInput != null ) {
+			System.out.println("if문");
+			List<Member> list = service.memberListChoose(memberListSelect, memberListInput);
+			mv.addObject("memberList", list);
+			mv.setViewName("admin/memberList");
+		}else {
+			System.out.println("else문");
+			service.memberListChoose(memberListSelect, memberListInput);
+			mv.addObject("message","입력해주세요.");
+			mv.setViewName("admin/memberList");
+		}
+		
+		return mv;
+	}
 }

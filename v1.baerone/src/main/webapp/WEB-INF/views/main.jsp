@@ -110,7 +110,7 @@
 							<div class="mainmenu-submenu-inner">
 								<div>
 									<ul>
-										<li><a href="#">회원관리</a></li>
+										<li><a href="memberListView.do">회원관리</a></li>
 									</ul>
 
 								</div>
