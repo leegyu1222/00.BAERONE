@@ -23,5 +23,7 @@ public interface DeliveryService {
 	public List<Delivery> deliveryReady();
 	
 	public List<Delivery> sendDrone(Delivery dto);
+	
+	public List<Delivery> searchList(String searchBox, String category);
 
 }

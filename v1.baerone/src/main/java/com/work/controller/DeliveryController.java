@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.work.dto.Delivery;
@@ -208,23 +209,22 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * 배송신청 취소
+	 * 드론 출발
 	 * @param session
 	 * @param deliveryNo
 	 * @return
 	 */
-	@RequestMapping(value="sendDrone.do")
-	public ModelAndView sendDrone(HttpSession session, int deliveryNo, String beaconName){
+	@RequestMapping(value="sendDrone.do", method=RequestMethod.POST)
+	public ModelAndView sendDrone(int deliveryNo, String beaconName){
 		ModelAndView mv = new ModelAndView();
 		Delivery dto = new Delivery();
 		dto.setDeliveryNo(deliveryNo);
 		dto.setBeaconName(beaconName);
 		List<Delivery> list = deliveryService.deliveryReady();
-//		List<Delivery> alist = deliveryService.sendDrone(deliveryNo, beaconName);
 		deliveryService.sendDrone(dto);
 		if( list != null) {
 			mv.addObject("list", list);
-			mv.setViewName("delivery/deliveryReady");
+			mv.setViewName("admin/deliveryReady");
 		}
 		return mv;
 	}
@@ -236,13 +236,33 @@ public class DeliveryController {
 	 */
 	@RequestMapping(value="deliveryList.do")
 	public ModelAndView deliveryList(HttpSession session){
-		String senderId = (String)session.getAttribute("userid");
 		ModelAndView mv = new ModelAndView();
 		List<Delivery> list = deliveryService.deliveryList();
 		if( list != null) {
 			mv.addObject("list", list);
-			mv.setViewName("admin/deliveryReady");
+			mv.setViewName("admin/deliveryList");
 		}
 		return mv;
 	}
+	
+	 /**
+	    * 공지사항 글 검색
+	    * @param searchBox
+	    * @return
+	    */
+	   @RequestMapping(value = "searchList.do", method=RequestMethod.POST )
+	   public ModelAndView searchList(String searchBox, String category) {
+		   System.out.println(searchBox + category);
+	      List<Delivery> list = deliveryService.searchList(searchBox, category);
+	      ModelAndView mv = new ModelAndView();
+	      System.out.println("!!!!!!!!!!!!"+list.toString());
+	      if(list.size()>0) {
+	      mv.addObject("list", list);
+	      mv.setViewName("admin/deliveryList");
+	     System.out.println("####if");
+	      } else {
+	    	  mv.addObject("message", "검색한 결과가 없습니다.");
+	      }
+	      return mv;
+	   }
 }

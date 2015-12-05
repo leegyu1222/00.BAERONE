@@ -82,4 +82,9 @@ public class DeliveryServiceImpl implements DeliveryService {
 		return deliveryDAO.sendDrone(dto);
 	}
 
+	@Override
+	public List<Delivery> searchList(String searchBox, String category) {
+		return deliveryDAO.searchList(searchBox, category);
+	}
+
 }

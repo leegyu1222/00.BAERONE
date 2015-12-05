@@ -1,8 +1,15 @@
 package com.work.util;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
+
+import com.google.android.gcm.server.Message;
+import com.google.android.gcm.server.MulticastResult;
+import com.google.android.gcm.server.Result;
+import com.google.android.gcm.server.Sender;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -163,5 +170,31 @@ public class Utility {
 		double d = Math.sqrt(x*x+y*y);
 		double distance = Double.parseDouble(String.format("%.2f", d));
 		return distance;
+	}
+	
+	//GCM
+	public void sendMessage() throws IOException {
+
+		Sender sender = new Sender("AIzaSyAXZCm3cKCA-ipzXeR3nVlh7ObgJd8A-UU");
+
+		String regId = "APA91bHCprukKp0l3v0hFN8ZRd2xVvv817PK_Lqy3iV6QjZU4qtz_3pQ5PJQg9_ugyNbcFpFOsNm3A0KwcAUMco6Yov-kLnVpSLpshiQ8Re0g05QlT72YsIY2TZFwvG9BOokvbAdFef6";
+
+		Message message = new Message.Builder().addData("msg", "Drone has departed!!").build();
+
+		List<String> list = new ArrayList<String>();
+
+		list.add(regId);
+
+		MulticastResult multiResult = sender.send(message, list, 5);
+
+		if (multiResult != null) {
+
+			List<Result> resultList = multiResult.getResults();
+
+			for (Result result : resultList) {
+
+				System.out.println(result.getMessageId());
+			}
+		}
 	}
 }

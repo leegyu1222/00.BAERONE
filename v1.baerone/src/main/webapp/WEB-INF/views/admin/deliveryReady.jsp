@@ -7,8 +7,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+
 <body>
 	<h1>드론 출발 준비 목록</h1>
+	<form id="deliveryReady" name = "deliveryReady" action = "sendDrone.do" method="post">
 	<table>
 		<thead>
 			<c:forEach var="list" items="${list}">
@@ -56,7 +58,8 @@
 							<option value="MiniBeacon_11479">1호기</option>
 							<option value="MiniBeacon_11637">2호기</option>
 					</select></td>
-					<td><a href="sendDrone.do?deliveryNo=${list.deliveryNo}&beaconName=${list.beaconName}"><input type="button" value="출발"></a>
+					<input type="hidden" name ="deliveryNo" value = "${list.deliveryNo }"/>
+					<td><input type="submit"  value="출발"></input>
 					<td>
 				</tr>
 			</c:forEach>
@@ -64,5 +67,6 @@
 		<tbody>
 		</tbody>
 	</table>
+	</form>
 </body>
 </html>
