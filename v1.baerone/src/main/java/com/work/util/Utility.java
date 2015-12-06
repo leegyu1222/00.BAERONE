@@ -6,10 +6,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-import com.google.android.gcm.server.Message;
-import com.google.android.gcm.server.MulticastResult;
-import com.google.android.gcm.server.Result;
-import com.google.android.gcm.server.Sender;
+//import com.google.android.gcm.server.Message;
+//import com.google.android.gcm.server.MulticastResult;
+//import com.google.android.gcm.server.Result;
+//import com.google.android.gcm.server.Sender;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,16 +22,16 @@ import java.util.Date;
 import java.util.Locale;
 /**
  * <pre>
- *  °øÅëÀ¸·Î »ç¿ëÇÏ±â À§ÇÑ À¯Æ¿ Å¬·¡½º - Utility
+ *  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ¿ Å¬ï¿½ï¿½ï¿½ï¿½ - Utility
  *  
- * 	getCurrentDate() : ±âº» 4ÀÚ¸® ¼ýÀÚÇü½ÄÀÇ ¹®ÀÚ¿­À» ¹ÝÈ¯ÇÏ´Â ¸Þ¼­µå
- *	getSecureCode(length) : Àü´Þ¹ÞÀº ±æÀÌÀÇ ÀÓÀÇÀÇ º¸¾È¹®ÀÚ ¹ÝÈ¯
- *	getCurrentDate() : ÇöÀç ³¯Â¥¸¦ ÀÔ·Â¹ÞÀº pattern Çü½ÄÀ¸·Î ¹ÝÈ¯ 
- *	getCurrentDate(pattern) : ÇöÀç ³¯Â¥¸¦ ÀÔ·Â¹ÞÀº pattern Çü½ÄÀ¸·Î ¹ÝÈ¯
- *  getCurrentHour() : ÇöÀç ½Ã°¢ÀÇ ½Ã°£¸¸ ¹ÝÈ¯
+ * 	getCurrentDate() : ï¿½âº» 4ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ï´ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
+ *	getSecureCode(length) : ï¿½ï¿½ï¿½Þ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½È¹ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
+ *	getCurrentDate() : ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½Ô·Â¹ï¿½ï¿½ï¿½ pattern ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ 
+ *	getCurrentDate(pattern) : ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½Ô·Â¹ï¿½ï¿½ï¿½ pattern ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
+ *  getCurrentHour() : ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
  *
  * @since 2015-11-02
- * @author ÀÌµ¿±Ô
+ * @author ï¿½Ìµï¿½ï¿½ï¿½
  * @version 1.0
  * </pre>
  * 
@@ -40,22 +40,22 @@ import java.util.Locale;
 public class Utility {
    
    /**
-    * ±âº» 4ÀÚ¸® ¼ýÀÚÇü½ÄÀÇ ¹®ÀÚ¿­À» ¹ÝÈ¯ÇÏ´Â ¸Þ¼­µå
+    * ï¿½âº» 4ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ï´ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
     * @see java.lang.Math#random()
     * @see java.util.Random#nextInt()
     * @see java.lang.System.currentTimeMillis()
     * @see java.lang.StringBuilder
     * 
-    * @return String : 4ÀÚ¸® ¼ýÀÚÇü½ÄÀÇ ¹®ÀÚ¿­
+    * @return String : 4ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½
     */
    public static String getSecureCode() {
       return getSecureCode(4);
    }
    
    /** 
-    * Àü´Þ¹ÞÀº ±æÀÌÀÇ ÀÓÀÇÀÇ º¸¾È¹®ÀÚ ¹ÝÈ¯
+    * ï¿½ï¿½ï¿½Þ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½È¹ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
     * @param length
-    * @return String : Àü´Þ¹ÞÀº length ±æÀÌÀÇ ÀÓÀÇÀÇ º¸¾È¹®ÀÚ
+    * @return String : ï¿½ï¿½ï¿½Þ¹ï¿½ï¿½ï¿½ length ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½È¹ï¿½ï¿½ï¿½
     */
    public static String getSecureCode(int length) {
       Random random = new Random((long)(System.currentTimeMillis()*Math.random()));
@@ -67,19 +67,19 @@ public class Utility {
    }
    
    /**
-    * ÇöÀç ³¯Â¥¸¦ ³âµµ4ÀÚ¸®/¿ù2ÀÚ¸®/ÀÏ2ÀÚ¸® Çü½ÄÀ¸·Î ¹ÝÈ¯
+    * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½âµµ4ï¿½Ú¸ï¿½/ï¿½ï¿½2ï¿½Ú¸ï¿½/ï¿½ï¿½2ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
     * @see java.util.Date
     * @see java.text.SimpleDateFormat#format(java.util.Date)
-    * @return String : yyyy/MM/dd Çü½ÄÀÇ ÇöÀç ³¯Â¥
+    * @return String : yyyy/MM/dd ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥
     */
    public static String getCurrentDate() {
       return getCurrentDate("yyyy/MM/dd");
    }
    
    /**
-    * ÇöÀç ³¯Â¥¸¦ ÀÔ·Â¹ÞÀº pattern Çü½ÄÀ¸·Î ¹ÝÈ¯
+    * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½Ô·Â¹ï¿½ï¿½ï¿½ pattern ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
     * @param pattern
-    * @return String : ÀÔ·Â¹ÞÀº pattern Çü½ÄÀÇ ÇöÀç ³¯Â¥
+    * @return String : ï¿½Ô·Â¹ï¿½ï¿½ï¿½ pattern ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥
     */
    public static String getCurrentDate(String pattern) {
       Date date = new Date();
@@ -89,8 +89,8 @@ public class Utility {
    
 	
 	/**
-	 * ÇöÀç ½Ã°£ÀÇ ½Ã°£¸¸ ¹ÝÈ¯
-	 * @return : int : ÇöÀç ½Ã°¢ÀÇ ½Ã°£
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
+	 * @return : int : ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
 	 */
 	public static int getCurrentHour(){
 		long time = System.currentTimeMillis();
@@ -103,66 +103,66 @@ public class Utility {
 		senderAddrOld = senderAddrOld.replace(" ", "");
 		receiverAddrOld = receiverAddrOld.replace(" ", "");
 			
-		String sLat = "";  //º¸³»´Â »ç¶÷ À§µµ
-		String sLon = "";  //º¸³»´Â »ç¶÷ °æµµ
-		String rLat = "";  //¹Þ´Â »ç¶÷ À§µµ
-		String rLon = "";  //¹Þ´Â »ç¶÷ °æµµ
+		String sLat = "";  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		String sLon = "";  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½æµµ
+		String rLat = "";  //ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		String rLon = "";  //ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½ ï¿½æµµ
 		
-		String murl = ""; //¿¬°áÇÒ URL
+		String murl = ""; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ URL
 		String murl2 = "";
 		
-		String mapxml = ""; //¹Þ¾Æ¿Â xml
+		String mapxml = ""; //ï¿½Þ¾Æ¿ï¿½ xml
 		String mapxml2 = "";
 
-		 murl = "http://openapi.map.naver.com/api/geocode.php?key=c1b406b32dbbbbeee5f2a36ddc14067f&encoding=EUC-KR&coord=latlng&query="+senderAddrOld;
-		 murl2 = "http://openapi.map.naver.com/api/geocode.php?key=c1b406b32dbbbbeee5f2a36ddc14067f&encoding=EUC-KR&coord=latlng&query="+receiverAddrOld;
+		 murl = "http://openapi.map.naver.com/api/geocode.php?key=4602d17b97e6a0c993ff0b8a4a90ffe7&encoding=EUC-KR&coord=latlng&query="+senderAddrOld;
+		 murl2 = "http://openapi.map.naver.com/api/geocode.php?key=4602d17b97e6a0c993ff0b8a4a90ffe7&encoding=EUC-KR&coord=latlng&query="+receiverAddrOld;
 		 
-		URL mapXmlUrl = new URL(murl);  //URL¿¬°áÇÏ°í ¹Þ¾Æ¿À°í ÇÏ´Â ºÎºÐµéÀº import°¡ ÇÊ¿äÇÏ´Ù. java.net.*
+		URL mapXmlUrl = new URL(murl);  //URLï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ÎºÐµï¿½ï¿½ï¿½ importï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½Ï´ï¿½. java.net.*
 		HttpURLConnection urlConn = (HttpURLConnection)mapXmlUrl.openConnection();
 		urlConn.setDoOutput(true);
 		urlConn.setRequestMethod("POST");
 
-		URL mapXmlUrl2 = new URL(murl2);  //URL¿¬°áÇÏ°í ¹Þ¾Æ¿À°í ÇÏ´Â ºÎºÐµéÀº import°¡ ÇÊ¿äÇÏ´Ù. java.net.*
+		URL mapXmlUrl2 = new URL(murl2);  //URLï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ÎºÐµï¿½ï¿½ï¿½ importï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½Ï´ï¿½. java.net.*
 		HttpURLConnection urlConn2 = (HttpURLConnection)mapXmlUrl2.openConnection();
 		urlConn2.setDoOutput(true);
 		urlConn2.setRequestMethod("POST");
 			 
-		int len = urlConn.getContentLength();  //¹Þ¾Æ¿À´Â xmlÀÇ ±æÀÌ
+		int len = urlConn.getContentLength();  //ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½ xmlï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		int len2 = urlConn2.getContentLength();
 		
 		if(len > 0){ 
-		       BufferedReader br = new BufferedReader(new InputStreamReader(urlConn.getInputStream(),"EUC-KR")); //BufferedReader : ¶óÀÎ´ÜÀ§·Î ÀÐÀ½ InputStream : ÇÑ±ÛÀÚ¾¿
+		       BufferedReader br = new BufferedReader(new InputStreamReader(urlConn.getInputStream(),"EUC-KR")); //BufferedReader : ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ InputStream : ï¿½Ñ±ï¿½ï¿½Ú¾ï¿½
 		       String inputLine="";
 		       while((inputLine = br.readLine())!=null){
-		           mapxml += inputLine;  //ÇÑ±ÛÀÚ¾¿ ÀÐ¾î¿É´Ï´Ù
+		           mapxml += inputLine;  //ï¿½Ñ±ï¿½ï¿½Ú¾ï¿½ ï¿½Ð¾ï¿½É´Ï´ï¿½
 		      }
 		       
 		       if(mapxml != null){
-		            if(mapxml.indexOf("</item>") > -1 ){   //itemÀÌ ÀÖÀ¸¸é ÁÂÇ¥¸¦ ¹Þ¾Æ¿Í¾ßÁö
+		            if(mapxml.indexOf("</item>") > -1 ){   //itemï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½Þ¾Æ¿Í¾ï¿½ï¿½ï¿½
 		                 int first = 1; 
-		                 sLon = mapxml.substring( mapxml.indexOf("<x>")+3, mapxml.indexOf("</x>") ) ; //°æµµ Àß¶ó¿À±â
-		                 sLat = mapxml.substring( mapxml.indexOf("<y>")+3, mapxml.indexOf("</y>") ) ; //À§µµ Àß¶ó¿À±â
+		                 sLon = mapxml.substring( mapxml.indexOf("<x>")+3, mapxml.indexOf("</x>") ) ; //ï¿½æµµ ï¿½ß¶ï¿½ï¿½ï¿½ï¿½
+		                 sLat = mapxml.substring( mapxml.indexOf("<y>")+3, mapxml.indexOf("</y>") ) ; //ï¿½ï¿½ï¿½ï¿½ ï¿½ß¶ï¿½ï¿½ï¿½ï¿½
 		                 System.out.println("###"+sLon + sLat);
 		             }
 		       }
-		       br.close();  //¹öÆÛ¸®´õ ´Ý±â
+		       br.close();  //ï¿½ï¿½ï¿½Û¸ï¿½ï¿½ï¿½ ï¿½Ý±ï¿½
 		}
 		if(len2 > 0){ 
 			BufferedReader br = new BufferedReader(new InputStreamReader(urlConn2.getInputStream(),"EUC-KR"));
 			String inputLine="";
 			while((inputLine = br.readLine())!=null){
-				mapxml2 += inputLine;  //ÇÑ±ÛÀÚ¾¿ ÀÐ¾î¿É´Ï´Ù
+				mapxml2 += inputLine;  //ï¿½Ñ±ï¿½ï¿½Ú¾ï¿½ ï¿½Ð¾ï¿½É´Ï´ï¿½
 			}
 			
 			if(mapxml2 != null){
-				if(mapxml2.indexOf("</item>") > -1 ){   //itemÀÌ ÀÖÀ¸¸é ÁÂÇ¥¸¦ ¹Þ¾Æ¿Í¾ßÁö
+				if(mapxml2.indexOf("</item>") > -1 ){   //itemï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½Þ¾Æ¿Í¾ï¿½ï¿½ï¿½
 					int first = 1; 
-					rLon = mapxml2.substring( mapxml2.indexOf("<x>")+3, mapxml2.indexOf("</x>") ) ; //°æµµ Àß¶ó¿À±â
-					rLat = mapxml2.substring( mapxml2.indexOf("<y>")+3, mapxml2.indexOf("</y>") ) ; //À§µµ Àß¶ó¿À±â
+					rLon = mapxml2.substring( mapxml2.indexOf("<x>")+3, mapxml2.indexOf("</x>") ) ; //ï¿½æµµ ï¿½ß¶ï¿½ï¿½ï¿½ï¿½
+					rLat = mapxml2.substring( mapxml2.indexOf("<y>")+3, mapxml2.indexOf("</y>") ) ; //ï¿½ï¿½ï¿½ï¿½ ï¿½ß¶ï¿½ï¿½ï¿½ï¿½
 					System.out.println("###"+rLon + rLat);
 				}
 			}
-			br.close();  //¹öÆÛ¸®´õ ´Ý±â
+			br.close();  //ï¿½ï¿½ï¿½Û¸ï¿½ï¿½ï¿½ ï¿½Ý±ï¿½
 		}
 		
 		double x = (Math.cos(Double.parseDouble(sLat))*6400*2*3.14/360)*Math.abs(Double.parseDouble(sLon)-Double.parseDouble(rLon));
@@ -173,28 +173,28 @@ public class Utility {
 	}
 	
 	//GCM
-	public void sendMessage() throws IOException {
-
-		Sender sender = new Sender("AIzaSyAXZCm3cKCA-ipzXeR3nVlh7ObgJd8A-UU");
-
-		String regId = "APA91bHCprukKp0l3v0hFN8ZRd2xVvv817PK_Lqy3iV6QjZU4qtz_3pQ5PJQg9_ugyNbcFpFOsNm3A0KwcAUMco6Yov-kLnVpSLpshiQ8Re0g05QlT72YsIY2TZFwvG9BOokvbAdFef6";
-
-		Message message = new Message.Builder().addData("msg", "Drone has departed!!").build();
-
-		List<String> list = new ArrayList<String>();
-
-		list.add(regId);
-
-		MulticastResult multiResult = sender.send(message, list, 5);
-
-		if (multiResult != null) {
-
-			List<Result> resultList = multiResult.getResults();
-
-			for (Result result : resultList) {
-
-				System.out.println(result.getMessageId());
-			}
-		}
-	}
+//	public void sendMessage() throws IOException {
+//
+//		Sender sender = new Sender("AIzaSyAXZCm3cKCA-ipzXeR3nVlh7ObgJd8A-UU");
+//
+//		String regId = "APA91bHCprukKp0l3v0hFN8ZRd2xVvv817PK_Lqy3iV6QjZU4qtz_3pQ5PJQg9_ugyNbcFpFOsNm3A0KwcAUMco6Yov-kLnVpSLpshiQ8Re0g05QlT72YsIY2TZFwvG9BOokvbAdFef6";
+//
+//		Message message = new Message.Builder().addData("msg", "Drone has departed!!").build();
+//
+//		List<String> list = new ArrayList<String>();
+//
+//		list.add(regId);
+//
+//		MulticastResult multiResult = sender.send(message, list, 5);
+//
+//		if (multiResult != null) {
+//
+//			List<Result> resultList = multiResult.getResults();
+//
+//			for (Result result : resultList) {
+//
+//				System.out.println(result.getMessageId());
+//			}
+//		}
+//	}
 }
