@@ -132,7 +132,7 @@
 		<div class="col-md-6 loginArea_left">
 			<form role="form" role="form" name="login" action="login.do" method="post">
 			  <input type="text" class="text" id="userid" name="userid" value="ID" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'ID';}">
-			  <input type="password" class="text" id="userpw" name="userpw" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+			  <input type="password" class="text" id="userpw" name="userpw" value="" onfocus="this.value = '';" placeholder="Password"onblur="if (this.value == '') {this.value = 'Password';}">
 	        
             <div class="loginArea_but">
                 <label class="btn1 btn3 btn-1 btn-1b"><input type="submit" value="로그인"></label>

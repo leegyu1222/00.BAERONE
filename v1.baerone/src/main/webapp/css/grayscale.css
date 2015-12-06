@@ -302,6 +302,16 @@ a:focus {
 	outline: none;
 }
 
+.loginArea_left input[type="password"] {
+	padding: 30px;
+	width: 100%;
+	font-size: 1.6em;
+	margin:0px 0 50px;
+	border: none;
+	color:#aaa;
+	background: #eee;
+	outline: none;
+}
 
 
 /* Button 1b */
