@@ -145,52 +145,112 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<h1>배달 신청 현황</h1> 
+						<h1>배달 신청 상세 정보</h1> 
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="section" style="background-color : white">
+        
+        <div class="section" style="background-color : white">
 	    	<div class="container">
-	    		<div class="row">
-	    			<!-- Open Vacancies List -->
-	    			<div class="col-md-12">
-	    				<table class="jobs-list">
-	    				<c:forEach var="list" items="${list}">
-	    					<tr>
-	    						<th>보내는 사람</th>
-								<th>휴대폰 번호</th>
-								<th>신청시간</th>
-								<th>물품정보</th>
-	    					</tr>
-	    					<tr>
-	    						<td>${list.senderName}</td>
-								<td>${list.senderPhone}</td>
-								<td>${list.deliveryDate}</td>
-								<td>${list.productDetail}</td>
-	    					</tr>
-	    					<tr>
-								<th>받는 사람</th>
-								<th>휴대폰 번호</th>
-								<th>배송상태</th>
-								<th>물품정보</th>
-							</tr>
-							<tr>
-								<td>${list.receiverName}</td>
-								<td>${list.receiverPhone}</td>
-								<td>${list.deliveryStatus}</td>
-								<td>${list.productDetail}</td>
-								<td><a href="cancelDelivery.do?deliveryNo=${list.deliveryNo}"><input type="button" value="취소"></a><td>
-							</tr>
-							</c:forEach>
-	    				</table>
-	    			</div>
-	    			<!-- End Open Vacancies List -->
-	    			
-	    		</div>
-			</div>
-		</div>
-		<!-- Footer -->
+				<div class="row">
+					<!-- Sidebar -->
+					<!-- End Sidebar -->
+					<div class="col-sm-12">
+						<div class="blog-post blog-single-post">
+                            <form action="deliveryCheck.do" method="post">
+							<div class="single-post-content">
+								<h3>보내는 사람</h3><br>
+									<div class="comment-form-wrapper">
+	<div class="form-group">
+				        				 	<label for="comment-name"><i class="glyphicon glyphicon-user"></i> <b>이름</b></label>
+											<input class="form-control" type="text" name="senderName" value="${member.name}">
+										</div>
+										<div class="form-group">
+											<label for="comment-email"><i class="glyphicon glyphicon-phone"></i> <b>휴대폰</b></label>
+											<input class="form-control" type="text"  name="senderPhone" value="${member.phone}">
+										</div>
+                                        <div class="form-group">
+											<label for="comment-email"><i class="glyphicon glyphicon-envelope"></i> <b>주소</b></label><br>
+											<input class="form-control" type="text" id = "senderPostNo" name="senderPostNo" value="${member.postNo}" style="width:50%; display:inline;" >
+                                            <input type="button" onclick="sender_Postcode()" value="우편번호 찾기"><br>
+										</div>
+                                        <div class="form-group">
+											<label for="comment-email"><b>지번 주소</b></label>
+											<input class="form-control" type="text"  id = "senderAddrOld" name="senderAddrOld" value="${member.addressOld}">
+										</div>
+                                        <div class="form-group">
+											<label for="comment-email"><b>도로명 주소</b></label>
+											<input class="form-control" type="text"  id = "senderAddrNew" name="senderAddrNew" value="${member.addressNew}">
+										</div>
+                                        <div class="form-group">
+											<label for="comment-email"><b>나머지 주소</b></label>
+											<input class="form-control" type="text"  name="senderAddrMisc" value="${member.addressMisc}">
+										</div>
+										<div class="form-group">
+											<label for="comment-email"><b>신청시간</b></label>
+											<input class="form-control" type="text"  name="senderAddrMisc" value="${member.addressMisc}">
+										</div>
+										<div class="form-group">
+											<label for="comment-email"><b>물품정보</b></label>
+											<input class="form-control" type="text"  name="senderAddrMisc" value="${member.addressMisc}">
+										</div>
+                                        <div class="clearfix"></div>
+		
+								<h3>받는 사람</h3><br>
+								<div class="comment-form-wrapper">
+				        				<div class="form-group">
+				        				 	<label for="comment-name"><i class="glyphicon glyphicon-user"></i> <b>이름</b></label>
+											<input class="form-control" type="text" name="receiverName">
+										</div>
+										<div class="form-group">
+											<label for="comment-email"><i class="glyphicon glyphicon-phone"></i> <b>휴대폰</b></label>
+											<input class="form-control" type="text"  name="receiverPhone">
+										</div>
+                                        <div class="form-group">
+											<label for="comment-email"><i class="glyphicon glyphicon-envelope"></i> <b>주소</b></label><br>
+											<input class="form-control" type="text" id="receiverPostNo" name="receiverPostNo" style="width:50%; display:inline;" >
+                                            <input type="button" onclick="receiver_Postcode()" value="우편번호 찾기"><br>
+										</div>
+                                        <div class="form-group">
+											<label for="comment-email"><b>지번 주소</b></label>
+											<input class="form-control" type="text" id="receiverAddrOld" name="receiverAddrOld">
+										</div>
+                                        <div class="form-group">
+											<label for="comment-email"><b>도로명 주소</b></label>
+											<input class="form-control" type="text" id="receiverAddrNew" name="receiverAddrNew">
+										</div>
+                                        <div class="form-group">
+											<label for="comment-email"><b>나머지 주소</b></label>
+											<input class="form-control" type="text"  name="receiverAddrMisc">
+										</div>
+										<div class="form-group">
+											<label for="comment-email"><b>배송상태</b></label>
+											<input class="form-control" type="text"  name="senderAddrMisc" value="${member.addressMisc}">
+										</div>
+										<div class="form-group">
+											<label for="comment-email"><b>물품정보</b></label>
+											<input class="form-control" type="text"  name="senderAddrMisc" value="${member.addressMisc}">
+										</div>
+                                    
+                                        <div class="clearfix"></div>
+				        			
+								</div>
+							</div>
+                                
+                    </div>
+                            </form>
+							<!-- End Comments -->
+						</div>
+					</div>
+					<!-- End Blog Post -->
+
+		
+	    </div>
+            </div>
+        </div>
+
+	    <!-- Footer -->
 	    <div class="footer">
 	    	<div class="container">
 		    	<div class="row">
