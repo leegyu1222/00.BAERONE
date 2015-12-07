@@ -17,6 +17,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -172,14 +173,16 @@ public class Utility {
 		return distance;
 	}
 	
-	//GCM
-	public void sendMessage() throws IOException {
+	//GCM 보내는사람에게 드론출발 알림
+	public static void sendMessageToSender() throws IOException {
 
 		Sender sender = new Sender("AIzaSyAXZCm3cKCA-ipzXeR3nVlh7ObgJd8A-UU");
 
-		String regId = "APA91bHCprukKp0l3v0hFN8ZRd2xVvv817PK_Lqy3iV6QjZU4qtz_3pQ5PJQg9_ugyNbcFpFOsNm3A0KwcAUMco6Yov-kLnVpSLpshiQ8Re0g05QlT72YsIY2TZFwvG9BOokvbAdFef6";
+		String regId = "APA91bGKQD33vzOA4ClfEWfzqIHY4yqs2RDWA739wlKGej8xiNBPFOZz-8e7nuczc888BrBLKFXRvGbZMrm22mkhwoX5FSkRfxKOt8InLmZwmuP62EfWb0JJQg-VEXDzW6Zsy5Ez7hEJ";
 
-		Message message = new Message.Builder().addData("msg", "Drone has departed!!").build();
+		int dronepw = 1234;
+		
+		Message message = new Message.Builder().addData("msg", URLEncoder.encode("<드론출발> 잠금장치 비밀번호 : "+dronepw,"EUC-KR")).build();
 
 		List<String> list = new ArrayList<String>();
 
@@ -197,4 +200,7 @@ public class Utility {
 			}
 		}
 	}
+	
+
+	
 }
