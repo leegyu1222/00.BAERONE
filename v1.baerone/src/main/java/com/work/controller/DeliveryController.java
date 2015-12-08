@@ -1,21 +1,27 @@
 package com.work.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.ws.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.work.dto.Delivery;
 import com.work.dto.Member;
+import com.work.dto.Paging;
 import com.work.service.DeliveryServiceImpl;
 import com.work.service.FareServiceImpl;
 import com.work.service.MemberServiceImpl;
@@ -43,7 +49,7 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * ¹è´Ş½ÅÃ» ºä ÀÌµ¿
+	 * å ì™ì˜™è˜å ì‹œï¿½ å ì™ì˜™ å ì‹±ë“¸ì˜™
 	 * @param session
 	 * @return
 	 */
@@ -58,7 +64,7 @@ public class DeliveryController {
 		return mv;
 	}
 	/**
-	 * ¹è´Ş ÁÖ¹®¼­ ½ÅÃ» ³»¿ë È®ÀÎ
+	 * å ì™ì˜™å ï¿½ å ìŒë±„ì˜™å ì™ì˜™ å ì™ì˜™ì²­ å ì™ì˜™å ì™ì˜™ í™•å ì™ì˜™
 	 * @param dto
 	 * @return
 	 */
@@ -79,18 +85,22 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * °áÁ¦ ÆË¾÷
+	 * å ì™ì˜™å ì™ì˜™ å ì‹¯ì–µì˜™
 	 * @param dto 
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="payment.do", method=RequestMethod.POST)
-	public ModelAndView payment(Delivery dto, HttpSession session){
+	public ModelAndView payment(Delivery dto, HttpSession session, ModelAndView mv){
 		String senderId = (String)session.getAttribute("userid");
-		ModelAndView mv = new ModelAndView();
 		dto.toString();
 		dto.setSenderId(senderId);
 		mv.addObject("dto", dto);
-		mv.setViewName("delivery/payment");
+		HashMap<String, Object> resultMap = deliveryService.getAllBoard(1, senderId);
+		mv.addObject("list", (List<Delivery>) resultMap.get("list"));
+		mv.addObject("paging", (Paging) resultMap.get("paging"));
+		mv.addObject("page", 1);
+		mv.setViewName("delivery/myDelivery");
 		
 		if ( dto != null ) {
 		deliveryService.deliveryService(dto);
@@ -100,7 +110,7 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * µå·Ğ ¹è´Ş ÁÖ¹®¼® ÀÛ¼º Ãë¼Ò
+	 * å ì™ì˜™å ï¿½ å ì™ì˜™å ï¿½ å ìŒë±„ì˜™å ì™ì˜™ å ìŒœì‡½ì˜™ å ì™ì˜™å ï¿½
 	 */
 	@RequestMapping(value="cancelAppl.do")
 	public String cancelAppl(){
@@ -108,7 +118,7 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * µå·Ğ ¹è´Ş ÁÖ¹®¼­ ½ÅÃ»¿Ï·á
+	 * å ì™ì˜™å ï¿½ å ì™ì˜™å ï¿½ å ìŒë±„ì˜™å ì™ì˜™ å ì™ì˜™ì²­å ì‹¹ë¤„ì˜™
 	 * @param dto
 	 * @return
 	 */
@@ -125,7 +135,7 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * ½ÅÃ»¼­ ÀÛ¼º ¼öÁ¤
+	 * å ì™ì˜™ì²­å ì™ì˜™ å ìŒœì‡½ì˜™ å ì™ì˜™å ì™ì˜™
 	 * @param dto
 	 * @return
 	 */
@@ -148,24 +158,34 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * ³» ¹è¼Û½ÅÃ» ¸ñ·Ï Á¶È¸
-	 * @param senderId
+	 * è«›ê³—ë„šï¿½ì ™è¹‚ï¿½ ç”±ÑŠë’ªï¿½ë“ƒç‘œï¿½ ç•°ì’•ì °ï¿½ë¸¯ï¿½ë’— é…‰ê³•ì¤ˆ ï¿½ì” ï¿½ë£ ï¿½ìŠ‚ï§£ï¿½
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="myDelivery.do")
-	public ModelAndView myDelivery(HttpSession session){
-		String senderId = (String)session.getAttribute("userid");
-		ModelAndView mv = new ModelAndView();
-		List<Delivery> list = deliveryService.myDelivery(senderId);
-		if( list != null) {
-			mv.addObject("list", list);
+	public ModelAndView myDelivery(HttpSession session, ModelAndView mv, int page){
+		String userid = (String) session.getAttribute("userid");
+		HashMap<String, Object> resultMap = deliveryService.getAllBoard(page, userid);
+			mv.addObject("list", (List<Delivery>) resultMap.get("list"));
+			mv.addObject("paging", (Paging) resultMap.get("paging"));
+			mv.addObject("page", page);
 			mv.setViewName("delivery/myDelivery");
-		}
+		return mv;
+	}
+	@RequestMapping(value="myDeliveryDetail", method=RequestMethod.POST )
+	public ModelAndView myDeliveryDetail(String productDetail) {
+		System.out.println(productDetail);
+		ModelAndView mv = new ModelAndView();
+		List<Delivery> list = deliveryService.myDeliveryDetail(productDetail);
+		System.out.println(list.size());
+		mv.addObject("list", list);
+		mv.setViewName("delivery/myDeliveryMore");
 		return mv;
 	}
 	
+	
 	/**
-	 * ¹è¼Û½ÅÃ» Ãë¼Ò
+	 * å ì™ì˜™èšŒå ì‹œï¿½ å ì™ì˜™å ï¿½
 	 * @param session
 	 * @param deliveryNo
 	 * @return
@@ -192,7 +212,7 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * µå·Ğ Ãâ¹ß ÁØºñ ¸ñ·Ï
+	 * å ì™ì˜™å ï¿½ å ì™ì˜™å ï¿½ å ìŒ”ë¸ì˜™ å ì™ì˜™å ï¿½
 	 * @param senderId
 	 * @return
 	 */
@@ -209,7 +229,7 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * µå·Ğ Ãâ¹ß
+	 * å ì™ì˜™å ï¿½ å ì™ì˜™å ï¿½
 	 * @param session
 	 * @param deliveryNo
 	 * @return
@@ -236,7 +256,7 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * µå·Ğ Ãâ¹ß ÁØºñ ¸ñ·Ï
+	 * å ì™ì˜™å ï¿½ å ì™ì˜™å ï¿½ å ìŒ”ë¸ì˜™ å ì™ì˜™å ï¿½
 	 * @param senderId
 	 * @return
 	 */
@@ -252,7 +272,7 @@ public class DeliveryController {
 	}
 	
 	 /**
-	    * °øÁö»çÇ× ±Û °Ë»ö
+	    * å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™ å ì‹¯ì‚¼ì˜™
 	    * @param searchBox
 	    * @return
 	    */
@@ -267,8 +287,18 @@ public class DeliveryController {
 	      mv.setViewName("admin/deliveryList");
 	     System.out.println("####if");
 	      } else {
-	    	  mv.addObject("message", "°Ë»öÇÑ °á°ú°¡ ¾ø½À´Ï´Ù.");
+	    	  mv.addObject("message", "å ì‹¯ì‚¼ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™å ï¿½ å ì™ì˜™å ì™ì˜™å ì‹¹ëŒì˜™.");
 	      }
 	      return mv;
+	   }
+	   @RequestMapping(value="searchUserId.do", method=RequestMethod.GET)
+	   @ResponseBody
+	   public void searchUserId(String phone, HttpServletResponse response){
+		   String userid = deliveryService.searchUserId(phone);
+		   try {
+			response.getWriter().print(userid);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	   }
 }

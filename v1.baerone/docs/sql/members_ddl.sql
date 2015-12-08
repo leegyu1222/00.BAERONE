@@ -17,5 +17,5 @@ create table Members(
 alter table members
 add constraint pk_userid primary key(userid);
 
-insert into members values('user01','pass01','seogijin','910623','M','010-9124-7128','herohe@naver.com',12345,'°æ±âµµ ³²¾çÁÖ½Ã º°³»µ¿','°æ±âµµ ³²¾çÁÖ½Ã º°³»4·Î8' ,
-'º°³»´õ½ºÅ¸ÇÑÈ­²Þ¿¡±×¸°¾ÆÆÄÆ®4611-503È£',0,'G');
+insert into members values('user01','pass01','seogijin','910623','M','010-9124-7128','herohe@naver.com',12345,'ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ ï¿½ï¿½ï¿½ï¿½4ï¿½ï¿½8' ,
+'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ï¿½È­ï¿½Þ¿ï¿½ï¿½×¸ï¿½ï¿½ï¿½ï¿½ï¿½Æ®4611-503È£',0,'G');
