@@ -99,7 +99,7 @@
                     <img src="img/30m.gif">
                 </div>
                 <div class="col-lg-4">
-                    <p>12km 안에 있는 주문자가 배송 신청을 하면 30분 이내로 도착하게 됩니다.</p>
+                    <h3>12km 안에 있는 주문자가 배송 신청을 하면 30분 이내로 도착하게 됩니다.</h3>
                 </div>
             </div>
         </div>
@@ -109,13 +109,13 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <div class="col-lg-4">
-                    <h2>운영비 및 인건비<br>대폭 <a href="http://gratisography.com/">절감!</a></h2>
+                    <h1>운영비 및 인건비<br>대폭 <a href="http://gratisography.com/">절감!</a></h1>
                 </div>
                 <div class="col-lg-4">
                     <img src="img/pig.gif">
                 </div>
                 <div class="col-lg-4">
-                    <p>기존 자동차와 기사에 의존하던 택배 서비스를 드론을 이용함으로써 기름값, 고용비를 비롯 각종 운영비와 인건비를 아낄 수 있습니다.</p>
+                    <h3>기존 자동차와 기사에 의존하던 택배 서비스를 드론을 이용함으로써 기름값, 고용비를 비롯 각종 운영비와 인건비를 아낄 수 있습니다.</h3>
                 </div>
             </div>
         </div>
@@ -127,21 +127,22 @@
             <div class="container">
                 <div class="col-lg-8 col-lg-offset-2">
                     <h2>로그인</h2>
-                    <p>로그인을 하시면 바로 이용하실 수 있습니다</p>
                     <div class="loginArea_top">
-		<div class="col-md-6 loginArea_left">
+		<div class="col-md-6 col-md-offset-3 loginArea_left" style="margin-top:20px;">
 			<form role="form" role="form" name="login" action="login.do" method="post">
-			  <input type="text" class="text" id="userid" name="userid" value="ID" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'ID';}">
-			  <input type="password" class="text" id="userpw" name="userpw" value="" onfocus="this.value = '';" placeholder="Password"onblur="if (this.value == '') {this.value = 'Password';}">
-	        
+			  <input type="text" class="text" id="userid" name="userid" value="ID" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'ID';}"
+			  style="margin-bottom: 20px">
+			  <input type="password" class="text" id="userpw" name="userpw" value="" onfocus="this.value = '';" style="
+    margin-bottom: 5px;
+" placeholder="Password"onblur="if (this.value == '') {this.value = 'Password';}">
+	        <p><a href="mailto:feedback@startbootstrap.com" style="color:#AAAAAA">비밀번호 찾기</a>
+	        <span style="color:#AAAAAA">/</span> <a href="mailto:feedback@startbootstrap.com" style="color:#AAAAAA">회원가입</a>
+                </p>
             <div class="loginArea_but">
                 <label class="btn1 btn3 btn-1 btn-1b"><input type="submit" value="로그인"></label>
 	    </div>
 	     </form>
 		</div>
-		<div class="col-md-6 loginArea_right">
-			
-	    </div>
 	    <div class="clearfix"> </div>
 	   </div>
                 </div>

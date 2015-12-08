@@ -181,7 +181,7 @@ public class Utility {
 
 		String regId = "APA91bGKQD33vzOA4ClfEWfzqIHY4yqs2RDWA739wlKGej8xiNBPFOZz-8e7nuczc888BrBLKFXRvGbZMrm22mkhwoX5FSkRfxKOt8InLmZwmuP62EfWb0JJQg-VEXDzW6Zsy5Ez7hEJ";
 
-		int dronepw = 1234;
+		int dronepw = 3820;
 		
 		Message message = new Message.Builder().addData("msg", URLEncoder.encode("<드론출발> 잠금장치 비밀번호 : "+dronepw,"EUC-KR")).build();
 

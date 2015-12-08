@@ -49,6 +49,7 @@
 		        <nav id="mainmenu" class="mainmenu">
 					<ul>
 						<li class="logo-wrapper"><a href="main.do"><img src="img/top-logo.png" alt="Multipurpose Twitter Bootstrap Template"></a></li>
+
 						<li class="active">
 							<a href="main.do">Home</a>
 						</li>

@@ -87,9 +87,9 @@ public class DeliveryController {
 	public ModelAndView payment(Delivery dto, HttpSession session){
 		String senderId = (String)session.getAttribute("userid");
 		ModelAndView mv = new ModelAndView();
+		dto.toString();
 		dto.setSenderId(senderId);
 		mv.addObject("dto", dto);
-		System.out.println(dto.toString());
 		mv.setViewName("delivery/payment");
 		
 		if ( dto != null ) {
