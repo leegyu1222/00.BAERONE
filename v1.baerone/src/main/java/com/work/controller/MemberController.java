@@ -26,7 +26,7 @@ public class MemberController {
 	}
 	
 	/**
-	 * ·Î±×ÀÎ 
+	 * ï¿½Î±ï¿½ï¿½ï¿½ 
 	 * @param userid
 	 * @param userpw
 	 * @param request
@@ -37,21 +37,20 @@ public class MemberController {
 		String grade = service.login(userid, userpw);
 		ModelAndView mv = new ModelAndView();
 		
-		if(grade != null) {
-			HttpSession session = request.getSession(true);
-			session.setAttribute("userid", userid);
-			session.setAttribute("grade", grade);
+		HttpSession session = request.getSession(true);
+		session.setAttribute("userid", userid);
+		session.setAttribute("grade", grade);
+		
+		if(grade.equals("A")) {
+			mv.setViewName("admin/adminMain");
+		} else {
 			mv.setViewName("main");
-			
-			System.out.println("###########"+grade);
-		}else {
-			mv.addObject("message","·Î±×ÀÎ Á¤º¸¸¦ ´Ù½Ã È®ÀÎÇÏ½Ã±â ¹Ù¶ø´Ï´Ù.");
 		}
 		return mv;
 	}
 	
 	/**
-	 * ·Î±×¾Æ¿ô - > ·Î±×ÀÎÆäÀÌÁö
+	 * ï¿½Î±×¾Æ¿ï¿½ - > ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @param session
 	 * @return
 	 */
@@ -71,7 +70,7 @@ public class MemberController {
 	}
 	
 	/**
-	 * ³»Á¤º¸Á¶È¸
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¸
 	 * @param member
 	 * @param request
 	 * @return
@@ -86,14 +85,14 @@ public class MemberController {
 		if(userid != null) {
 			Member member = service.myinfo(userid);
 			mv.addObject("member",member);
-			mv.addObject("message",userid + "´Ô Á¶È¸ ³»¿ª ÀÔ´Ï´Ù.");
+			mv.addObject("message",userid + "ï¿½ï¿½ ï¿½ï¿½È¸ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô´Ï´ï¿½.");
 			mv.setViewName("member/myinfo");
 		}
 		return mv;
 	}
 	
 	/**
-	 * ³»Á¤º¸º¯°æ ºä·Î ÀÌµ¿ => ±âÁ¸Á¤º¸ º¸¿©ÁÜ
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ => ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @return
 	 */
 	@RequestMapping(value="myinfoModifyView.do")
@@ -106,7 +105,7 @@ public class MemberController {
 	}
 	
 	/**
-	 * ³»Á¤º¸º¯°æ ÀúÀå
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 * @param member
 	 * @param request
 	 * @return
@@ -119,7 +118,7 @@ public class MemberController {
 		
 		if(session.getAttribute("userid") != null) {
 			int check = service.myinfoModify(member);
-			mv.addObject("message", session.getAttribute("userid") + "´Ô º¯°æ µÇ¾ú½À´Ï´Ù. ´Ù½Ã Á¶È¸ ÇØÁÖ¼¼¿ä.");
+			mv.addObject("message", session.getAttribute("userid") + "ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½. ï¿½Ù½ï¿½ ï¿½ï¿½È¸ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½.");
 			member = service.myinfo((String)session.getAttribute("userid"));
 			mv.addObject(member);
 			mv.setViewName("member/myinfo");
@@ -128,7 +127,7 @@ public class MemberController {
 	}
 	
 	/**
-	 * È¸¿øÅ»Åð 
+	 * È¸ï¿½ï¿½Å»ï¿½ï¿½ 
 	 * @param request
 	 * @return
 	 */
@@ -138,10 +137,10 @@ public class MemberController {
 		session = request.getSession(true);
 		
 		if(service.deleteMember((String)session.getAttribute("userid")) > 0) {
-			mv.addObject("message","È¸¿øÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.");
+			mv.addObject("message","È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 			mv.setViewName("login");
 		}else {
-			mv.addObject("message","Å»Åð¿¡ ½ÇÆÐÇÏ¿´½À´Ï´Ù.");
+			mv.addObject("message","Å»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 			mv.setViewName("deleteMember");
 		}
 		return mv;
@@ -149,7 +148,7 @@ public class MemberController {
 	}
 
 	/**
-	 * ¸â¹ö¸®½ºÆ® µé¾î°¥¶§ 
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½î°¥ï¿½ï¿½ 
 	 * @param userid
 	 * @param request
 	 * @return
@@ -167,7 +166,7 @@ public class MemberController {
 	}
 	
 	/**
-	 * Á¶°Ç°Ë»ö 
+	 * ï¿½ï¿½ï¿½Ç°Ë»ï¿½ 
 	 * @param request
 	 * @return
 	 */
@@ -176,14 +175,14 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		
 		if(memberListInput != null ) {
-			System.out.println("if¹®");
+			System.out.println("ifï¿½ï¿½");
 			List<Member> list = service.memberListChoose(memberListSelect, memberListInput);
 			mv.addObject("memberList", list);
 			mv.setViewName("admin/memberList");
 		}else {
-			System.out.println("else¹®");
+			System.out.println("elseï¿½ï¿½");
 			service.memberListChoose(memberListSelect, memberListInput);
-			mv.addObject("message","ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+			mv.addObject("message","ï¿½Ô·ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½.");
 			mv.setViewName("admin/memberList");
 		}
 		
