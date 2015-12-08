@@ -6,9 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.work.dao.DeliveryDAO;
 import com.work.dao.DeliveryDAOImpl;
 import com.work.dto.Delivery;
 import com.work.dto.Member;
+import com.work.dto.Paging;
 
 @Service
 public class DeliveryServiceImpl implements DeliveryService {
@@ -89,5 +91,24 @@ public class DeliveryServiceImpl implements DeliveryService {
 	public String searchUserId(String phone){
 		return deliveryDAO.searchUserId(phone);
 	}
-
+	public HashMap<String, Object> getAllBoard(int page, String userid){
+		Paging paging = new Paging(page);
+		paging.setTotalRow(deliveryDAO.getAllDeliveryCount());
+		paging.setTotalPage(paging.getTotalRow());
+		
+		HashMap<String, Object> hashMap = new HashMap<String, Object>();
+		hashMap.put("start", paging.getStart());
+		hashMap.put("end", paging.getStart() + paging.getPageCount() - 1);
+		hashMap.put("senderId", userid);
+		
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("list", deliveryDAO.getAllDelivery(hashMap));
+		resultMap.put("paging", paging);
+		
+		return resultMap;
+	}
+	
+	public List<Delivery> myDeliveryDetail(String productDetail) {
+		return deliveryDAO.myDeliveryDetail(productDetail);
+	}
 }

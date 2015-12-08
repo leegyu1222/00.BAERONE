@@ -27,5 +27,6 @@ public interface DeliveryService {
 	public List<Delivery> searchList(String searchBox, String category);
 	
 	public String searchUserId(String phone);
-
+	
+	public List<Delivery> myDeliveryDetail(String productDetail);
 }

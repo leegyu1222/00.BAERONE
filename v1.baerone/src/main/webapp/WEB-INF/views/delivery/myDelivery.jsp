@@ -43,7 +43,7 @@
 	        	<div class="menuextras">
 					<div class="extras">
 						<ul>
-							<li class="shopping-cart-items"><i class="glyphicon glyphicon-shopping-cart icon-white"></i> <a href="myDelivery.do"><b>배송조회</b></a></li>
+							<li class="shopping-cart-items"><i class="glyphicon glyphicon-shopping-cart icon-white"></i> <a href="myDelivery.do?page=1"><b>배송조회</b></a></li>
 							<li>
 							</li>
 			        		<li><a href="logout.do">로그아웃</a></li>
@@ -54,9 +54,9 @@
 		        </div>
 		        <nav id="mainmenu" class="mainmenu">
 					<ul>
-						<li class="logo-wrapper"><a href="main.html"><img src="img/top-logo.png" alt="Multipurpose Twitter Bootstrap Template"></a></li>
+						<li class="logo-wrapper"><a href="cancelAppl.do"><img src="img/top-logo.png" alt="Multipurpose Twitter Bootstrap Template"></a></li>
 						<li class="active">
-							<a href="main.html">Home</a>
+							<a href="cancelAppl.do">Home</a>
 						</li>
 						<li class="has-submenu">
 							<a href="#">회사소개</a>
@@ -150,7 +150,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="section" style="background-color : white">
+		<div class="section">
 	    	<div class="container">
 	    		<div class="row">
 	    			<!-- Open Vacancies List -->
@@ -162,31 +162,70 @@
 								<th>휴대폰 번호</th>
 								<th>신청시간</th>
 								<th>물품정보</th>
+								<c:if test="${list.deliveryStatus eq '결제완료'}">
+								<th style="text-align:center">신청 취소</th>
+								</c:if>
 	    					</tr>
 	    					<tr>
 	    						<td>${list.senderName}</td>
 								<td>${list.senderPhone}</td>
 								<td>${list.deliveryDate}</td>
-								<td>${list.productDetail}</td>
+								<td rowspan="3"><a href="myDeliveryDetail.do?productDetail=${list.productDetail}">${list.productDetail}</a></td>
+								<th rowspan="3" style="text-align:center"><a href="cancelDelivery.do?deliveryNo=${list.deliveryNo}">
+								<c:if test="${list.deliveryStatus eq '결제완료'}">
+								<input type="button" value="취소">
+								</c:if>
+								</a><th>
 	    					</tr>
 	    					<tr>
 								<th>받는 사람</th>
 								<th>휴대폰 번호</th>
 								<th>배송상태</th>
-								<th>물품정보</th>
 							</tr>
 							<tr>
 								<td>${list.receiverName}</td>
 								<td>${list.receiverPhone}</td>
 								<td>${list.deliveryStatus}</td>
-								<td>${list.productDetail}</td>
-								<td><a href="cancelDelivery.do?deliveryNo=${list.deliveryNo}"><input type="button" value="취소"></a><td>
+							</tr>
+							<tr>
+								<td colspan="5" style="background:#ECEEF3; height:2px;padding-top: 2px;padding-bottom: 1px;"></td>
 							</tr>
 							</c:forEach>
 	    				</table>
 	    			</div>
 	    			<!-- End Open Vacancies List -->
-	    			
+	    			        <!-- Pagination -->
+							<div class="pagination-wrapper">
+								<ul class="pagination pagination-sm">
+								
+								<c:if test="${paging.startPage > 1}">
+							  		<li>
+							  			<a href="myDelivery.do?page=${paging.startPage - 1}">Previous</a>
+							  		</li>
+							  	</c:if>
+							  	
+							  	<c:forEach var="i" begin="${paging.startPage}" end="${paging.startPage + paging.groupCount - 1}" step="1">
+								    <c:if test="${i  <= paging.totalPage}">
+								    	<c:if test="${i eq page}">
+									    	<li class="active">
+									    		<a href="myDelivery.do?page=${i}">${i}</a>
+									    	</li>
+									    </c:if>
+									    <c:if test="${i != page}">
+									    	<li>
+									    		<a href="myDelivery.do?page=${i}">${i}</a>
+									    	</li>
+									    </c:if>
+								    </c:if>
+							    </c:forEach>
+							  	
+							  	 <c:if test="${paging.startPage + paging.groupCount <= paging.totalPage}">
+							    	<li>
+							    		<a href="myDelivery.do?page=${paging.startPage + paging.groupCount}">Next</a>
+							    	</li>
+							    </c:if>
+								</ul>
+							</div>
 	    		</div>
 			</div>
 		</div>

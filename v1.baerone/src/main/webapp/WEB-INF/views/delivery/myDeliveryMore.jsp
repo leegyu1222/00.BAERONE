@@ -156,93 +156,100 @@
 				<div class="row">
 					<!-- Sidebar -->
 					<!-- End Sidebar -->
+					
 					<div class="col-sm-12">
 						<div class="blog-post blog-single-post">
                             <form action="deliveryCheck.do" method="post">
+                            
 							<div class="single-post-content">
+						<c:forEach var="list" items="${list}">
 								<h3>보내는 사람</h3><br>
 									<div class="comment-form-wrapper">
-	<div class="form-group">
+									
+									<div class="form-group">
 				        				 	<label for="comment-name"><i class="glyphicon glyphicon-user"></i> <b>이름</b></label>
-											<input class="form-control" type="text" name="senderName" value="${member.name}">
+											<input class="form-control" type="text" name="senderName" id="senderName"value="${list.senderName}" readonly="readonly">
 										</div>
 										<div class="form-group">
 											<label for="comment-email"><i class="glyphicon glyphicon-phone"></i> <b>휴대폰</b></label>
-											<input class="form-control" type="text"  name="senderPhone" value="${member.phone}">
+											<input class="form-control" type="text"  name="senderPhone" id="senderPhone"value="${list.senderPhone}" readonly="readonly">
 										</div>
                                         <div class="form-group">
 											<label for="comment-email"><i class="glyphicon glyphicon-envelope"></i> <b>주소</b></label><br>
-											<input class="form-control" type="text" id = "senderPostNo" name="senderPostNo" value="${member.postNo}" style="width:50%; display:inline;" >
-                                            <input type="button" onclick="sender_Postcode()" value="우편번호 찾기"><br>
+											<input class="form-control" type="text" id = "senderPostNo" name="senderPostNo" value="${list.senderPostNo}" style="width:50%; display:inline;" readonly="readonly">
+											<input type="button" onclick="receiver_Postcode()" value="우편번호 찾기"><br>
 										</div>
                                         <div class="form-group">
 											<label for="comment-email"><b>지번 주소</b></label>
-											<input class="form-control" type="text"  id = "senderAddrOld" name="senderAddrOld" value="${member.addressOld}">
+											<input class="form-control" type="text"  id = "senderAddrOld" name="senderAddrOld" value="${list.senderAddrOld}" readonly="readonly">
 										</div>
                                         <div class="form-group">
 											<label for="comment-email"><b>도로명 주소</b></label>
-											<input class="form-control" type="text"  id = "senderAddrNew" name="senderAddrNew" value="${member.addressNew}">
+											<input class="form-control" type="text"  id = "senderAddrNew" name="senderAddrNew" value="${list.senderAddrNew}" readonly="readonly">
 										</div>
                                         <div class="form-group">
 											<label for="comment-email"><b>나머지 주소</b></label>
-											<input class="form-control" type="text"  name="senderAddrMisc" value="${member.addressMisc}">
+											<input class="form-control" type="text"  name="senderAddrMisc" value="${list.senderAddrMisc}" readonly="readonly">
 										</div>
 										<div class="form-group">
 											<label for="comment-email"><b>신청시간</b></label>
-											<input class="form-control" type="text"  name="senderAddrMisc" value="${member.addressMisc}">
+											<input class="form-control" type="text"  name="deliveryDate" value="${list.deliveryDate}" readonly="readonly">
 										</div>
 										<div class="form-group">
 											<label for="comment-email"><b>물품정보</b></label>
-											<input class="form-control" type="text"  name="senderAddrMisc" value="${member.addressMisc}">
+											<input class="form-control" type="text"  name="productDetail" value="${list.productDetail}" readonly="readonly">
 										</div>
                                         <div class="clearfix"></div>
-		
+								
 								<h3>받는 사람</h3><br>
+									
 								<div class="comment-form-wrapper">
 				        				<div class="form-group">
 				        				 	<label for="comment-name"><i class="glyphicon glyphicon-user"></i> <b>이름</b></label>
-											<input class="form-control" type="text" name="receiverName">
+											<input class="form-control" type="text" name="receiverName" value="${list.receiverName}" readonly="readonly">
 										</div>
 										<div class="form-group">
 											<label for="comment-email"><i class="glyphicon glyphicon-phone"></i> <b>휴대폰</b></label>
-											<input class="form-control" type="text"  name="receiverPhone">
+											<input class="form-control" type="text"  name="receiverPhone" value="${list.receiverPhone}" readonly="readonly">
 										</div>
                                         <div class="form-group">
 											<label for="comment-email"><i class="glyphicon glyphicon-envelope"></i> <b>주소</b></label><br>
-											<input class="form-control" type="text" id="receiverPostNo" name="receiverPostNo" style="width:50%; display:inline;" >
+											<input class="form-control" type="text" id="receiverPostNo" name="receiverPostNo" style="width:50%; display:inline;" value="${list.receiverPostNo}" readonly="readonly">
                                             <input type="button" onclick="receiver_Postcode()" value="우편번호 찾기"><br>
 										</div>
                                         <div class="form-group">
 											<label for="comment-email"><b>지번 주소</b></label>
-											<input class="form-control" type="text" id="receiverAddrOld" name="receiverAddrOld">
+											<input class="form-control" type="text" id="receiverAddrOld" name="receiverAddrOld" value="${list.receiverAddrOld}" readonly="readonly">
 										</div>
                                         <div class="form-group">
 											<label for="comment-email"><b>도로명 주소</b></label>
-											<input class="form-control" type="text" id="receiverAddrNew" name="receiverAddrNew">
+											<input class="form-control" type="text" id="receiverAddrNew" name="receiverAddrNew" value="${list.receiverAddrNew}" readonly="readonly">
 										</div>
                                         <div class="form-group">
 											<label for="comment-email"><b>나머지 주소</b></label>
-											<input class="form-control" type="text"  name="receiverAddrMisc">
+											<input class="form-control" type="text"  name="receiverAddrMisc" value="${list.receiverAddrMisc}" readonly="readonly">
 										</div>
 										<div class="form-group">
 											<label for="comment-email"><b>배송상태</b></label>
-											<input class="form-control" type="text"  name="senderAddrMisc" value="${member.addressMisc}">
+											<input class="form-control" type="text"  name="deliveryStatus" value="${list.deliveryStatus}" readonly="readonly">
 										</div>
 										<div class="form-group">
 											<label for="comment-email"><b>물품정보</b></label>
-											<input class="form-control" type="text"  name="senderAddrMisc" value="${member.addressMisc}">
+											<input class="form-control" type="text"  name="productDetail" value="${list.productDetail}" readonly="readonly">
 										</div>
                                     
                                         <div class="clearfix"></div>
-				        			
 								</div>
+							
 							</div>
-                                
+                    </c:forEach>
                     </div>
-                            </form>
+                    
+                    </form>
 							<!-- End Comments -->
 						</div>
 					</div>
+					
 					<!-- End Blog Post -->
 
 		

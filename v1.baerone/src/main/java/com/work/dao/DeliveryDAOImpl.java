@@ -67,5 +67,18 @@ public class DeliveryDAOImpl implements DeliveryDAO {
 	public String searchUserId(String phone){
 		return sqlSession.selectOne("searchUserId", phone);
 	}
-
+	/**
+	 * 배송정보 확인 글의 개수를 구하는 메서드 
+	 */
+	public int getAllDeliveryCount() {
+		return sqlSession.selectOne("getAllDeliveryCount");
+	}
+	
+	public List<Delivery> getAllDelivery(HashMap<String, Object> hashMap){
+		return sqlSession.selectList("getAllDelivery", hashMap);
+	}
+	
+	public List<Delivery> myDeliveryDetail(String productDetail){
+		return sqlSession.selectList("myDeliveryDetail", productDetail);
+	}
 }

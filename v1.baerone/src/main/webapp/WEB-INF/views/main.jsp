@@ -37,7 +37,7 @@
 	        	<div class="menuextras">
 					<div class="extras">
 						<ul>
-							<li class="shopping-cart-items"><i class="glyphicon glyphicon-shopping-cart icon-white"></i> <a href="myDelivery.do"><b>배송조회</b></a></li>
+							<li class="shopping-cart-items"><i class="glyphicon glyphicon-shopping-cart icon-white"></i> <a href="myDelivery.do?page=1"><b>배송조회</b></a></li>
 							<li>
 							</li>
 			        		<li><a href="logout.do">로그아웃</a></li>
@@ -48,9 +48,9 @@
 		        </div>
 		        <nav id="mainmenu" class="mainmenu">
 					<ul>
-						<li class="logo-wrapper"><a href="main.html"><img src="img/top-logo.png" alt="Multipurpose Twitter Bootstrap Template"></a></li>
+						<li class="logo-wrapper"><a href="cancelAppl.do"><img src="img/top-logo.png" alt="Multipurpose Twitter Bootstrap Template"></a></li>
 						<li class="active">
-							<a href="main.html">Home</a>
+							<a href="cancelAppl.do">Home</a>
 						</li>
 						<li class="has-submenu">
 							<a href="#">회사소개</a>
@@ -93,7 +93,7 @@
 									</div>
 									<div>
 										<ul>
-											<li><a href="myDelivery.do">배송 조회</a></li>
+											<li><a href="myDelivery.do?page=1">배송 조회</a></li>
 										</ul>
 										
 									</div>

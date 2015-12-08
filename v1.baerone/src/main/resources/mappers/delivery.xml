@@ -38,7 +38,24 @@
 			<select id="myDelivery" resultMap="deliveryResult" parameterType="String">
 				select * from delivery where sender_id = #{senderId}
 			</select>
-			
+		<!-- 배송신청 목록 전체 개수 구하기 -->
+			<select id="getAllDeliveryCount" resultType="int">
+				select count(*) from delivery
+			</select>
+		<!-- 배송신청 목록 가져오기 (페이징) -->
+			<select id="getAllDelivery" resultMap="deliveryResult" parameterType="hashmap">
+				SELECT SUB2.* 
+				FROM ( 
+						SELECT ROWNUM AS RNUM, SUB.* 
+						FROM ( 
+						 		SELECT * 
+						 		FROM delivery
+						 		WHERE sender_id = #{senderId}
+					 	 		ORDER BY DELIVERY_NO DESC 
+						 	 )  SUB 
+					 )SUB2 
+				WHERE RNUM BETWEEN #{start} AND #{end}
+			</select>
 		<!-- 드론 출발 준비 목록 -->
 			<select id="deliveryReady" resultMap="deliveryResult">
 				select * from delivery where delivery_status = '결제완료'
@@ -55,6 +72,12 @@
 				from delivery
 				where ${category} like '%' || #{searchBox} || '%'
 				
+			</select>
+		<!-- 드론 신청 목록 상세보기  -->
+			<select id = "myDeliveryDetail" resultMap="deliveryResult" parameterType="String">
+				select *
+				from delivery
+				where product_detail = #{productDetail}	    
 			</select>
 			
 	<!-- delete -->

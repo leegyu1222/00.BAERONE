@@ -1,6 +1,7 @@
 package com.work.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import javax.xml.ws.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.work.dto.Delivery;
 import com.work.dto.Member;
+import com.work.dto.Paging;
 import com.work.service.DeliveryServiceImpl;
 import com.work.service.FareServiceImpl;
 import com.work.service.MemberServiceImpl;
@@ -151,21 +154,30 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * �� ��۽�û ��� ��ȸ
-	 * @param senderId
+	 * 배송정보 리스트를 출력하는 뷰로 이동 요청
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="myDelivery.do")
-	public ModelAndView myDelivery(HttpSession session){
-		String senderId = (String)session.getAttribute("userid");
-		ModelAndView mv = new ModelAndView();
-		List<Delivery> list = deliveryService.myDelivery(senderId);
-		if( list != null) {
-			mv.addObject("list", list);
+	public ModelAndView myDelivery(HttpSession session, ModelAndView mv, int page){
+		String userid = (String) session.getAttribute("userid");
+		HashMap<String, Object> resultMap = deliveryService.getAllBoard(page, userid);
+			mv.addObject("list", (List<Delivery>) resultMap.get("list"));
+			mv.addObject("paging", (Paging) resultMap.get("paging"));
+			mv.addObject("page", page);
 			mv.setViewName("delivery/myDelivery");
-		}
 		return mv;
 	}
+	@RequestMapping(value="myDeliveryDetail")
+	public ModelAndView myDeliveryDetail(String productDetail) {
+		ModelAndView mv = new ModelAndView();
+		List<Delivery> list = deliveryService.myDeliveryDetail(productDetail);
+		System.out.println(list.size());
+		mv.addObject("list", list);
+		mv.setViewName("delivery/myDeliveryMore");
+		return mv;
+	}
+	
 	
 	/**
 	 * ��۽�û ���
