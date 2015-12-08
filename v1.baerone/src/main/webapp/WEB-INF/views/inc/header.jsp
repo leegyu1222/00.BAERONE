@@ -63,7 +63,7 @@
 									</div>
 									<div>
 										<ul>
-											<li><a href="myDelivery.do">배송 조회</a></li>
+											<li><a href="myDelivery.do?page=1">배송 조회</a></li>
 										</ul>
 										
 									</div>

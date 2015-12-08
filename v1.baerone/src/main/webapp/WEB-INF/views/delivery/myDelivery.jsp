@@ -27,13 +27,16 @@
         <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 <script type="text/javascript" src="js/postCode/postCode.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
     </head>
 <%
  java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd HH.mm.ss");
  String today = formatter.format(new java.util.Date());
 %>
     <body>
-        
+    <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
 		<!-- Start of Header -->
 		<jsp:include page="../inc/header.jsp" />
 		<!-- End of Header -->
@@ -60,26 +63,30 @@
 								<th>휴대폰 번호</th>
 								<th>신청시간</th>
 								<th>물품정보</th>
+								<c:if test="${list.deliveryStatus eq '결제완료'}">
 								<th style="text-align:center">신청 취소</th>
+								</c:if>
 	    					</tr>
 	    					<tr>
 	    						<td>${list.senderName}</td>
 								<td>${list.senderPhone}</td>
 								<td>${list.deliveryDate}</td>
-								<td>${list.productDetail}</td>
-								<th rowspan="3" style="text-align:center"><a href="cancelDelivery.do?deliveryNo=${list.deliveryNo}"><input type="button" value="취소"></a><th>
+								<td rowspan="3"><a href="myDeliveryDetail.do?productDetail=${list.productDetail}">${list.productDetail}</a></td>
+								<th rowspan="3" style="text-align:center"><a href="cancelDelivery.do?deliveryNo=${list.deliveryNo}">
+								<c:if test="${list.deliveryStatus eq '결제완료'}">
+								<input type="button" value="취소">
+								</c:if>
+								</a><th>
 	    					</tr>
 	    					<tr>
 								<th>받는 사람</th>
 								<th>휴대폰 번호</th>
 								<th>배송상태</th>
-								<th>물품정보</th>
 							</tr>
 							<tr>
 								<td>${list.receiverName}</td>
 								<td>${list.receiverPhone}</td>
 								<td>${list.deliveryStatus}</td>
-								<td>${list.productDetail}</td>
 							</tr>
 							<tr>
 								<td colspan="5" style="background:#ECEEF3; height:2px;padding-top: 2px;padding-bottom: 1px;"></td>
@@ -88,7 +95,38 @@
 	    				</table>
 	    			</div>
 	    			<!-- End Open Vacancies List -->
-	    			
+	    			        <!-- Pagination -->
+							<div class="pagination-wrapper">
+								<ul class="pagination pagination-sm">
+								
+								<c:if test="${paging.startPage > 1}">
+							  		<li>
+							  			<a href="myDelivery.do?page=${paging.startPage - 1}">Previous</a>
+							  		</li>
+							  	</c:if>
+							  	
+							  	<c:forEach var="i" begin="${paging.startPage}" end="${paging.startPage + paging.groupCount - 1}" step="1">
+								    <c:if test="${i  <= paging.totalPage}">
+								    	<c:if test="${i eq page}">
+									    	<li class="active">
+									    		<a href="myDelivery.do?page=${i}">${i}</a>
+									    	</li>
+									    </c:if>
+									    <c:if test="${i != page}">
+									    	<li>
+									    		<a href="myDelivery.do?page=${i}">${i}</a>
+									    	</li>
+									    </c:if>
+								    </c:if>
+							    </c:forEach>
+							  	
+							  	 <c:if test="${paging.startPage + paging.groupCount <= paging.totalPage}">
+							    	<li>
+							    		<a href="myDelivery.do?page=${paging.startPage + paging.groupCount}">Next</a>
+							    	</li>
+							    </c:if>
+								</ul>
+							</div>
 	    		</div>
 			</div>
 		</div>

@@ -141,7 +141,7 @@
 										</div>
 										<div class="form-group">
 											<label for="comment-message"><i class="glyphicon glyphicon-comment"></i> <b>물품 상세 정보</b></label>
-											<textarea class="form-control" rows="5" id="comment-message" value="${delivery.productDetail}"></textarea>
+											<textarea class="form-control" rows="5" id="comment-message" name ="productDetail">${delivery.productDetail}</textarea>
 										</div>
 										<div class="form-group">
 											<label for="comment-email"><b>배송거리</b></label><br>

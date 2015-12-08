@@ -1,21 +1,27 @@
 package com.work.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.ws.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.work.dto.Delivery;
 import com.work.dto.Member;
+import com.work.dto.Paging;
 import com.work.service.DeliveryServiceImpl;
 import com.work.service.FareServiceImpl;
 import com.work.service.MemberServiceImpl;
@@ -43,7 +49,7 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * ¹è´Ş½ÅÃ» ºä ÀÌµ¿
+	 * ï¿½ï¿½Ş½ï¿½Ã» ï¿½ï¿½ ï¿½Ìµï¿½
 	 * @param session
 	 * @return
 	 */
@@ -58,7 +64,7 @@ public class DeliveryController {
 		return mv;
 	}
 	/**
-	 * ¹è´Ş ÁÖ¹®¼­ ½ÅÃ» ³»¿ë È®ÀÎ
+	 * ï¿½ï¿½ï¿½ ï¿½Ö¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ã» ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 	 * @param dto
 	 * @return
 	 */
@@ -79,7 +85,7 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * °áÁ¦ ÆË¾÷
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¾ï¿½
 	 * @param dto 
 	 * @return
 	 */
@@ -100,7 +106,7 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * µå·Ğ ¹è´Ş ÁÖ¹®¼® ÀÛ¼º Ãë¼Ò
+	 * ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ö¹ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ ï¿½ï¿½ï¿½
 	 */
 	@RequestMapping(value="cancelAppl.do")
 	public String cancelAppl(){
@@ -108,7 +114,7 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * µå·Ğ ¹è´Ş ÁÖ¹®¼­ ½ÅÃ»¿Ï·á
+	 * ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ö¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ã»ï¿½Ï·ï¿½
 	 * @param dto
 	 * @return
 	 */
@@ -125,7 +131,7 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * ½ÅÃ»¼­ ÀÛ¼º ¼öÁ¤
+	 * ï¿½ï¿½Ã»ï¿½ï¿½ ï¿½Û¼ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 * @param dto
 	 * @return
 	 */
@@ -148,24 +154,33 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * ³» ¹è¼Û½ÅÃ» ¸ñ·Ï Á¶È¸
-	 * @param senderId
+	 * ë°°ì†¡ì •ë³´ ë¦¬ìŠ¤íŠ¸ë¥¼ ì¶œë ¥í•˜ëŠ” ë·°ë¡œ ì´ë™ ìš”ì²­
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="myDelivery.do")
-	public ModelAndView myDelivery(HttpSession session){
-		String senderId = (String)session.getAttribute("userid");
-		ModelAndView mv = new ModelAndView();
-		List<Delivery> list = deliveryService.myDelivery(senderId);
-		if( list != null) {
-			mv.addObject("list", list);
+	public ModelAndView myDelivery(HttpSession session, ModelAndView mv, int page){
+		String userid = (String) session.getAttribute("userid");
+		HashMap<String, Object> resultMap = deliveryService.getAllBoard(page, userid);
+			mv.addObject("list", (List<Delivery>) resultMap.get("list"));
+			mv.addObject("paging", (Paging) resultMap.get("paging"));
+			mv.addObject("page", page);
 			mv.setViewName("delivery/myDelivery");
-		}
+		return mv;
+	}
+	@RequestMapping(value="myDeliveryDetail")
+	public ModelAndView myDeliveryDetail(String productDetail) {
+		ModelAndView mv = new ModelAndView();
+		List<Delivery> list = deliveryService.myDeliveryDetail(productDetail);
+		System.out.println(list.size());
+		mv.addObject("list", list);
+		mv.setViewName("delivery/myDeliveryMore");
 		return mv;
 	}
 	
+	
 	/**
-	 * ¹è¼Û½ÅÃ» Ãë¼Ò
+	 * ï¿½ï¿½Û½ï¿½Ã» ï¿½ï¿½ï¿½
 	 * @param session
 	 * @param deliveryNo
 	 * @return
@@ -192,7 +207,7 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * µå·Ğ Ãâ¹ß ÁØºñ ¸ñ·Ï
+	 * ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Øºï¿½ ï¿½ï¿½ï¿½
 	 * @param senderId
 	 * @return
 	 */
@@ -209,7 +224,7 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * µå·Ğ Ãâ¹ß
+	 * ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	 * @param session
 	 * @param deliveryNo
 	 * @return
@@ -230,7 +245,7 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * µå·Ğ Ãâ¹ß ÁØºñ ¸ñ·Ï
+	 * ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Øºï¿½ ï¿½ï¿½ï¿½
 	 * @param senderId
 	 * @return
 	 */
@@ -246,7 +261,7 @@ public class DeliveryController {
 	}
 	
 	 /**
-	    * °øÁö»çÇ× ±Û °Ë»ö
+	    * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ë»ï¿½
 	    * @param searchBox
 	    * @return
 	    */
@@ -261,8 +276,18 @@ public class DeliveryController {
 	      mv.setViewName("admin/deliveryList");
 	     System.out.println("####if");
 	      } else {
-	    	  mv.addObject("message", "°Ë»öÇÑ °á°ú°¡ ¾ø½À´Ï´Ù.");
+	    	  mv.addObject("message", "ï¿½Ë»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 	      }
 	      return mv;
+	   }
+	   @RequestMapping(value="searchUserId.do", method=RequestMethod.GET)
+	   @ResponseBody
+	   public void searchUserId(String phone, HttpServletResponse response){
+		   String userid = deliveryService.searchUserId(phone);
+		   try {
+			response.getWriter().print(userid);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	   }
 }

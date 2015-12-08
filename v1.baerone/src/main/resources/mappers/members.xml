@@ -48,6 +48,10 @@
 				</when>
 			</choose>
 		</select>
+		<!-- 드론 배송 받는사람 아이디 조회 -->
+		<select id="searchUserId" resultType="String" parameterType="String">
+				select userid from members where phone = #{phone}
+		</select>
 		
 		
 		<!-- 조건검색 (관리자) 이렇게하면 셀렉트시 none 이나 값을 입력하지 않았을때 SQL구문오류
