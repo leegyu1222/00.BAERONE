@@ -121,16 +121,16 @@ table.tablesorter thead tr th:hover {
 	padding-left: 225px;
   }
   #page-wrapper {
-	padding: 15px 25px;
+	padding: 0 25px;
   }
 
   /* Side Nav */
   .side-nav {
 	margin-left: -225px;
-	left: 225px;
+	left: 238px;
 	width: 225px;
 	position: fixed;
-	top: 50px;
+	top: 60px;
 	height: 100%;
 	border-radius: 0;
 	border: none;
@@ -184,7 +184,7 @@ table.tablesorter thead tr th:hover {
 
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
 	
-	background-color: #072C67;
+	background-color: #FAFAFA;
 }
 .navbar-inverse .navbar-nav>li>a {
 	color: #333333;

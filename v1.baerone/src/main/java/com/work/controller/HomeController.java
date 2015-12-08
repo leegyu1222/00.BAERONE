@@ -23,4 +23,9 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping("faq.do")
+	public String faq() {
+		return "faq";
+	}
+	
 }

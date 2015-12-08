@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 전용</title>
 
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/admin-css/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="css/admin-css/local.css" />
     <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="css/admin-css/bootstrap/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- you need to include the shieldui css and js assets in order for the charts to work -->
     <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/shieldui-all.min.css" />
@@ -25,7 +24,6 @@
         <!-- Start of adminInc -->
 		<jsp:include page="adminInc/adminInc.jsp" />
 		<!-- End of adminInc -->
-
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12" style="text-align:center">

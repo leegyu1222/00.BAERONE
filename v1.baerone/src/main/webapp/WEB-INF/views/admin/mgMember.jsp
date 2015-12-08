@@ -49,12 +49,12 @@
 										<div class="btn-group">
 											</button>
 											<select name="grade" id="grade">
-												<option value="all">All</option>
-												<option value="G">G</option>
-												<option value="S">S</option>
+												<option value="all">전체</option>
+												<option value="G">관리자</option>
+												<option value="S">일반회원</option>
 											</select>
 										</div>
-										<button type="submit" class="btn btn-primary">등급조회</button>
+										<button type="submit" class="btn btn-primary">조회</button>
 									</div>
 								</form>
 							</div>
@@ -64,10 +64,10 @@
 									<thead>
 										<tr>
 											<th>아이디</th>
-											<th>닉네임</th>
+											<th>이름</th>
+											<th>연락처</th>
+											<th>이메일</th>
 											<th>등급</th>
-											<th>가입일</th>
-											<th>최근접속일</th>
 										</tr>
 									</thead>
 									<c:forEach var="dto" items="${list}">
@@ -82,10 +82,6 @@
 										</tbody>
 									</c:forEach>
 								</table>
-								<div align="right">
-									<button type="button" class="btn btn-primary">추가</button>
-									<button type="button" class="btn btn-default">취소</button>
-								</div>
 							</div>
 							<div align="center">
 								<ul class="pagination">

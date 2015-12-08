@@ -91,7 +91,7 @@
 									</div>
                                     <div>
 										<ul>
-											<li><a href="page-portfolio-2-columns-2.html">FAQ</a></li>
+											<li><a href="faq.do">FAQ</a></li>
 										</ul>
 									</div>
                                 </div><!-- /mainmenu-submenu-inner -->
