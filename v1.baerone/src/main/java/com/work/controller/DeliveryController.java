@@ -222,10 +222,10 @@ public class DeliveryController {
 		dto.setBeaconName(beaconName);
 		List<Delivery> list = deliveryService.deliveryReady();
 		deliveryService.sendDrone(dto);
-		if( list != null) {
+		//if( list != null) {
 			mv.addObject("list", list);
 			mv.setViewName("admin/deliveryReady");
-		}
+		//}
 		try {
 			Utility.sendMessageToSender();
 		} catch (IOException e) {

@@ -8,8 +8,8 @@ body {
     width: 100%;
     height: 100%;
     font-family: Lora,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    color: #fff;
-    background-color: #000;
+    color: #151515;
+    background-color: #ECEEF3;
 }
 
 html {
@@ -36,6 +36,7 @@ p {
     line-height: 1.5;
 }
 
+
 @media(min-width:768px) {
     p {
         margin: 0 0 35px;
@@ -46,8 +47,6 @@ p {
 
 a {
     color: #42dca3;
-    -webkit-transition: all .2s ease-in-out;
-    -moz-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
 }
 
@@ -66,7 +65,7 @@ a:focus {
     border-bottom: 1px solid rgba(255,255,255,.3);
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    background-color: whitesmoke;
+    background-color: white;
 }
 
 .navbar-custom .navbar-brand {
@@ -89,12 +88,10 @@ a:focus {
 }
 
 .navbar-custom a {
-    color: #626262;
+    color: #151515;
 }
 
 .navbar-custom .nav li a {
-    -webkit-transition: background .3s ease-in-out;
-    -moz-transition: background .3s ease-in-out;
     transition: background .3s ease-in-out;
 }
 
@@ -128,8 +125,6 @@ a:focus {
         border-bottom: 0;
         letter-spacing: 1px;
         background: 0 0;
-        -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
-        -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
         transition: background .5s ease-in-out,padding .5s ease-in-out;
     }
 
@@ -143,15 +138,17 @@ a:focus {
 .intro {
     display: table;
     width: 100%;
-    height: auto;
+    height: 100%;
     padding: 100px 0;
     text-align: center;
-    color: #626262;
-    background-color: white;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
+    color: #5E5E5E;
+    background: url(../img/introBg.jpg) no-repeat bottom center scroll;
+    background-color: #000;
     background-size: cover;
-    -o-background-size: cover;
+}
+
+.intro img {
+    width: 100%;
 }
 
 .intro .intro-body {
@@ -185,12 +182,12 @@ a:focus {
 .btn-circle {
     width: 70px;
     height: 70px;
-    margin-top: 15px;
+    margin-top: 40px;
     padding: 7px 16px;
-    border: 2px solid #626262;
+    border: 2px solid #151515;
     border-radius: 100%!important;
     font-size: 40px;
-    color: #626262;
+    color: #151515;
     background: 0 0;
     -webkit-transition: background .3s ease-in-out;
     -moz-transition: background .3s ease-in-out;
@@ -200,7 +197,7 @@ a:focus {
 .btn-circle:hover,
 .btn-circle:focus {
     outline: 0;
-    color:#626262;
+    color: #151515;
     background: rgba(255,255,255,.1);
 }
 
@@ -256,88 +253,153 @@ a:focus {
     }
 }
 
-#about1 {
+.content-section1 {
     padding-top: 100px;
-    width: 100%;
-    height: 100%;
-    color: #E4195A;
-    background-color: #D8FCB7;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-
+    width: auto;
+    background-color: #FFF3BA;
 }
-
-#about2 {
+.content-section2 {
     padding-top: 100px;
-    width: 100%;
-    height: 100%;
-    color: #fff;
-    background-color: lightblue;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-}
-
-#about3 {
-    padding-top: 100px;
-    width: 100%;
-    height: 100%;
-    color: #fff;
-    background-color: lightpink;
-    background-size: cover;
-}
-
-#login-page {
-    padding-top: 100px;
-    width: 100%;
-    height: 100%;
-    color: black;
     background-color: white;
-    background-size: cover;
+    width: auto;
 }
 
-.basic-login {
-    text-align: left;
-    font-size: 15pt;
+.content-section3 {
+    padding-top: 50px;
+    background-color: white;
+    width: auto;
 }
-
-
-#register-page {
-    padding-top: 100px;
+.login-section {
     width: 100%;
-    height: 100%;
-    color: black;
-    background-color: #F4F6F6;
+    height: 600px;
+    padding: 50px 0;
+    color: #151515;
+    background: url(../img/login.jpg) no-repeat center center scroll;
+    background-color: #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
     background-size: cover;
+    -o-background-size: cover;
 }
 
-.basic-register {
-    text-align: left;
-    font-size: 15pt;
-
+.loginArea h4 {
+	color: #777;
+	font-size: 3em;
+	padding:0;
+}
+.loginArea p {
+	font-size: 1.3em;
+	margin-bottom: 2em;
+}
+.loginArea_left input[type="text"] {
+	padding: 30px;
+	width: 100%;
+	font-size: 1.6em;
+	margin:0px 0 50px;
+	border: none;
+	color:#aaa;
+	background: #eee;
+	outline: none;
 }
 
-#map {
+.loginArea_left input[type="password"] {
+	padding: 30px;
+	width: 100%;
+	font-size: 1.6em;
+	margin:0px 0 50px;
+	border: none;
+	color:#aaa;
+	background: #eee;
+	outline: none;
+}
+
+
+/* Button 1b */
+.login-section input[type="submit"], .contact input[type="submit"] {
+	-webkit-appearance: none;
+	cursor: pointer;
+	border: none;
+	outline: none;
+	background: none;
+	font-weight: 100;
+}
+
+.btn1 {
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	cursor: pointer;
+	padding:30px 80px;
+	display: inline-block;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.btn-1 {
+	font-size:2em;
+	color: #fff;
+	background:#e83a93;
+}
+.btn-1b:after {
+	width: 100%;
+	height: 0;
+	top: 0;
+	left: 0;
+	background: #fff;
+}
+.btn-1b:hover,
+.btn-1b:active {
+	color: #e83a93;
+	text-decoration:none;
+}
+.btn-1b:hover:after,
+.btn-1b:active:after {
+	height: 100%;
+}
+.btn1:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+label.btn1.btn4.btn-1.btn-1b {
+	padding: 30px 100px;
+}
+
+#daumRoughmapContainer1430147188648 {
     width: 100%;
-    height: 200px;
-    margin-top: 100px;
 }
 
 @media(min-width:767px) {
-    .content-section {
+    .content-section1 {
         padding-top: 250px;
+        padding-bottom: 160px;
+    }
+    .content-section2 {
+        padding-top: 250px;
+        padding-bottom: 160px;
+    }
+    .content-section3 {
+        padding-top: 80px;
+        padding-bottom: 30px;
     }
 
-    .download-section {
+    .login-section {
         padding: 100px 0;
+        height: 700px;
     }
+    
 
-    #map {
-        height: 400px;
-        margin-top: 250px;
+    #daumRoughmapContainer1430147188648 {
+        width: 100%;
     }
 }
 
@@ -389,6 +451,7 @@ ul.banner-social-buttons {
 
 footer {
     padding: 50px 0;
+    background-color: white;
 }
 
 footer p {

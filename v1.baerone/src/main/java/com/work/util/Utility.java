@@ -23,16 +23,16 @@ import java.util.Date;
 import java.util.Locale;
 /**
  * <pre>
- *  °øÅëÀ¸·Î »ç¿ëÇÏ±â À§ÇÑ À¯Æ¿ Å¬·¡½º - Utility
+ *  å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™æ­å ï¿½ å ì™ì˜™å ì™ì˜™ å ì™ì˜™í‹¸ í´å ì™ì˜™å ì™ì˜™ - Utility
  *  
- * 	getCurrentDate() : ±âº» 4ÀÚ¸® ¼ıÀÚÇü½ÄÀÇ ¹®ÀÚ¿­À» ¹İÈ¯ÇÏ´Â ¸Ş¼­µå
- *	getSecureCode(length) : Àü´Ş¹ŞÀº ±æÀÌÀÇ ÀÓÀÇÀÇ º¸¾È¹®ÀÚ ¹İÈ¯
- *	getCurrentDate() : ÇöÀç ³¯Â¥¸¦ ÀÔ·Â¹ŞÀº pattern Çü½ÄÀ¸·Î ¹İÈ¯ 
- *	getCurrentDate(pattern) : ÇöÀç ³¯Â¥¸¦ ÀÔ·Â¹ŞÀº pattern Çü½ÄÀ¸·Î ¹İÈ¯
- *  getCurrentHour() : ÇöÀç ½Ã°¢ÀÇ ½Ã°£¸¸ ¹İÈ¯
+ * 	getCurrentDate() : å ì©ë³¸ 4å ìŒ˜ëªŒì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ìŒ˜ìš¸ì˜™å ì™ì˜™ å ì™ì˜™í™˜å ì‹¹ëŒì˜™ å ìŒ¨ì‡½ì˜™å ì™ì˜™
+ *	getSecureCode(length) : å ì™ì˜™å ìŒ¨ë±„ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì‹«ë±„ì˜™å ì™ì˜™ å ì™ì˜™í™˜
+ *	getCurrentDate() : å ì™ì˜™å ì™ì˜™ å ì™ì˜™ì§œå ì™ì˜™ å ìŒ‰ë ¥ë±„ì˜™å ì™ì˜™ pattern å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™í™˜ 
+ *	getCurrentDate(pattern) : å ì™ì˜™å ì™ì˜™ å ì™ì˜™ì§œå ì™ì˜™ å ìŒ‰ë ¥ë±„ì˜™å ì™ì˜™ pattern å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™í™˜
+ *  getCurrentHour() : å ì™ì˜™å ì™ì˜™ å ì‹œê³¤ì˜™å ì™ì˜™ å ì‹œê³¤ì˜™å ì™ì˜™ å ì™ì˜™í™˜
  *
  * @since 2015-11-02
- * @author ÀÌµ¿±Ô
+ * @author å ì‹±ë“¸ì˜™å ì™ì˜™
  * @version 1.0
  * </pre>
  * 
@@ -41,22 +41,22 @@ import java.util.Locale;
 public class Utility {
    
    /**
-    * ±âº» 4ÀÚ¸® ¼ıÀÚÇü½ÄÀÇ ¹®ÀÚ¿­À» ¹İÈ¯ÇÏ´Â ¸Ş¼­µå
+    * å ì©ë³¸ 4å ìŒ˜ëªŒì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ìŒ˜ìš¸ì˜™å ì™ì˜™ å ì™ì˜™í™˜å ì‹¹ëŒì˜™ å ìŒ¨ì‡½ì˜™å ì™ì˜™
     * @see java.lang.Math#random()
     * @see java.util.Random#nextInt()
     * @see java.lang.System.currentTimeMillis()
     * @see java.lang.StringBuilder
     * 
-    * @return String : 4ÀÚ¸® ¼ıÀÚÇü½ÄÀÇ ¹®ÀÚ¿­
+    * @return String : 4å ìŒ˜ëªŒì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ìŒ˜ìš¸ì˜™
     */
    public static String getSecureCode() {
       return getSecureCode(4);
    }
    
    /** 
-    * Àü´Ş¹ŞÀº ±æÀÌÀÇ ÀÓÀÇÀÇ º¸¾È¹®ÀÚ ¹İÈ¯
+    * å ì™ì˜™å ìŒ¨ë±„ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì‹«ë±„ì˜™å ì™ì˜™ å ì™ì˜™í™˜
     * @param length
-    * @return String : Àü´Ş¹ŞÀº length ±æÀÌÀÇ ÀÓÀÇÀÇ º¸¾È¹®ÀÚ
+    * @return String : å ì™ì˜™å ìŒ¨ë±„ì˜™å ì™ì˜™ length å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì‹«ë±„ì˜™å ì™ì˜™
     */
    public static String getSecureCode(int length) {
       Random random = new Random((long)(System.currentTimeMillis()*Math.random()));
@@ -68,19 +68,19 @@ public class Utility {
    }
    
    /**
-    * ÇöÀç ³¯Â¥¸¦ ³âµµ4ÀÚ¸®/¿ù2ÀÚ¸®/ÀÏ2ÀÚ¸® Çü½ÄÀ¸·Î ¹İÈ¯
+    * å ì™ì˜™å ì™ì˜™ å ì™ì˜™ì§œå ì™ì˜™ å ì©ë„4å ìŒ˜ëªŒì˜™/å ì™ì˜™2å ìŒ˜ëªŒì˜™/å ì™ì˜™2å ìŒ˜ëªŒì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™í™˜
     * @see java.util.Date
     * @see java.text.SimpleDateFormat#format(java.util.Date)
-    * @return String : yyyy/MM/dd Çü½ÄÀÇ ÇöÀç ³¯Â¥
+    * @return String : yyyy/MM/dd å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™ å ì™ì˜™ì§œ
     */
    public static String getCurrentDate() {
       return getCurrentDate("yyyy/MM/dd");
    }
    
    /**
-    * ÇöÀç ³¯Â¥¸¦ ÀÔ·Â¹ŞÀº pattern Çü½ÄÀ¸·Î ¹İÈ¯
+    * å ì™ì˜™å ì™ì˜™ å ì™ì˜™ì§œå ì™ì˜™ å ìŒ‰ë ¥ë±„ì˜™å ì™ì˜™ pattern å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™í™˜
     * @param pattern
-    * @return String : ÀÔ·Â¹ŞÀº pattern Çü½ÄÀÇ ÇöÀç ³¯Â¥
+    * @return String : å ìŒ‰ë ¥ë±„ì˜™å ì™ì˜™ pattern å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™ å ì™ì˜™ì§œ
     */
    public static String getCurrentDate(String pattern) {
       Date date = new Date();
@@ -90,8 +90,8 @@ public class Utility {
    
 	
 	/**
-	 * ÇöÀç ½Ã°£ÀÇ ½Ã°£¸¸ ¹İÈ¯
-	 * @return : int : ÇöÀç ½Ã°¢ÀÇ ½Ã°£
+	 * å ì™ì˜™å ì™ì˜™ å ì‹œê³¤ì˜™å ì™ì˜™ å ì‹œê³¤ì˜™å ì™ì˜™ å ì™ì˜™í™˜
+	 * @return : int : å ì™ì˜™å ì™ì˜™ å ì‹œê³¤ì˜™å ì™ì˜™ å ì‹œê³¤ì˜™
 	 */
 	public static int getCurrentHour(){
 		long time = System.currentTimeMillis();
@@ -104,66 +104,66 @@ public class Utility {
 		senderAddrOld = senderAddrOld.replace(" ", "");
 		receiverAddrOld = receiverAddrOld.replace(" ", "");
 			
-		String sLat = "";  //º¸³»´Â »ç¶÷ À§µµ
-		String sLon = "";  //º¸³»´Â »ç¶÷ °æµµ
-		String rLat = "";  //¹Ş´Â »ç¶÷ À§µµ
-		String rLon = "";  //¹Ş´Â »ç¶÷ °æµµ
+		String sLat = "";  //å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ï¿½ å ì™ì˜™å ì™ì˜™
+		String sLon = "";  //å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ï¿½ å ì¸ë„
+		String rLat = "";  //å ìŒ¨ëŒì˜™ å ì™ì˜™å ï¿½ å ì™ì˜™å ì™ì˜™
+		String rLon = "";  //å ìŒ¨ëŒì˜™ å ì™ì˜™å ï¿½ å ì¸ë„
 		
-		String murl = ""; //¿¬°áÇÒ URL
+		String murl = ""; //å ì™ì˜™å ì™ì˜™å ì™ì˜™ URL
 		String murl2 = "";
 		
-		String mapxml = ""; //¹Ş¾Æ¿Â xml
+		String mapxml = ""; //å ìŒ¨ì•„ìš¸ì˜™ xml
 		String mapxml2 = "";
 
-		 murl = "http://openapi.map.naver.com/api/geocode.php?key=c1b406b32dbbbbeee5f2a36ddc14067f&encoding=EUC-KR&coord=latlng&query="+senderAddrOld;
-		 murl2 = "http://openapi.map.naver.com/api/geocode.php?key=c1b406b32dbbbbeee5f2a36ddc14067f&encoding=EUC-KR&coord=latlng&query="+receiverAddrOld;
+		 murl = "http://openapi.map.naver.com/api/geocode.php?key=4602d17b97e6a0c993ff0b8a4a90ffe7&encoding=EUC-KR&coord=latlng&query="+senderAddrOld;
+		 murl2 = "http://openapi.map.naver.com/api/geocode.php?key=4602d17b97e6a0c993ff0b8a4a90ffe7&encoding=EUC-KR&coord=latlng&query="+receiverAddrOld;
 		 
-		URL mapXmlUrl = new URL(murl);  //URL¿¬°áÇÏ°í ¹Ş¾Æ¿À°í ÇÏ´Â ºÎºĞµéÀº import°¡ ÇÊ¿äÇÏ´Ù. java.net.*
+		URL mapXmlUrl = new URL(murl);  //URLå ì™ì˜™å ì™ì˜™å ì‹¹ê³¤ì˜™ å ìŒ¨ì•„ìš¸ì˜™å ì™ì˜™ å ì‹¹ëŒì˜™ å ì‹¸ë¶„ë“¸ì˜™å ì™ì˜™ importå ì™ì˜™ å ì‹­ìš¸ì˜™å ì‹¹ëŒì˜™. java.net.*
 		HttpURLConnection urlConn = (HttpURLConnection)mapXmlUrl.openConnection();
 		urlConn.setDoOutput(true);
 		urlConn.setRequestMethod("POST");
 
-		URL mapXmlUrl2 = new URL(murl2);  //URL¿¬°áÇÏ°í ¹Ş¾Æ¿À°í ÇÏ´Â ºÎºĞµéÀº import°¡ ÇÊ¿äÇÏ´Ù. java.net.*
+		URL mapXmlUrl2 = new URL(murl2);  //URLå ì™ì˜™å ì™ì˜™å ì‹¹ê³¤ì˜™ å ìŒ¨ì•„ìš¸ì˜™å ì™ì˜™ å ì‹¹ëŒì˜™ å ì‹¸ë¶„ë“¸ì˜™å ì™ì˜™ importå ì™ì˜™ å ì‹­ìš¸ì˜™å ì‹¹ëŒì˜™. java.net.*
 		HttpURLConnection urlConn2 = (HttpURLConnection)mapXmlUrl2.openConnection();
 		urlConn2.setDoOutput(true);
 		urlConn2.setRequestMethod("POST");
 			 
-		int len = urlConn.getContentLength();  //¹Ş¾Æ¿À´Â xmlÀÇ ±æÀÌ
+		int len = urlConn.getContentLength();  //å ìŒ¨ì•„ìš¸ì˜™å ì™ì˜™ xmlå ì™ì˜™ å ì™ì˜™å ì™ì˜™
 		int len2 = urlConn2.getContentLength();
 		
 		if(len > 0){ 
-		       BufferedReader br = new BufferedReader(new InputStreamReader(urlConn.getInputStream(),"EUC-KR")); //BufferedReader : ¶óÀÎ´ÜÀ§·Î ÀĞÀ½ InputStream : ÇÑ±ÛÀÚ¾¿
+		       BufferedReader br = new BufferedReader(new InputStreamReader(urlConn.getInputStream(),"EUC-KR")); //BufferedReader : å ì™ì˜™å ì‹¸ëŒì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™ InputStream : å ì‹¼ê¹ì˜™å ìŒ˜ì–µì˜™
 		       String inputLine="";
 		       while((inputLine = br.readLine())!=null){
-		           mapxml += inputLine;  //ÇÑ±ÛÀÚ¾¿ ÀĞ¾î¿É´Ï´Ù
+		           mapxml += inputLine;  //å ì‹¼ê¹ì˜™å ìŒ˜ì–µì˜™ å ì‹»ì–µì˜™î€“æ±‚å ï¿½
 		      }
 		       
 		       if(mapxml != null){
-		            if(mapxml.indexOf("</item>") > -1 ){   //itemÀÌ ÀÖÀ¸¸é ÁÂÇ¥¸¦ ¹Ş¾Æ¿Í¾ßÁö
+		            if(mapxml.indexOf("</item>") > -1 ){   //itemå ì™ì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™í‘œå ì™ì˜™ å ìŒ¨ì•„ì™€ì–µì˜™å ì™ì˜™
 		                 int first = 1; 
-		                 sLon = mapxml.substring( mapxml.indexOf("<x>")+3, mapxml.indexOf("</x>") ) ; //°æµµ Àß¶ó¿À±â
-		                 sLat = mapxml.substring( mapxml.indexOf("<y>")+3, mapxml.indexOf("</y>") ) ; //À§µµ Àß¶ó¿À±â
+		                 sLon = mapxml.substring( mapxml.indexOf("<x>")+3, mapxml.indexOf("</x>") ) ; //å ì¸ë„ å ìŒ©ë°ì˜™å ì™ì˜™å ï¿½
+		                 sLat = mapxml.substring( mapxml.indexOf("<y>")+3, mapxml.indexOf("</y>") ) ; //å ì™ì˜™å ì™ì˜™ å ìŒ©ë°ì˜™å ì™ì˜™å ï¿½
 		                 System.out.println("###"+sLon + sLat);
 		             }
 		       }
-		       br.close();  //¹öÆÛ¸®´õ ´İ±â
+		       br.close();  //å ì™ì˜™å ìŒœëªŒì˜™å ì™ì˜™ å ìŒ¥ê¹ì˜™
 		}
 		if(len2 > 0){ 
 			BufferedReader br = new BufferedReader(new InputStreamReader(urlConn2.getInputStream(),"EUC-KR"));
 			String inputLine="";
 			while((inputLine = br.readLine())!=null){
-				mapxml2 += inputLine;  //ÇÑ±ÛÀÚ¾¿ ÀĞ¾î¿É´Ï´Ù
+				mapxml2 += inputLine;  //å ì‹¼ê¹ì˜™å ìŒ˜ì–µì˜™ å ì‹»ì–µì˜™î€“æ±‚å ï¿½
 			}
 			
 			if(mapxml2 != null){
-				if(mapxml2.indexOf("</item>") > -1 ){   //itemÀÌ ÀÖÀ¸¸é ÁÂÇ¥¸¦ ¹Ş¾Æ¿Í¾ßÁö
+				if(mapxml2.indexOf("</item>") > -1 ){   //itemå ì™ì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™í‘œå ì™ì˜™ å ìŒ¨ì•„ì™€ì–µì˜™å ì™ì˜™
 					int first = 1; 
-					rLon = mapxml2.substring( mapxml2.indexOf("<x>")+3, mapxml2.indexOf("</x>") ) ; //°æµµ Àß¶ó¿À±â
-					rLat = mapxml2.substring( mapxml2.indexOf("<y>")+3, mapxml2.indexOf("</y>") ) ; //À§µµ Àß¶ó¿À±â
+					rLon = mapxml2.substring( mapxml2.indexOf("<x>")+3, mapxml2.indexOf("</x>") ) ; //å ì¸ë„ å ìŒ©ë°ì˜™å ì™ì˜™å ï¿½
+					rLat = mapxml2.substring( mapxml2.indexOf("<y>")+3, mapxml2.indexOf("</y>") ) ; //å ì™ì˜™å ì™ì˜™ å ìŒ©ë°ì˜™å ì™ì˜™å ï¿½
 					System.out.println("###"+rLon + rLat);
 				}
 			}
-			br.close();  //¹öÆÛ¸®´õ ´İ±â
+			br.close();  //å ì™ì˜™å ìŒœëªŒì˜™å ì™ì˜™ å ìŒ¥ê¹ì˜™
 		}
 		
 		double x = (Math.cos(Double.parseDouble(sLat))*6400*2*3.14/360)*Math.abs(Double.parseDouble(sLon)-Double.parseDouble(rLon));
@@ -173,7 +173,8 @@ public class Utility {
 		return distance;
 	}
 	
-	//GCM º¸³»´Â»ç¶÷¿¡°Ô µå·ĞÃâ¹ß ¾Ë¸²
+
+	//GCM ë³´ë‚´ëŠ”ì‚¬ëŒì—ê²Œ ë“œë¡ ì¶œë°œ ì•Œë¦¼
 	public static void sendMessageToSender() throws IOException {
 
 		Sender sender = new Sender("AIzaSyAXZCm3cKCA-ipzXeR3nVlh7ObgJd8A-UU");
@@ -182,7 +183,7 @@ public class Utility {
 
 		int dronepw = 1234;
 		
-		Message message = new Message.Builder().addData("msg", URLEncoder.encode("<µå·ĞÃâ¹ß> Àá±İÀåÄ¡ ºñ¹Ğ¹øÈ£ : "+dronepw,"EUC-KR")).build();
+		Message message = new Message.Builder().addData("msg", URLEncoder.encode("<ë“œë¡ ì¶œë°œ> ì ê¸ˆì¥ì¹˜ ë¹„ë°€ë²ˆí˜¸ : "+dronepw,"EUC-KR")).build();
 
 		List<String> list = new ArrayList<String>();
 
@@ -203,4 +204,5 @@ public class Utility {
 	
 
 	
+
 }
