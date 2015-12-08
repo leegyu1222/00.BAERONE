@@ -151,13 +151,16 @@
 			</div>
 		</div>
         
-        <div class="section" style="background-color : white">
+        <div class="section" style="background-image:url(img/bg/bg7.jpg); background-size: 100%">
 	    	<div class="container">
 				<div class="row">
 					<!-- Sidebar -->
 					<!-- End Sidebar -->
-					<div class="col-sm-12">
-						<div class="blog-post blog-single-post">
+					<div class="col-sm-8 col-sm-offset-2">
+						<div class="blog-post blog-single-post" style="
+    margin-bottom: 20px;
+    height: 1400px;
+">
 							<div class="single-post-title">
 								<h2>배송 신청</h2>
 							</div>
@@ -224,15 +227,19 @@
 											<label for="comment-email"><b>나머지 주소</b></label>
 											<input class="form-control" type="text"  name="receiverAddrMisc">
 										</div>
+										<div class="form-group">
+											<label for="comment-message"><i class="glyphicon glyphicon-comment"></i> <b>물품 상세 정보</b></label>
+											<textarea class="form-control" rows="5" id="comment-message"></textarea>
+										</div>
                                     
                                         <div class="clearfix"></div>
 				        			
 								</div>
 							</div>
-                                
+                             
                     </div>
-                                <input type="hidden" name="deliveryDate" value="<%=today%>">
-		<input type="submit" value="신청하기">
+                         <input type="hidden" name="deliveryDate" value="<%=today%>">
+		<input type="submit" class="btn btn-large pull-right" value="신청하기">          
                                 
                             </form>
 							<!-- End Comments -->

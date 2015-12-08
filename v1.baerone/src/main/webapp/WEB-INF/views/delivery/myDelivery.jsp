@@ -54,9 +54,9 @@
 		        </div>
 		        <nav id="mainmenu" class="mainmenu">
 					<ul>
-						<li class="logo-wrapper"><a href="main.html"><img src="img/top-logo.png" alt="Multipurpose Twitter Bootstrap Template"></a></li>
+						<li class="logo-wrapper"><a href="cancelAppl.do"><img src="img/top-logo.png" alt="Multipurpose Twitter Bootstrap Template"></a></li>
 						<li class="active">
-							<a href="main.html">Home</a>
+							<a href="cancelAppl.do">Home</a>
 						</li>
 						<li class="has-submenu">
 							<a href="#">회사소개</a>
@@ -150,7 +150,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="section" style="background-color : white">
+		<div class="section">
 	    	<div class="container">
 	    		<div class="row">
 	    			<!-- Open Vacancies List -->
@@ -162,12 +162,14 @@
 								<th>휴대폰 번호</th>
 								<th>신청시간</th>
 								<th>물품정보</th>
+								<th style="text-align:center">신청 취소</th>
 	    					</tr>
 	    					<tr>
 	    						<td>${list.senderName}</td>
 								<td>${list.senderPhone}</td>
 								<td>${list.deliveryDate}</td>
 								<td>${list.productDetail}</td>
+								<th rowspan="3" style="text-align:center"><a href="cancelDelivery.do?deliveryNo=${list.deliveryNo}"><input type="button" value="취소"></a><th>
 	    					</tr>
 	    					<tr>
 								<th>받는 사람</th>
@@ -180,7 +182,9 @@
 								<td>${list.receiverPhone}</td>
 								<td>${list.deliveryStatus}</td>
 								<td>${list.productDetail}</td>
-								<td><a href="cancelDelivery.do?deliveryNo=${list.deliveryNo}"><input type="button" value="취소"></a><td>
+							</tr>
+							<tr>
+								<td colspan="5" style="background:#ECEEF3; height:2px;padding-top: 2px;padding-bottom: 1px;"></td>
 							</tr>
 							</c:forEach>
 	    				</table>
