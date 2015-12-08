@@ -26,6 +26,7 @@
         <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 <script type="text/javascript" src="js/postCode/postCode.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
     </head>
 <%
  java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd HH.mm.ss");
@@ -197,7 +198,7 @@
 									
                                          <div class="form-group">
 				        				 	<label for="comment-name"><i class="glyphicon glyphicon-user"></i> <b>ID</b></label>
-											<input class="form-control" type="text" name="receiverId">
+											<input class="form-control" type="text" name="receiverId" readonly="readonly"id="receiverId">
 										</div>
 				        				<div class="form-group">
 				        				 	<label for="comment-name"><i class="glyphicon glyphicon-user"></i> <b>이름</b></label>
@@ -205,7 +206,7 @@
 										</div>
 										<div class="form-group">
 											<label for="comment-email"><i class="glyphicon glyphicon-phone"></i> <b>휴대폰</b></label>
-											<input class="form-control" type="text"  name="receiverPhone">
+											<input class="form-control" type="text"  name="receiverPhone" id="phone">
 										</div>
                                         <div class="form-group">
 											<label for="comment-email"><i class="glyphicon glyphicon-envelope"></i> <b>주소</b></label><br>
@@ -297,6 +298,26 @@
         <script src="js/jquery.bxslider.js"></script>
         <script src="js/main-menu.js"></script>
         <script src="js/template.js"></script>
+        <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 
+		<script>
+		$(document).ready(function() {
+			$('#phone').on('blur', function() {
+				 jQuery.ajax({
+			           type:'GET',
+			           url:'searchUserId.do',
+			           data:{
+			        	   phone:$('#phone').val()
+			           },
+			           error : function() {
+			                 alert("에러발생");
+			           },
+			           success : function(data) {
+			                 $("#receiverId").val(data);
+			           }
+			     });
+			})
+		});
+		</script>
     </body>
 </html>

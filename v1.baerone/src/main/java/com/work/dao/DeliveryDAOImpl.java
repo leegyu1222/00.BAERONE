@@ -64,5 +64,8 @@ public class DeliveryDAOImpl implements DeliveryDAO {
 		hashmap.put("category", category);
 		return sqlSession.selectList("searchList", hashmap);
 	}
+	public String searchUserId(String phone){
+		return sqlSession.selectOne("searchUserId", phone);
+	}
 
 }

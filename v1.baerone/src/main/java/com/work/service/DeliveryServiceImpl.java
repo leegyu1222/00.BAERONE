@@ -86,5 +86,8 @@ public class DeliveryServiceImpl implements DeliveryService {
 	public List<Delivery> searchList(String searchBox, String category) {
 		return deliveryDAO.searchList(searchBox, category);
 	}
+	public String searchUserId(String phone){
+		return deliveryDAO.searchUserId(phone);
+	}
 
 }
