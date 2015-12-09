@@ -57,7 +57,7 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#about">LOGIN</a>
+                        <a class="page-scroll" href="#login-page">LOGIN</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#download">REGISTER</a>

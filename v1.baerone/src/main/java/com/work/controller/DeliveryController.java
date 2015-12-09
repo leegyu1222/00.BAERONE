@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.work.dto.Delivery;
 import com.work.dto.Member;
 import com.work.dto.Paging;
+import com.work.service.AdminServiceImpl;
 import com.work.service.DeliveryServiceImpl;
 import com.work.service.FareServiceImpl;
 import com.work.service.MemberServiceImpl;
@@ -32,6 +33,7 @@ public class DeliveryController {
 	private DeliveryServiceImpl deliveryService;
 	private MemberServiceImpl memberService;
 	private FareServiceImpl fareService;
+	private AdminServiceImpl adminService;
 	
 	@Autowired
 	public void setDeliveryService(DeliveryServiceImpl deliveryService) {
@@ -46,6 +48,11 @@ public class DeliveryController {
 	@Autowired
 	public void setFareServiceImpl(FareServiceImpl fareService){
 		this.fareService = fareService;
+	}
+	
+	@Autowired
+	public void setService(AdminServiceImpl adminService){
+		this.adminService = adminService;
 	}
 	
 	/**
@@ -78,7 +85,6 @@ public class DeliveryController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 		mv.addObject("delivery", dto);
 		mv.setViewName("delivery/deliveryCheck");
 		return mv;
@@ -172,7 +178,7 @@ public class DeliveryController {
 			mv.setViewName("delivery/myDelivery");
 		return mv;
 	}
-	@RequestMapping(value="myDeliveryDetail", method=RequestMethod.POST )
+	@RequestMapping(value="myDeliveryDetail" )
 	public ModelAndView myDeliveryDetail(String productDetail) {
 		System.out.println(productDetail);
 		ModelAndView mv = new ModelAndView();
@@ -236,15 +242,16 @@ public class DeliveryController {
 	 */
 	@RequestMapping(value="sendDrone.do", method=RequestMethod.POST)
 	public ModelAndView sendDrone(int deliveryNo, String beaconName){
+		System.out.println("####"+beaconName + "nono" + deliveryNo);
 		ModelAndView mv = new ModelAndView();
 		Delivery dto = new Delivery();
 		dto.setDeliveryNo(deliveryNo);
 		dto.setBeaconName(beaconName);
-		List<Delivery> list = deliveryService.deliveryReady();
 		deliveryService.sendDrone(dto);
+		List<Delivery> list = adminService.deliveryList();
 		//if( list != null) {
 			mv.addObject("list", list);
-			mv.setViewName("admin/deliveryReady");
+			mv.setViewName("admin/mgDelivery");
 		//}
 		try {
 			Utility.sendMessageToSender();

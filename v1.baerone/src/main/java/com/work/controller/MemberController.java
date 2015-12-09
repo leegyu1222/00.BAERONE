@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.work.dto.Member;
+import com.work.service.AdminServiceImpl;
 import com.work.service.MemberServiceImpl;
 
 import org.springframework.stereotype.Controller;
@@ -19,14 +20,20 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class MemberController {
 	private MemberServiceImpl service;
+	private AdminServiceImpl adminService;
 	
 	@Autowired
 	public void setService(MemberServiceImpl service){
 		this.service = service;
 	}
 	
+	@Autowired
+	public void setService(AdminServiceImpl adminService){
+		this.adminService = adminService;
+	}
+	
 	/**
-	 * 占싸깍옙占쏙옙 
+	 * 로그인 
 	 * @param userid
 	 * @param userpw
 	 * @param request
@@ -42,7 +49,8 @@ public class MemberController {
 		session.setAttribute("grade", grade);
 		
 		if(grade.equals("A")) {
-			mv.addObject("memberCount", );
+			mv.addObject("memberCount",adminService.memberCount());
+			System.out.println("######"+adminService.memberCount());
 			mv.setViewName("admin/adminMain");
 		} else {
 			mv.setViewName("main");
