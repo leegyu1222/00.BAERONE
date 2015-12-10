@@ -253,13 +253,16 @@ public class DeliveryController {
 			mv.addObject("list", list);
 			mv.setViewName("admin/mgDelivery");
 		//}
+			/**
 		try {
 			Utility.sendMessageToSender();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		**/
 		return mv;
+		
 	}
 	
 	/**
