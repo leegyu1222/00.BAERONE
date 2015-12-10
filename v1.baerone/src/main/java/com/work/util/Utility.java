@@ -72,9 +72,9 @@ public class Utility {
     * @see java.text.SimpleDateFormat#format(java.util.Date)
     * @return String : yyyy/MM/dd ������ ���� ��¥
     */
-   public static String getCurrentDate() {
-      return getCurrentDate("yyyy/MM/dd");
-   }
+	public static String getCurrentDate() {
+		return new SimpleDateFormat("yyyy.MM.dd").format(new Date());
+	}
    
    /**
     * ���� ��¥�� �Է¹��� pattern �������� ��ȯ

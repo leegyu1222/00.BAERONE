@@ -111,4 +111,11 @@ public class DeliveryServiceImpl implements DeliveryService {
 	public List<Delivery> myDeliveryDetail(String productDetail) {
 		return deliveryDAO.myDeliveryDetail(productDetail);
 	}
+	/* 드론 배송 신청 수정 페이지 이동요청 메서드 */
+	public List<Delivery> deliveryUpdateInfo(int deliveryNo){
+		return deliveryDAO.deliveryUpdateInfo(deliveryNo);
+	}
+	public int updateDelivery (Delivery dto){
+		return deliveryDAO.updateDelivery(dto);
+	}
 }

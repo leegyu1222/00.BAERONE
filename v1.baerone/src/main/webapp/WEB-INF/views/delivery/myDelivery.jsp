@@ -162,9 +162,6 @@
 								<th>휴대폰 번호</th>
 								<th>신청시간</th>
 								<th>물품정보</th>
-								<c:if test="${list.deliveryStatus eq '결제완료'}">
-								<th style="text-align:center">신청 취소</th>
-								</c:if>
 	    					</tr>
 	    					<tr>
 	    						<td>${list.senderName}</td>
@@ -172,9 +169,6 @@
 								<td>${list.deliveryDate}</td>
 								<td rowspan="3"><a href="myDeliveryDetail.do?productDetail=${list.productDetail}">${list.productDetail}</a></td>
 								<th rowspan="3" style="text-align:center"><a href="cancelDelivery.do?deliveryNo=${list.deliveryNo}">
-								<c:if test="${list.deliveryStatus eq '결제완료'}">
-								<input type="button" value="취소">
-								</c:if>
 								</a><th>
 	    					</tr>
 	    					<tr>

@@ -11,7 +11,7 @@ public class Paging {
 	/** 현재 페이지 번호  */
 	private int page = 1;
 	/** 한 페이지에 보여질 게시글의 수  */
-	private int pageCount = 2;
+	private int pageCount = 10;
 	/** 페이지네이션의 갯수  */
 	private int groupCount = 5;
 	/** 현재페이지의 시작 글 번호  */

@@ -168,35 +168,30 @@ public class DeliveryController {
 			mv.setViewName("delivery/myDelivery");
 		return mv;
 	}
-	@RequestMapping(value="myDeliveryDetail")
-	public ModelAndView myDeliveryDetail(String productDetail) {
-		ModelAndView mv = new ModelAndView();
-		List<Delivery> list = deliveryService.myDeliveryDetail(productDetail);
-		System.out.println(list.size());
-		mv.addObject("list", list);
-		mv.setViewName("delivery/myDeliveryMore");
-		return mv;
-	}
-	
 	
 	/**
-	 * ��۽�û ���
+	 * 드론배달 신청 취소 요청
 	 * @param session
 	 * @param deliveryNo
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="cancelDelivery.do")
 	public ModelAndView cancelDelivery(HttpSession session, int deliveryNo){
-		String senderId = (String)session.getAttribute("userid");
+		String userid = (String)session.getAttribute("userid");
+		int page = 1;
 		ModelAndView mv = new ModelAndView();
-		List<Delivery> list = deliveryService.myDelivery(senderId);
-		deliveryService.cancelDelivery(deliveryNo);
-		if( list != null) {
-			mv.addObject("list", list);
+		int cancel = deliveryService.cancelDelivery(deliveryNo);
+		if(cancel == 1){
+			HashMap<String, Object> resultMap = deliveryService.getAllBoard(page, userid);
+			mv.addObject("list", (List<Delivery>) resultMap.get("list"));
+			mv.addObject("paging", (Paging) resultMap.get("paging"));
+			mv.addObject("page", page);
 			mv.setViewName("delivery/myDelivery");
 		}
-		return mv;
+			return mv;
 	}
+	
 	
 	@RequestMapping(value="deliveryReadyView.do")
 	public ModelAndView deliveryReady(){
@@ -290,4 +285,40 @@ public class DeliveryController {
 			e.printStackTrace();
 		}
 	   }
+	   /**
+	    * 드론 배달 신청 수정 페이지 이동요청 
+	    * @param deliveryNo
+	    * @return
+	    */
+	   @RequestMapping(value="deliveryUpdateInfo")
+	   public ModelAndView deliveryUpdateInfo(int deliveryNo) {
+		   ModelAndView mv = new  ModelAndView();
+		   List<Delivery> list = deliveryService.deliveryUpdateInfo(deliveryNo);
+		   mv.addObject("list", list);
+		   mv.setViewName("delivery/modifyDelivery");
+		   return mv;
+	   }
+	   @RequestMapping(value="updateDelivery.do")
+	   public ModelAndView updateDelivery(Delivery dto){
+		   ModelAndView mv = new ModelAndView();
+		   int update = deliveryService.updateDelivery(dto);
+		   List<Delivery> list = deliveryService.myDeliveryDetail(dto.getProductDetail());
+		   String message = "수정성공";
+		   if ( update == 1 ) {
+			   mv.addObject("message", message);
+			   mv.addObject("list", list);
+			   mv.setViewName("delivery/myDeliveryMore");
+		   }
+		   return mv;
+	   }
+		@RequestMapping(value="myDeliveryDetail")
+		public ModelAndView myDeliveryDetail(String productDetail) {
+			ModelAndView mv = new ModelAndView();
+			List<Delivery> list = deliveryService.myDeliveryDetail(productDetail);
+			System.out.println(list.size());
+			mv.addObject("list", list);
+			mv.setViewName("delivery/myDeliveryMore");
+			return mv;
+		}
+		
 }

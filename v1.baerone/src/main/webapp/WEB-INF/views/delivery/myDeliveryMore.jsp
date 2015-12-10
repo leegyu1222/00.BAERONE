@@ -31,6 +31,11 @@
  java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd HH.mm.ss");
  String today = formatter.format(new java.util.Date());
 %>
+<c:if test="${message ne null}">
+	<script>
+		alert("수정완료");
+	</script>
+</c:if>
     <body>
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
@@ -114,6 +119,8 @@
     padding-top: 2px;
 ">
 								<div class="mainmenu-submenu-inner"> 
+								
+								
 									<div>
 										<ul>
 											<li><a href="page-homepage-sample.html">고객의 소리</a></li>
@@ -134,7 +141,6 @@
                                 </div><!-- /mainmenu-submenu-inner -->
 							</div>
 						</li>
-                        
 					</ul>
 				</nav>
 			</div>
@@ -165,8 +171,11 @@
 						<c:forEach var="list" items="${list}">
 								<h3>보내는 사람</h3><br>
 									<div class="comment-form-wrapper">
-									
 									<div class="form-group">
+				        				 	<label for="comment-name"><i class="glyphicon glyphicon-user"></i> <b>아이디</b></label>
+											<input class="form-control" type="text" name="senderId" id="senderId" value="${list.senderId}" readonly="readonly">
+										</div>
+										<div class="form-group">
 				        				 	<label for="comment-name"><i class="glyphicon glyphicon-user"></i> <b>이름</b></label>
 											<input class="form-control" type="text" name="senderName" id="senderName"value="${list.senderName}" readonly="readonly">
 										</div>
@@ -195,15 +204,15 @@
 											<label for="comment-email"><b>신청시간</b></label>
 											<input class="form-control" type="text"  name="deliveryDate" value="${list.deliveryDate}" readonly="readonly">
 										</div>
-										<div class="form-group">
-											<label for="comment-email"><b>물품정보</b></label>
-											<input class="form-control" type="text"  name="productDetail" value="${list.productDetail}" readonly="readonly">
-										</div>
                                         <div class="clearfix"></div>
 								
 								<h3>받는 사람</h3><br>
 									
 								<div class="comment-form-wrapper">
+										<div class="form-group">
+				        				 	<label for="comment-name"><i class="glyphicon glyphicon-user"></i> <b>아이디</b></label>
+											<input class="form-control" type="text" name="receiverId" value="${list.receiverId}" readonly="readonly">
+										</div>
 				        				<div class="form-group">
 				        				 	<label for="comment-name"><i class="glyphicon glyphicon-user"></i> <b>이름</b></label>
 											<input class="form-control" type="text" name="receiverName" value="${list.receiverName}" readonly="readonly">
@@ -237,22 +246,24 @@
 											<label for="comment-email"><b>물품정보</b></label>
 											<input class="form-control" type="text"  name="productDetail" value="${list.productDetail}" readonly="readonly">
 										</div>
-                                    
                                         <div class="clearfix"></div>
 								</div>
-							
 							</div>
+					<a href="myDelivery.do?deliveryNo=${list.deliveryNo}&page=1"><input type="button" class="btn btn-large pull-right" value="돌아가기" /></a>
+					<c:if test="${list.deliveryStatus eq '결제완료'}">
+					<a href="cancelDelivery.do?deliveryNo=${list.deliveryNo}"><input type="button" class="btn btn-large pull-right" value="신청취소" /></a>
+					</c:if>
+					<c:if test="${list.deliveryStatus eq '결제완료'}">
+					<a href="deliveryUpdateInfo.do?deliveryNo=${list.deliveryNo}"><input type="button" class="btn btn-large pull-right" value="수정" /></a>
+					</c:if>
                     </c:forEach>
                     </div>
-                    
-                    </form>
+					</form>
 							<!-- End Comments -->
-						</div>
+						</div> 
 					</div>
 					
 					<!-- End Blog Post -->
-
-		
 	    </div>
             </div>
         </div>
@@ -309,6 +320,5 @@
         <script src="js/jquery.bxslider.js"></script>
         <script src="js/main-menu.js"></script>
         <script src="js/template.js"></script>
-
     </body>
 </html>

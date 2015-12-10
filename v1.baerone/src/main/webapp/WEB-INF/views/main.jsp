@@ -109,13 +109,13 @@
 								<div class="mainmenu-submenu-inner"> 
 									<div>
 										<ul>
-											<li><a href="page-homepage-sample.html">고객의 소리</a></li>
+											<li><a href="contestList.do?page=1">고객의 소리</a></li>
 										</ul>
 										
 									</div>
 									<div>
 										<ul>
-											<li><a href="page-portfolio-2-columns-2.html">고객센터</a></li>
+											<li><a href="contestList.do?page=1">고객센터</a></li>
 										</ul>
 										
 									</div>

@@ -79,11 +79,16 @@
 				from delivery
 				where product_detail = #{productDetail}	    
 			</select>
-			
+		<!-- 드론 신청 수정 페이지 이동 요청 -->
+			<select id = "deliveryUpdateInfo" resultMap="deliveryResult" parameterType="int">
+				select *
+				from delivery
+				where delivery_no = #{deliveryNo}	    
+			</select>
 	<!-- delete -->
 		<!-- 배송 취소 -->
 			<delete id="cancelDelivery" parameterType="int">
-				delete *from delivery where delivery_no = #{deliveryNo}
+				delete from delivery where delivery_no = #{deliveryNo}
 			</delete>
 			
 	<!-- update -->
@@ -93,5 +98,13 @@
 				set delivery_status = '배송준비', beacon_name = #{beaconName}
 				where delivery_no = #{deliveryNo} 
 			</update>
-
+		<!-- 드론 배송 상태 업데이트 -->
+			<update id="updateDelivery" parameterType="com.work.dto.Delivery">
+				update delivery 
+				set receiver_id = #{receiverId}, receiver_name = #{receiverName},
+					receiver_phone = #{receiverPhone}, receiver_post_no = #{receiverPostNo},
+					receiver_addr_old = #{receiverAddrOld}, receiver_addr_new = #{receiverAddrNew}, 
+					receiver_addr_misc = #{receiverAddrMisc}, product_detail = #{productDetail}
+				where delivery_no = #{deliveryNo} 
+			</update>
 </mapper>

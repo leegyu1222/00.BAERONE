@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.work.mapper.BoardMapper">
+	<resultMap id="boardResult" type="com.work.dto.Board">
+	    <result property="postNo" column="post_no" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="nickname" column="nickname" />
+		<result property="writeDate" column="write_date" />
+		<result property="hit" column="hit" />
+	</resultMap>
+	<!-- 게시글 전체 개수 구하기 -->
+	<select id="getAllBoardCount" resultType="int">
+		select count(*) from board
+	</select>
+	<!-- 게시글 가져오기 (페이징) -->
+	<select id="getAllBoard" resultMap="boardResult" parameterType="hashmap">
+		SELECT SUB2.* 
+		FROM ( 
+				SELECT ROWNUM AS RNUM, SUB.* 
+				FROM ( 
+				 		SELECT * 
+				 		FROM BOARD 
+			 	 		ORDER BY POST_NO DESC 
+				 	 )  SUB 
+			 )SUB2 
+		WHERE RNUM BETWEEN #{start} AND #{end}
+	</select>
+		<!-- insert -->
+	<!-- 게시물 작성  -->
+	<update id="insertBoard" parameterType="hashmap">
+		insert into board values (board_seq.nextval, #{title}, #{content}, #{nickname}, #{writeDate}, 0)
+	</update>
+	
+	<!-- select -->
+	<!-- 게시물 하나의 내용 보기  -->
+	<select id="getBoardOne" resultMap="boardResult" parameterType="int">
+		select * from board where post_no = #{postNo}
+	</select>
+	
+	<!-- delete -->
+	<!-- 게시물 삭제 -->
+	<delete id="deleteBoard" parameterType="int">
+		delete from board where post_no = #{postNo}
+	</delete>
+	
+	<!-- 게시물 리스트 보기  -->
+	<select id="selectBoardList" resultType="hashmap">
+		select post_no, title, nickname, writeDate, hit from board where post_no = #{postNo}
+	</select>
+
+	<!-- update -->
+	<!-- 게시물 내용 업데이트  -->
+	<update id="updateBoard" parameterType="hashmap" >
+		update board set title = #{title}, content=#{content} where post_no = #{postNo} 
+	</update>
+	
+	<!-- 조회수 업데이트  -->
+	<update id="updateHit" parameterType="int">
+		update board set hit = hit + 1 
+		where post_no = #{postNo} 
+	</update>
+	
+	<!-- 게시물 다중 조건 조회 -->
+	<select id="getSearchBoardList" resultMap="boardResult">
+	SELECT SUB2.* 
+		FROM ( 
+				SELECT ROWNUM AS RNUM, SUB.* 
+				FROM ( 
+				 		select *
+						from board
+						where post_no > 0
+						<if test="searchType != null">
+							<if test="searchType == 0">
+								and (title like '%'|| '${keyword}' || '%' OR content like '%'|| '${keyword}')
+							</if>
+							
+							<if test="searchType == 1">
+								and title like '%'|| '${keyword}' || '%'
+							</if>
+							
+							<if test="searchType == 2">
+								and nickname like '%' || '${keyword}' || '%'
+							</if>
+						</if>
+						order by post_no desc
+				 	 )  SUB 
+			 )SUB2 
+		WHERE RNUM BETWEEN ${start} AND ${end}
+	</select>
+	
+	<!-- 검색된 게시물의 갯수 조회 -->
+	<select id="getSearchBoardCount" resultType="int">
+ 		select count(*)
+		from board
+		where post_no > 0
+		<if test="searchType != null">
+			<if test="searchType == 0">
+				
+			</if>
+			
+			<if test="searchType == 1">
+				and title like '%'|| '${keyword}' || '%'
+			</if>
+			
+			<if test="searchType == 2">
+				and nickname like '%' || '${keyword}' || '%'
+			</if>
+		</if>
+	</select>
+</mapper>
