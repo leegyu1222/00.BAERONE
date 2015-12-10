@@ -24,7 +24,7 @@ public class HomeController {
 	}
 	
 
-	//¸ŞÀÎÆäÀÌÁö ÀÌµ¿
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 	@RequestMapping("main.do")
 	public String main(){
 		return "main";
@@ -33,6 +33,12 @@ public class HomeController {
 	@RequestMapping("faq.do")
 	public String faq() {
 		return "faq";
+
+	}
+	
+	@RequestMapping("serviceCenter.do")
+	public String serviceCenter() {
+		return "serviceCenter";
 
 	}
 	

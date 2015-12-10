@@ -22,6 +22,7 @@
 		    <link rel="stylesheet" href="css/leaflet.ie.css" />
 		<![endif]-->
 		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/join.css">
 
         <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 <script type="text/javascript" src="js/postCode/postCode.js"></script>
@@ -36,115 +37,147 @@
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-
-    
-        
-        <div class="section">
 	    	<div class="container">
 				<div class="row">
 					<!-- Sidebar -->
 					<!-- End Sidebar -->
-					<div class="col-sm-8 col-sm-offset-2">
-						<div class="blog-post blog-single-post" style="
-    margin-bottom: 20px;
-    height: 1400px;
-">
-							<div class="single-post-title">
-								<h2>배송 신청</h2>
+				
+                            <div class='movable first' style='position: absolute; width: 100%'>
+			<div class="table_center">
+				<div class="ham_box" style="margin-bottom: 12px;">
+					<div class="title">회원가입</div>
+					<div class="content_ham no_top_radius">
+					
+						<!-- Join Form -->
+						<form role="form" accept-charset="UTF-8" class="new_user">
+							<div style="margin: 0; padding: 0; display: inline">
+								<input name="utf8" type="hidden" value="&#x2713;" />
+								<input name="authenticity_token" type="hidden" value="+1MmYTq191ghaSmFKgSYXdMXoDTNfIN7Kj29I56r88k=" />
 							</div>
-                            <form action="deliveryCheck.do" method="post">
-							<div class="single-post-content">
-								<h3>보내는 사람</h3><br>
-									<div class="comment-form-wrapper">
-	<div class="form-group">
-				        				 	<label for="comment-name"><i class="glyphicon glyphicon-user"></i> <b>이름</b></label>
-											<input class="form-control" type="text" name="senderName" value="${member.name}">
-										</div>
-										<div class="form-group">
-											<label for="comment-email"><i class="glyphicon glyphicon-phone"></i> <b>휴대폰</b></label>
-											<input class="form-control" type="text"  name="senderPhone" value="${member.phone}">
-										</div>
-                                        <div class="form-group">
-											<label for="comment-email"><i class="glyphicon glyphicon-envelope"></i> <b>주소</b></label><br>
-											<input class="form-control" type="text" id = "senderPostNo" name="senderPostNo" value="${member.postNo}" style="width:50%; display:inline;" >
-                                            <input type="button" onclick="sender_Postcode()" value="우편번호 찾기"><br>
-										</div>
-                                        <div class="form-group">
-											<label for="comment-email"><b>지번 주소</b></label>
-											<input class="form-control" type="text"  id = "senderAddrOld" name="senderAddrOld" value="${member.addressOld}">
-										</div>
-                                        <div class="form-group">
-											<label for="comment-email"><b>도로명 주소</b></label>
-											<input class="form-control" type="text"  id = "senderAddrNew" name="senderAddrNew" value="${member.addressNew}">
-										</div>
-                                        <div class="form-group">
-											<label for="comment-email"><b>나머지 주소</b></label>
-											<input class="form-control" type="text"  name="senderAddrMisc" value="${member.addressMisc}">
-										</div>
-                                        <div class="clearfix"></div>
-		
-								<h3>받는 사람</h3><br>
-								<div class="comment-form-wrapper">
-									
-                                         <div class="form-group">
-				        				 	<label for="comment-name"><i class="glyphicon glyphicon-user"></i> <b>ID</b></label>
-											<input class="form-control" type="text" name="receiverId" readonly="readonly"id="receiverId">
-										</div>
-				        				<div class="form-group">
-				        				 	<label for="comment-name"><i class="glyphicon glyphicon-user"></i> <b>이름</b></label>
-											<input class="form-control" type="text" name="receiverName">
-										</div>
-										<div class="form-group">
-											<label for="comment-email"><i class="glyphicon glyphicon-phone"></i> <b>휴대폰</b></label>
-											<input class="form-control" type="text"  name="receiverPhone" id="phone">
-										</div>
-                                        <div class="form-group">
-											<label for="comment-email"><i class="glyphicon glyphicon-envelope"></i> <b>주소</b></label><br>
-											<input class="form-control" type="text" id="receiverPostNo" name="receiverPostNo" style="width:50%; display:inline;" >
-                                            <input type="button" onclick="receiver_Postcode()" value="우편번호 찾기"><br>
-										</div>
-                                        <div class="form-group">
-											<label for="comment-email"><b>지번 주소</b></label>
-											<input class="form-control" type="text" id="receiverAddrOld" name="receiverAddrOld">
-										</div>
-                                        <div class="form-group">
-											<label for="comment-email"><b>도로명 주소</b></label>
-											<input class="form-control" type="text" id="receiverAddrNew" name="receiverAddrNew">
-										</div>
-                                        <div class="form-group">
-											<label for="comment-email"><b>나머지 주소</b></label>
-											<input class="form-control" type="text"  name="receiverAddrMisc">
-										</div>
-										<div class="form-group">
-											<label for="comment-message"><i class="glyphicon glyphicon-comment"></i> <b>물품 상세 정보</b></label>
-											<textarea class="form-control" rows="5" id="productDetail" name="productDetail"></textarea>
-										</div>
-                                    
-                                        <div class="clearfix"></div>
-				        			
+							
+							<input id="user_password_initialized" name="user[password_initialized]" type="hidden" value="true" />
+							<input id="continue" name="continue" type="hidden" />
+							
+							<!-- Input Form -->
+							<div class="input_form">
+								<!-- ID -->
+								<div class="box_wrapper first" style="margin-bottom: 30px;">
+									<input autofocus="autofocus" class="joinbox userid" id="userid" name="userid" placeholder="아이디(E-mail)" size="30" type="email" /> 
+									<label for="userid">ID</label>
+									<div class="validation_check"></div>
+									<div class="warning" id="useridWarning"></div>
+								</div>
+								
+								<!-- Password -->
+								<div class="box_wrapper last" style="margin-bottom: 30px;">
+									<input class="joinbox password" id="userpw" name="userpw" placeholder="비밀번호 (6자 이상)" size="30" type="password" /> 
+									<label for="userpw">비밀번호(6자 이상)</label>
+									<div class="validation_check"></div>
+									<div class="warning" id="userpwWarning"></div>
+								</div>
+								
+								<!-- Password Check -->
+								<div class="box_wrapper last" style="margin-bottom: 30px;">
+									<input class="joinbox password" id="userpwCheck" name="userpwCheck" placeholder="비밀번호 확인" size="30" type="password" /> 
+									<label for="userpw">비밀번호 확인</label>
+									<div class="validation_check"></div>
+									<div class="warning" id="userpwCheckWarning"></div>
+								</div>
+								
+								<!-- Nickname -->
+								<div class="box_wrapper" style="margin-bottom: 30px;">
+									<input class="joinbox name" id="name" name="name" placeholder="이름" size="30" type="text" />
+										<label for="nickname">이름</label>
+									<div class="validation_check"></div>
+									<div class="warning" id="nicknameWarning"></div>
+								</div>
+								
+								<!-- Birth -->
+								<div class="box_wrapper last" style="margin-bottom: 30px;">
+									<input class="joinbox birth" id="birth" name="birth" placeholder="생년월일 (ex : 1988.02.17)" size="30" type="text" /> 
+									<label for="birth">생년월일</label>
+									<div class="validation_check"></div>
+									<div class="warning" id="birthWarning"></div>
+								</div>
+								
+								<!-- Gender -->
+								<div class="box_wrapper last" style="margin-bottom: 30px;">
+									<br>
+									<input type="radio" name="gender" id="man" value="M">남자
+									<label for="man">남자</label>
+									&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="gender" id="woman" value="W">여자
+									<label for="woman">여자</label>
+									<div class="validation_check"></div>
+									<div class="warning" id="genderWarning"></div>
+								</div>
+								
+								<!-- Mobile -->
+								<div class="box_wrapper last" style="margin-bottom: 30px;">
+									<input class="joinbox mobile" id="mobile" name="mobile" placeholder="핸드폰 번호 ( ex : xxx-xxxx-xxxx)" size="30"type="text" /> 
+									<label for="mobile">핸드폰 번호</label>
+									<div class="validation_check"></div>
+									<div class="warning" id="mobileWarning"></div>
+								</div>
+								
+								<!-- E-mail -->
+								<div class="box_wrapper first" style="margin-bottom: 30px;">
+									<input autofocus="autofocus" class="joinbox emal" id="email" name="email" placeholder="E-mail" size="30" type="email" /> 
+									<label for="email">Email</label>
+									<div class="validation_check"></div>
+									<div class="warning" id="useridWarning"></div>
+								</div>
+								
+								<!--  Address -->
+								<div class="box_wrapper first" style="margin-bottom: 30px;">
+									<input autofocus="autofocus" class="joinbox postNo" id="senderPostNo" name="senderPostNo" placeholder="우편번호" size="30" type="text" style="display:inline;"/> 
+									<label for="userid">우편번호</label>
+									<div class="validation_check"></div>
+									<input type="button" onclick="sender_Postcode()" value="우편번호 찾기">
+									<div class="warning" id="useridWarning"></div>
+								</div>
+								<div class="box_wrapper first" style="margin-bottom: 30px;">
+									<input autofocus="autofocus" class="joinbox senderAddrOld" id="senderAddrOld" name="senderAddrOld" placeholder="지번주소" size="30" type="text" /> 
+									<label for="addressOld">지번주소</label>
+									<div class="validation_check"></div>
+									<div class="warning" id="useridWarning"></div>
+								</div>
+								<div class="box_wrapper first" style="margin-bottom: 30px;">
+									<input autofocus="autofocus" class="joinbox senderAddrNew" id="senderAddrNew" name="senderAddrNew" placeholder="도로명주소" size="30" type="text" /> 
+									<label for="userid">도로명주소</label>
+									<div class="validation_check"></div>
+									<div class="warning" id="useridWarning"></div>
+								</div>
+								<div class="box_wrapper first" style="margin-bottom: 30px;">
+									<input autofocus="autofocus" class="joinbox senderAddrMisc" id="senderAddrMisc" name="senderAddrMisc" placeholder="상세주소" size="30" type="text" /> 
+									<label for="userid">상세주소</label>
+									<div class="validation_check"></div>
+									<div class="warning" id="useridWarning"></div>
 								</div>
 							</div>
-                             
-                    </div>
-                         <input type="hidden" name="deliveryDate" value="<%=today%>">
-		<input type="submit" class="btn btn-large pull-right" value="신청하기">          
-                                
-                            </form>
-							<!-- End Comments -->
-						</div>
+							<!-- Register -->
+							<div class="btn_join" onclick="join();">
+								등록하기
+								<div class="email_fake_btn">
+									<div class="email_inner_img"></div>
+								</div>
+							</div>
+							<div class="comment_top">
+								<br><br>
+								<h1>모든 항목을 올바르게 입력해주세요.</h1>
+							</div>
+							<div class="comment_top">
+				            <a id="to_back"href="loginView.do">돌아가기</a>
+				         	</div>
+						</form>
 					</div>
-					<!-- End Blog Post -->
-
 		
+				<div class="shadow"></div>
+			</div>
+		</div>
 	    </div>
             </div>
         </div>
-
-	    <!-- Footer -->
-		<jsp:include page="../inc/footer.jsp" />
-		<!-- End of Footer -->
-
-
         <!-- Javascripts -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
@@ -155,25 +188,6 @@
         <script src="js/jquery.bxslider.js"></script>
         <script src="js/main-menu.js"></script>
         <script src="js/template.js"></script>
-
-		<script>
-		$(document).ready(function() {
-			$('#phone').on('blur', function() {
-				 jQuery.ajax({
-			           type:'GET',
-			           url:'searchUserId.do',
-			           data:{
-			        	   phone:$('#phone').val()
-			           },
-			           error : function() {
-			                 alert("에러발생");
-			           },
-			           success : function(data) {
-			                 $("#receiverId").val(data);
-			           }
-			     });
-			})
-		});
-		</script>
+		<script type="text/javascript" src="js/join-validation/valid.js"></script>
     </body>
 </html>

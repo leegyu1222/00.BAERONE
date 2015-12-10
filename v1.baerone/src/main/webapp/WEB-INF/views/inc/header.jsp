@@ -23,33 +23,6 @@
 							<a href="cancelAppl.do">Home</a>
 						</li>
 						<li class="has-submenu">
-							<a href="#">회사소개</a>
-                            <div class="mainmenu-submenu" style="
-    padding-bottom: 1px;
-    padding-top: 2px;
-">
-								<div class="mainmenu-submenu-inner"> 
-									<div>
-										<ul>
-											<li><a href="page-homepage-sample.html">사업 소개</a></li>
-										</ul>
-										
-									</div>
-									<div>
-										<ul>
-											<li><a href="page-portfolio-2-columns-2.html">연혁</a></li>
-										</ul>
-										
-									</div>
-                                    <div>
-										<ul>
-											<li><a href="page-portfolio-2-columns-2.html">뉴스/공지사항</a></li>
-										</ul>
-									</div>
-                                </div><!-- /mainmenu-submenu-inner -->
-							</div>
-						</li>
-						<li class="has-submenu">
 							<a href="#">배송신청/조회</a>
 							<div class="mainmenu-submenu" style="
     padding-bottom: 1px;
@@ -79,13 +52,7 @@
 								<div class="mainmenu-submenu-inner"> 
 									<div>
 										<ul>
-											<li><a href="page-homepage-sample.html">고객의 소리</a></li>
-										</ul>
-										
-									</div>
-									<div>
-										<ul>
-											<li><a href="page-portfolio-2-columns-2.html">고객센터</a></li>
+											<li><a href="serviceCenter.do">고객센터</a></li>
 										</ul>
 										
 									</div>
