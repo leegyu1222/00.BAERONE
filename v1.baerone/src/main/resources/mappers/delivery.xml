@@ -84,15 +84,26 @@
 			select sum(fare) delivery
 		</select>
 		
-		<!-- 이번달 수입 -->
+		<!-- 이번달 수입 
+		<select id="thisIncome" resultType="int" >
+		select sum(fare) from delivery where TO_CHAR(delivery_date, 'MM') = TO_CHAR(SYSDATE, 'MM')
+		</select>
+		
+		 이번달 주문수 
+		<select id="thisOrder" resultType="int" >
+		select count(*) from delivery where to_char(delivery_date, 'YYYYMM') = to_char(sysdate, 'YYYYMM')
+		</select>	
+		-->
+			
+		<!-- 이번달 수입--> 
 		<select id="thisIncome" resultType="int" >
 		select sum(fare) from delivery where TO_CHAR(SYSDATE,'MM') = SUBSTR(delivery_date,6,2)
 		</select>
-		
-		<!-- 이번달 주문수 -->
+		 <!-- 이번달 주문수 -->
 		<select id="thisOrder" resultType="int" >
 		select count(*) from delivery where TO_CHAR(SYSDATE,'MM') = SUBSTR(delivery_date,6,2)
-		</select>	
+		</select>
+		
 			
 	<!-- delete -->
 		<!-- 배송 취소 -->

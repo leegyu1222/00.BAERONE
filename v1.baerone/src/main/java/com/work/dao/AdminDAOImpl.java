@@ -29,4 +29,32 @@ public class AdminDAOImpl implements AdminDAO {
 	public int thisOrder() {
 		return sqlSession.selectOne("thisOrder");
 	}
+	
+	public int maleCount() {
+		return sqlSession.selectOne("maleCount");
+	}
+	
+	public int femaleCount() {
+		return sqlSession.selectOne("femaleCount");
+	}
+	
+	public int years10() {
+		return sqlSession.selectOne("years10");
+	}
+	
+	public int years20() {
+		return sqlSession.selectOne("years20");
+	}
+
+	public int years30() {
+		return sqlSession.selectOne("years30");
+	}
+	
+	public int years40() {
+		return sqlSession.selectOne("years40");
+	}
+	
+	public int years50() {
+		return sqlSession.selectOne("years50");
+	}
 }

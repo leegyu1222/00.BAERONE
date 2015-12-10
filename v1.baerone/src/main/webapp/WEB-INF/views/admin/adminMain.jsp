@@ -193,6 +193,19 @@
 </script>
      <script type="text/javascript">
         $(function () {
+        	var allCount = ${memberCount};
+      		var year10 = ${years10};
+      		var year20 = ${years20};
+      		var year30 = ${years30};
+      		var year40 = ${years40};
+      		var year50 = ${years50};
+      		
+        	var years10 = Math.round(year10 / allCount * 100);
+        	var years20 = Math.round(year20 / allCount * 100);
+        	var years30 = Math.round(year30 / allCount * 100);
+        	var years40 = Math.round(year40 / allCount * 100);
+        	var years50 = Math.round(year50 / allCount * 100);
+        	
             $("#age").shieldChart({
                 theme: "light",
                 seriesSettings: {
@@ -227,11 +240,11 @@
                     seriesType: "donut",
                     collectionAlias: "Usage",
                     data: [
-                         ["10대", 9.0],
-                        ["20대", 26.8],
-                        ["30대", 55.8],
-                        ["40대", 3.8],
-                        ["50대", 1.9]
+                        ["10대", years10],
+                        ["20대", years20],
+                        ["30대", years30],
+                        ["40대", years40],
+                        ["50대", years50]
                     ]
                 }]
             });
@@ -239,6 +252,8 @@
     </script>
     <script type="text/javascript">
         $(function () {
+        	var man = ${maleCount};
+        	var woman = ${femaleCount};
             $("#genderChart").shieldChart({
                 theme: "light",
                 exportOptions: {
@@ -257,11 +272,12 @@
                     customPointText: "{point.collectionAlias}: {point.y}"
                 },
                 dataSeries: [{
+                	
                     seriesType: "pie",
                     collectionAlias: "Usage",
                     data: [
-                      ["남", 8],
-                      ["여", 4],
+                      ["남", man ],
+                      ["여", woman ],
                     ]
                 }]
             });
