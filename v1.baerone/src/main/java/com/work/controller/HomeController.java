@@ -23,4 +23,23 @@ public class HomeController {
 		return "index";
 	}
 	
+
+	//���������� �̵�
+	@RequestMapping("main.do")
+	public String main(){
+		return "main";
+}
+
+	@RequestMapping("faq.do")
+	public String faq() {
+		return "faq";
+
+	}
+	
+	@RequestMapping("serviceCenter.do")
+	public String serviceCenter() {
+		return "serviceCenter";
+
+	}
+	
 }

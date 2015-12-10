@@ -25,7 +25,7 @@
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -57,7 +57,7 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#about">LOGIN</a>
+                        <a class="page-scroll" href="#login-page">LOGIN</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#download">REGISTER</a>
@@ -136,7 +136,7 @@
     margin-bottom: 5px;
 " placeholder="Password"onblur="if (this.value == '') {this.value = 'Password';}">
 	        <p><a href="mailto:feedback@startbootstrap.com" style="color:#AAAAAA">비밀번호 찾기</a>
-	        <span style="color:#AAAAAA">/</span> <a href="mailto:feedback@startbootstrap.com" style="color:#AAAAAA">회원가입</a>
+	        <span style="color:#AAAAAA">/</span> <a href="joinView.do" style="color:#AAAAAA">회원가입</a>
                 </p>
             <div class="loginArea_but">
                 <label class="btn1 btn3 btn-1 btn-1b"><input type="submit" value="로그인"></label>

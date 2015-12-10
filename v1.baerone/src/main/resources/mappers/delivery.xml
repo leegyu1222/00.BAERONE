@@ -56,14 +56,13 @@
 					 )SUB2 
 				WHERE RNUM BETWEEN #{start} AND #{end}
 			</select>
+		<!-- 배송 전체 목록 -->
+			<select id = "deliveryList" resultMap="deliveryResult">
+				select *from delivery order by delivery_no desc
+			</select>
 		<!-- 드론 출발 준비 목록 -->
 			<select id="deliveryReady" resultMap="deliveryResult">
 				select * from delivery where delivery_status = '결제완료'
-			</select>
-		
-		<!-- 드론 배송 목록 -->
-			<select id="deliveryList" resultMap="deliveryResult">
-				select * from delivery where delivery_status != '결제완료'
 			</select>
 			
 		<!-- 드론 배송 목록 조회 -->
@@ -85,6 +84,33 @@
 				from delivery
 				where delivery_no = #{deliveryNo}	    
 			</select>
+			
+		<!-- 운임합계 -->
+		<select id="fareSum" resultType="int">
+			select sum(fare) delivery
+		</select>
+		
+		<!-- 이번달 수입 
+		<select id="thisIncome" resultType="int" >
+		select sum(fare) from delivery where TO_CHAR(delivery_date, 'MM') = TO_CHAR(SYSDATE, 'MM')
+		</select>
+		
+		 이번달 주문수 
+		<select id="thisOrder" resultType="int" >
+		select count(*) from delivery where to_char(delivery_date, 'YYYYMM') = to_char(sysdate, 'YYYYMM')
+		</select>	
+		-->
+			
+		<!-- 이번달 수입--> 
+		<select id="thisIncome" resultType="int" >
+		select sum(fare) from delivery where TO_CHAR(SYSDATE,'MM') = SUBSTR(delivery_date,6,2)
+		</select>
+		 <!-- 이번달 주문수 -->
+		<select id="thisOrder" resultType="int" >
+		select count(*) from delivery where TO_CHAR(SYSDATE,'MM') = SUBSTR(delivery_date,6,2)
+		</select>
+		
+			
 	<!-- delete -->
 		<!-- 배송 취소 -->
 			<delete id="cancelDelivery" parameterType="int">

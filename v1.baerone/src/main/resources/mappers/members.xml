@@ -53,6 +53,60 @@
 				select userid from members where phone = #{phone}
 		</select>
 		
+		<!-- 전체회원 수 -->
+		<select id="memberCount" resultType="int" parameterType="String">
+			select count(*) from members
+		</select>
+		
+		<!-- 남자회원 수 -->
+		<select id="maleCount" resultType="int">
+		select count(*) from members where gender='M'
+		</select>
+		
+		<!-- 여자회원 수 -->
+		<select id="femaleCount" resultType="int">
+		select count(*) from members where gender='F'
+		</select>
+		
+		<!-- 10대회원수 -->
+		<select id="years10" resultType="int">
+		select count(*)
+		from members 
+		where to_number(to_char(SYSDATE,'YYYY')) <![CDATA[-]]> to_number(SUBSTR(birthday,1,4)) <![CDATA[>=]]>10
+		and to_number(to_char(SYSDATE,'YYYY')) <![CDATA[-]]> to_number(SUBSTR(birthday,1,4)) <![CDATA[<]]> 20
+		</select>
+		
+		<!-- 20대회원수 -->
+		<select id="years20" resultType="int">
+		select count(*)
+		from members 
+		where to_number(to_char(SYSDATE,'YYYY')) <![CDATA[-]]> to_number(SUBSTR(birthday,1,4)) <![CDATA[>=]]>20
+		and to_number(to_char(SYSDATE,'YYYY')) <![CDATA[-]]> to_number(SUBSTR(birthday,1,4)) <![CDATA[<]]> 30
+		</select>
+		
+		<!-- 30대회원수 -->
+		<select id="years30" resultType="int">
+		select count(*)
+		from members 
+		where to_number(to_char(SYSDATE,'YYYY')) <![CDATA[-]]> to_number(SUBSTR(birthday,1,4)) <![CDATA[>=]]>30
+		and to_number(to_char(SYSDATE,'YYYY')) <![CDATA[-]]> to_number(SUBSTR(birthday,1,4)) <![CDATA[<]]> 40
+		</select>
+		
+		<!-- 40대회원수 -->
+		<select id="years40" resultType="int">
+		select count(*)
+		from members 
+		where to_number(to_char(SYSDATE,'YYYY')) <![CDATA[-]]> to_number(SUBSTR(birthday,1,4)) <![CDATA[>=]]>40
+		and to_number(to_char(SYSDATE,'YYYY')) <![CDATA[-]]> to_number(SUBSTR(birthday,1,4)) <![CDATA[<]]> 50
+		</select>
+		
+		<!-- 50대회원수 -->
+		<select id="years50" resultType="int">
+		select count(*)
+		from members 
+		where to_number(to_char(SYSDATE,'YYYY')) <![CDATA[-]]> to_number(SUBSTR(birthday,1,4)) <![CDATA[>=]]>50
+		and to_number(to_char(SYSDATE,'YYYY')) <![CDATA[-]]> to_number(SUBSTR(birthday,1,4)) <![CDATA[<]]> 60
+		</select>
 		
 		<!-- 조건검색 (관리자) 이렇게하면 셀렉트시 none 이나 값을 입력하지 않았을때 SQL구문오류
 		<select id="memberSelectList" parameterType="hashmap" resultMap="memberResult">

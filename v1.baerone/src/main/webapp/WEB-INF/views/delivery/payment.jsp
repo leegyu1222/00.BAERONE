@@ -51,7 +51,7 @@
 		
 		※ 드론이 출발 후에는 취소가 불가능하오니 잘 고려하여 결제해 주십시오. <br><br>
 		
-		<p align="center"><input type="button" onclick="complete('${dto}')" value="결제완료"> <input type="button" value="취소"></p>
+		<p align="center"><a href="main.do"><input type="button" value="결제완료"></a> <input type="button" value="취소"></p>
 		
 		</div>
 	</form>

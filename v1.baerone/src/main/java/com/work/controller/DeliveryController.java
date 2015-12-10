@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.work.dto.Delivery;
 import com.work.dto.Member;
 import com.work.dto.Paging;
+import com.work.service.AdminServiceImpl;
 import com.work.service.DeliveryServiceImpl;
 import com.work.service.FareServiceImpl;
 import com.work.service.MemberServiceImpl;
@@ -32,6 +33,7 @@ public class DeliveryController {
 	private DeliveryServiceImpl deliveryService;
 	private MemberServiceImpl memberService;
 	private FareServiceImpl fareService;
+	private AdminServiceImpl adminService;
 	
 	@Autowired
 	public void setDeliveryService(DeliveryServiceImpl deliveryService) {
@@ -48,8 +50,13 @@ public class DeliveryController {
 		this.fareService = fareService;
 	}
 	
+	@Autowired
+	public void setService(AdminServiceImpl adminService){
+		this.adminService = adminService;
+	}
+	
 	/**
-	 * ��޽�û �� �̵�
+	 * 占쏙옙聘占시� 占쏙옙 占싱듸옙
 	 * @param session
 	 * @return
 	 */
@@ -64,7 +71,7 @@ public class DeliveryController {
 		return mv;
 	}
 	/**
-	 * ��� �ֹ��� ��û ���� Ȯ��
+	 * 占쏙옙占� 占쌍뱄옙占쏙옙 占쏙옙청 占쏙옙占쏙옙 확占쏙옙
 	 * @param dto
 	 * @return
 	 */
@@ -78,25 +85,28 @@ public class DeliveryController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 		mv.addObject("delivery", dto);
 		mv.setViewName("delivery/deliveryCheck");
 		return mv;
 	}
 	
 	/**
-	 * ���� �˾�
+	 * 占쏙옙占쏙옙 占싯억옙
 	 * @param dto 
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="payment.do", method=RequestMethod.POST)
-	public ModelAndView payment(Delivery dto, HttpSession session){
+	public ModelAndView payment(Delivery dto, HttpSession session, ModelAndView mv){
 		String senderId = (String)session.getAttribute("userid");
-		ModelAndView mv = new ModelAndView();
+		dto.toString();
 		dto.setSenderId(senderId);
 		mv.addObject("dto", dto);
-		System.out.println(dto.toString());
-		mv.setViewName("delivery/payment");
+		HashMap<String, Object> resultMap = deliveryService.getAllBoard(1, senderId);
+		mv.addObject("list", (List<Delivery>) resultMap.get("list"));
+		mv.addObject("paging", (Paging) resultMap.get("paging"));
+		mv.addObject("page", 1);
+		mv.setViewName("delivery/myDelivery");
 		
 		if ( dto != null ) {
 		deliveryService.deliveryService(dto);
@@ -106,7 +116,7 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * ��� ��� �ֹ��� �ۼ� ���
+	 * 占쏙옙占� 占쏙옙占� 占쌍뱄옙占쏙옙 占쌜쇽옙 占쏙옙占�
 	 */
 	@RequestMapping(value="cancelAppl.do")
 	public String cancelAppl(){
@@ -114,7 +124,7 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * ��� ��� �ֹ��� ��û�Ϸ�
+	 * 占쏙옙占� 占쏙옙占� 占쌍뱄옙占쏙옙 占쏙옙청占싹뤄옙
 	 * @param dto
 	 * @return
 	 */
@@ -131,7 +141,7 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * ��û�� �ۼ� ����
+	 * 占쏙옙청占쏙옙 占쌜쇽옙 占쏙옙占쏙옙
 	 * @param dto
 	 * @return
 	 */
@@ -154,7 +164,7 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * 배송정보 리스트를 출력하는 뷰로 이동 요청
+	 * 諛곗넚�젙蹂� 由ъ뒪�듃瑜� 異쒕젰�븯�뒗 酉곕줈 �씠�룞 �슂泥�
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
@@ -170,7 +180,6 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * 드론배달 신청 취소 요청
 	 * @param session
 	 * @param deliveryNo
 	 * @return
@@ -202,7 +211,7 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * ��� ��� �غ� ���
+	 * 占쏙옙占� 占쏙옙占� 占쌔븝옙 占쏙옙占�
 	 * @param senderId
 	 * @return
 	 */
@@ -219,28 +228,38 @@ public class DeliveryController {
 	}
 	
 	/**
-	 * ��� ���
+	 * 占쏙옙占� 占쏙옙占�
 	 * @param session
 	 * @param deliveryNo
 	 * @return
 	 */
 	@RequestMapping(value="sendDrone.do", method=RequestMethod.POST)
 	public ModelAndView sendDrone(int deliveryNo, String beaconName){
+		System.out.println("####"+beaconName + "nono" + deliveryNo);
 		ModelAndView mv = new ModelAndView();
 		Delivery dto = new Delivery();
 		dto.setDeliveryNo(deliveryNo);
 		dto.setBeaconName(beaconName);
-		List<Delivery> list = deliveryService.deliveryReady();
 		deliveryService.sendDrone(dto);
-		if( list != null) {
+		List<Delivery> list = adminService.deliveryList();
+		//if( list != null) {
 			mv.addObject("list", list);
-			mv.setViewName("admin/deliveryReady");
+			mv.setViewName("admin/mgDelivery");
+		//}
+			/**
+		try {
+			Utility.sendMessageToSender();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		**/
 		return mv;
+		
 	}
 	
 	/**
-	 * ��� ��� �غ� ���
+	 * 占쏙옙占� 占쏙옙占� 占쌔븝옙 占쏙옙占�
 	 * @param senderId
 	 * @return
 	 */
@@ -256,7 +275,7 @@ public class DeliveryController {
 	}
 	
 	 /**
-	    * �������� �� �˻�
+	    * 占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙 占싯삼옙
 	    * @param searchBox
 	    * @return
 	    */
@@ -271,7 +290,7 @@ public class DeliveryController {
 	      mv.setViewName("admin/deliveryList");
 	     System.out.println("####if");
 	      } else {
-	    	  mv.addObject("message", "�˻��� ����� �����ϴ�.");
+	    	  mv.addObject("message", "占싯삼옙占쏙옙 占쏙옙占쏙옙占� 占쏙옙占쏙옙占싹댐옙.");
 	      }
 	      return mv;
 	   }

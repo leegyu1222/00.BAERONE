@@ -7,11 +7,13 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.SystemPropertyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.work.dto.Member;
+import com.work.service.AdminServiceImpl;
 import com.work.service.MemberServiceImpl;
 
 import org.springframework.stereotype.Controller;
@@ -19,14 +21,20 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class MemberController {
 	private MemberServiceImpl service;
+	private AdminServiceImpl adminService;
 	
 	@Autowired
 	public void setService(MemberServiceImpl service){
 		this.service = service;
 	}
 	
+	@Autowired
+	public void setService(AdminServiceImpl adminService){
+		this.adminService = adminService;
+	}
+	
 	/**
-	 * ·Î±×ÀÎ 
+	 * ë¡œê·¸ì¸ 
 	 * @param userid
 	 * @param userpw
 	 * @param request
@@ -37,21 +45,32 @@ public class MemberController {
 		String grade = service.login(userid, userpw);
 		ModelAndView mv = new ModelAndView();
 		
-		if(grade != null) {
-			HttpSession session = request.getSession(true);
-			session.setAttribute("userid", userid);
-			session.setAttribute("grade", grade);
-			mv.setViewName("main");
+		HttpSession session = request.getSession(true);
+		session.setAttribute("userid", userid);
+		session.setAttribute("grade", grade);
+		
+		if(grade.equals("A")) {
+			mv.addObject("memberCount",adminService.memberCount());
+			mv.addObject("thisIncome",adminService.thisIncome());
+			mv.addObject("thisOrder",adminService.thisOrder());
+			mv.addObject("maleCount",adminService.maleCount());
+			mv.addObject("femaleCount",adminService.femaleCount());
+			mv.addObject("years10",adminService.years10());
+			mv.addObject("years20",adminService.years20());
+			mv.addObject("years30",adminService.years30());
+			mv.addObject("years40",adminService.years40());
+			mv.addObject("years50",adminService.years50());
 			
-			System.out.println("###########"+grade);
-		}else {
-			mv.addObject("message","·Î±×ÀÎ Á¤º¸¸¦ ´Ù½Ã È®ÀÎÇÏ½Ã±â ¹Ù¶ø´Ï´Ù.");
+			System.out.println("######"+adminService.memberCount());
+			mv.setViewName("admin/adminMain");
+		} else {
+			mv.setViewName("main");
 		}
 		return mv;
 	}
 	
 	/**
-	 * ·Î±×¾Æ¿ô - > ·Î±×ÀÎÆäÀÌÁö
+	 * å ì‹¸ê·¸ì•„ìš¸ì˜™ - > å ì‹¸ê¹ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™
 	 * @param session
 	 * @return
 	 */
@@ -71,7 +90,7 @@ public class MemberController {
 	}
 	
 	/**
-	 * ³»Á¤º¸Á¶È¸
+	 * å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™íšŒ
 	 * @param member
 	 * @param request
 	 * @return
@@ -86,14 +105,14 @@ public class MemberController {
 		if(userid != null) {
 			Member member = service.myinfo(userid);
 			mv.addObject("member",member);
-			mv.addObject("message",userid + "´Ô Á¶È¸ ³»¿ª ÀÔ´Ï´Ù.");
+			mv.addObject("message",userid + "å ì™ì˜™ å ì™ì˜™íšŒ å ì™ì˜™å ì™ì˜™ å ìŒ‰ë‹ˆëŒì˜™.");
 			mv.setViewName("member/myinfo");
 		}
 		return mv;
 	}
 	
 	/**
-	 * ³»Á¤º¸º¯°æ ºä·Î ÀÌµ¿ => ±âÁ¸Á¤º¸ º¸¿©ÁÜ
+	 * å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ï¿½ å ì‹±ë“¸ì˜™ => å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™
 	 * @return
 	 */
 	@RequestMapping(value="myinfoModifyView.do")
@@ -106,7 +125,7 @@ public class MemberController {
 	}
 	
 	/**
-	 * ³»Á¤º¸º¯°æ ÀúÀå
+	 * å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™
 	 * @param member
 	 * @param request
 	 * @return
@@ -119,7 +138,7 @@ public class MemberController {
 		
 		if(session.getAttribute("userid") != null) {
 			int check = service.myinfoModify(member);
-			mv.addObject("message", session.getAttribute("userid") + "´Ô º¯°æ µÇ¾ú½À´Ï´Ù. ´Ù½Ã Á¶È¸ ÇØÁÖ¼¼¿ä.");
+			mv.addObject("message", session.getAttribute("userid") + "å ì™ì˜™ å ì™ì˜™å ì™ì˜™ å ì‹¤ì–µì˜™å ì™ì˜™å ì‹¹ëŒì˜™. å ìŒ•ì™ì˜™ å ì™ì˜™íšŒ å ì™ì˜™å ìŒì‡½ì˜™å ì™ì˜™.");
 			member = service.myinfo((String)session.getAttribute("userid"));
 			mv.addObject(member);
 			mv.setViewName("member/myinfo");
@@ -128,7 +147,7 @@ public class MemberController {
 	}
 	
 	/**
-	 * È¸¿øÅ»Åğ 
+	 * íšŒå ì™ì˜™íƒˆå ì™ì˜™ 
 	 * @param request
 	 * @return
 	 */
@@ -138,10 +157,10 @@ public class MemberController {
 		session = request.getSession(true);
 		
 		if(service.deleteMember((String)session.getAttribute("userid")) > 0) {
-			mv.addObject("message","È¸¿øÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.");
+			mv.addObject("message","íšŒå ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™å ì‹¤ì–µì˜™å ì™ì˜™å ì‹¹ëŒì˜™.");
 			mv.setViewName("login");
 		}else {
-			mv.addObject("message","Å»Åğ¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù.");
+			mv.addObject("message","íƒˆå ì™ì˜™ å ì™ì˜™å ì™ì˜™å ì‹¹ìš¸ì˜™å ì™ì˜™å ì‹¹ëŒì˜™.");
 			mv.setViewName("deleteMember");
 		}
 		return mv;
@@ -149,7 +168,7 @@ public class MemberController {
 	}
 
 	/**
-	 * ¸â¹ö¸®½ºÆ® µé¾î°¥¶§ 
+	 * å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì‹£ï¿½ å ì™ì˜™è¼‰Î¿ì˜™å ï¿½ 
 	 * @param userid
 	 * @param request
 	 * @return
@@ -167,7 +186,7 @@ public class MemberController {
 	}
 	
 	/**
-	 * Á¶°Ç°Ë»ö 
+	 * å ì™ì˜™å ì‹¤ê²€ì‚¼ì˜™ 
 	 * @param request
 	 * @return
 	 */
@@ -176,17 +195,28 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		
 		if(memberListInput != null ) {
-			System.out.println("if¹®");
+			System.out.println("ifå ì™ì˜™");
 			List<Member> list = service.memberListChoose(memberListSelect, memberListInput);
 			mv.addObject("memberList", list);
 			mv.setViewName("admin/memberList");
 		}else {
-			System.out.println("else¹®");
+			System.out.println("elseå ì™ì˜™");
 			service.memberListChoose(memberListSelect, memberListInput);
-			mv.addObject("message","ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+			mv.addObject("message","å ìŒ‰ë¤„ì˜™å ì™ì˜™å ìŒì‡½ì˜™å ì™ì˜™.");
 			mv.setViewName("admin/memberList");
 		}
 		
 		return mv;
 	}
+	
+	/**
+	 * íšŒì›ê°€ì… í˜ì´ì§€ ì´ë™ ìš”ì²­ 
+	 * @return
+	 */
+
+	@RequestMapping("joinView.do")
+	public String joinView() {
+		return "member/join2";
+	}
+	
 }

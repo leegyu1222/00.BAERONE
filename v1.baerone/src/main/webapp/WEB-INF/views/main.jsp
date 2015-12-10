@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/icomoon-social.css">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'>
-
+		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/leaflet.css" />
 		<!--[if lte IE 8]>
 		    <link rel="stylesheet" href="css/leaflet.ie.css" />
@@ -29,6 +29,7 @@
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
+<<<<<<< HEAD
         
 
         <!-- Navigation & Logo-->
@@ -133,6 +134,14 @@
 			</div>
 		</div>
 
+=======
+       
+        <!-- Start of Header -->
+		<jsp:include page="inc/header.jsp" />
+		<!-- End of Header -->
+
+
+>>>>>>> branch 'master' of https://github.com/leegyu1222/00.BAERONE.git
         <!-- Homepage Slider -->
         <div class="homepage-slider">
         	<div id="sequence">
@@ -252,45 +261,8 @@
 	    <!-- End Our Clients -->
 
 	    <!-- Footer -->
-	    <div class="footer">
-	    	<div class="container">
-		    	<div class="row">
-		    		<div class="col-footer col-md-4 col-xs-6">
-		    			<h3>바로가기</h3>
-		    			<ul class="no-list-style footer-navigate-section">
-		    				<li><a href="page-blog-posts.html">About</a></li>
-		    				<li><a href="page-portfolio-3-columns-2.html">배송신청</a></li>
-		    				<li><a href="page-products-3-columns.html">배송조회</a></li>
-		    				<li><a href="page-services-3-columns.html">가격정보</a></li>
-		    				<li><a href="page-pricing.html">회원탈퇴</a></li>
-		    				<li><a href="page-faq.html">FAQ</a></li>
-		    			</ul>
-		    		</div>
-		    		
-		    		<div class="col-footer col-md-4 col-xs-6">
-		    			<h3>Contacts</h3>
-		    			<p class="contact-us-details">
-	        				<b>주소:</b> 대한민국 서울특별시 노원구 공릉동 삼육대학교<br/>
-	        				<b>연락처:</b>010-9904-1890<br/>
-	        				<b>Email:</b> <a href="mailto:getintoutch@yourcompanydomain.com">bbangss_min@naver.com</a>
-	        			</p>
-		    		</div>
-		    		<div class="col-footer col-md-4 col-xs-6">
-		    			<h3>Stay Connected</h3>
-		    			<ul class="footer-stay-connected no-list-style">
-		    				<li><a href="#" class="facebook"></a></li>
-		    				<li><a href="#" class="twitter"></a></li>
-		    				<li><a href="#" class="googleplus"></a></li>
-		    			</ul>
-		    		</div>
-		    	</div>
-		    	<div class="row">
-		    		<div class="col-md-12">
-		    			<div class="footer-copyright">&copy; 2013 mPurpose. All rights reserved.</div>
-		    		</div>
-		    	</div>
-		    </div>
-	    </div>
+		<jsp:include page="inc/footer.jsp" />
+		<!-- End of Footer -->
 
         <!-- Javascripts -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

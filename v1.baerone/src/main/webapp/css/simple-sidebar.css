@@ -8,12 +8,10 @@
 
 #wrapper {
     padding-left: 0;
-    padding-top: 35px;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
-    background-color: white;
 }
 
 #wrapper.toggled {
@@ -23,17 +21,19 @@
 #sidebar-wrapper {
     z-index: 1000;
     position: absolute;
-    left: 290px;
+    left: 250px;
     width: 0;
-    height: 60%;
+    height: 100%;
     margin-left: 60px;
     overflow-y: auto;
     background: #ffffff;
-    text-align: center;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
+    border-left: 1px solid #4F8DB3;
+    border-right:1px solid #4F8DB3;
+    border-bottom:1px solid #4F8DB3;
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -59,12 +59,9 @@
     position: absolute;
     top: 0;
     width: 250px;
-    height: 60%
-    margin-top: 0;
+    margin: 0;
     padding: 0;
     list-style: none;
-    background-image: url(../img/slider_img.png);
-    background-repeat: no-repeat;
 }
 
 .sidebar-nav li {
@@ -92,13 +89,13 @@
 .sidebar-nav > .sidebar-brand {
     height: 65px;
     font-size: 18px;
-    font-size: 18px;
     line-height: 60px;
+    background: #4F8DB3;
 }
 
 .sidebar-nav > .sidebar-brand a {
 	font-weight:900;
-    color: black;
+    color: #ffffff	;
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
@@ -124,8 +121,7 @@
     }
 
     #page-content-wrapper {
-        padding: 0 20px 20px 20px;
-        
+        padding: 20px;
         position: relative;
     }
 
