@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.SystemPropertyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -52,6 +53,14 @@ public class MemberController {
 			mv.addObject("memberCount",adminService.memberCount());
 			mv.addObject("thisIncome",adminService.thisIncome());
 			mv.addObject("thisOrder",adminService.thisOrder());
+			mv.addObject("maleCount",adminService.maleCount());
+			mv.addObject("femaleCount",adminService.femaleCount());
+			mv.addObject("years10",adminService.years10());
+			mv.addObject("years20",adminService.years20());
+			mv.addObject("years30",adminService.years30());
+			mv.addObject("years40",adminService.years40());
+			mv.addObject("years50",adminService.years50());
+			
 			System.out.println("######"+adminService.memberCount());
 			mv.setViewName("admin/adminMain");
 		} else {
