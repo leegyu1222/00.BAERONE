@@ -19,7 +19,9 @@
 <meta content="authenticity_token" name="csrf-param" />
 <meta content="+1MmYTq191ghaSmFKgSYXdMXoDTNfIN7Kj29I56r88k="
 	name="csrf-token" />
-
+<script type="text/javascript" src="js/postCode/postCode.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 </head>
 <body class="intro">
@@ -105,16 +107,39 @@
 								
 								<!-- E-mail -->
 								<div class="box_wrapper first" style="margin-bottom: 30px;">
-									<input autofocus="autofocus" class="joinbox userid" id="email" name="email" placeholder="E-mail" size="30" type="email" /> 
-									<label for="userid">Email</label>
+									<input autofocus="autofocus" class="joinbox emal" id="email" name="email" placeholder="E-mail" size="30" type="email" /> 
+									<label for="email">Email</label>
 									<div class="validation_check"></div>
 									<div class="warning" id="useridWarning"></div>
 								</div>
 								
-								
-								
+								<!--  Address -->
+								<div class="box_wrapper first" style="margin-bottom: 30px;">
+									<input autofocus="autofocus" class="joinbox postNo" id="senderPostNo" name="senderPostNo" placeholder="우편번호" size="30" type="text" style="display:inline;"/> 
+									<label for="userid">우편번호</label>
+									<div class="validation_check"></div>
+									<input type="button" onclick="sender_Postcode()" value="우편번호 찾기">
+									<div class="warning" id="useridWarning"></div>
+								</div>
+								<div class="box_wrapper first" style="margin-bottom: 30px;">
+									<input autofocus="autofocus" class="joinbox senderAddrOld" id="senderAddrOld" name="senderAddrOld" placeholder="지번주소" size="30" type="text" /> 
+									<label for="addressOld">지번주소</label>
+									<div class="validation_check"></div>
+									<div class="warning" id="useridWarning"></div>
+								</div>
+								<div class="box_wrapper first" style="margin-bottom: 30px;">
+									<input autofocus="autofocus" class="joinbox senderAddrNew" id="senderAddrNew" name="senderAddrNew" placeholder="도로명주소" size="30" type="text" /> 
+									<label for="userid">도로명주소</label>
+									<div class="validation_check"></div>
+									<div class="warning" id="useridWarning"></div>
+								</div>
+								<div class="box_wrapper first" style="margin-bottom: 30px;">
+									<input autofocus="autofocus" class="joinbox senderAddrMisc" id="senderAddrMisc" name="senderAddrMisc" placeholder="상세주소" size="30" type="text" /> 
+									<label for="userid">상세주소</label>
+									<div class="validation_check"></div>
+									<div class="warning" id="useridWarning"></div>
+								</div>
 							</div>
-
 							<!-- Register -->
 							<div class="btn_join" onclick="join();">
 								등록하기
