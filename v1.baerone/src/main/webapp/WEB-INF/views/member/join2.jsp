@@ -43,11 +43,10 @@
 							
 							<!-- Input Form -->
 							<div class="input_form">
-							
-								<!-- E-mail -->
+								<!-- ID -->
 								<div class="box_wrapper first" style="margin-bottom: 30px;">
 									<input autofocus="autofocus" class="joinbox userid" id="userid" name="userid" placeholder="아이디(E-mail)" size="30" type="email" /> 
-									<label for="userid">이메일주소</label>
+									<label for="userid">ID</label>
 									<div class="validation_check"></div>
 									<div class="warning" id="useridWarning"></div>
 								</div>
@@ -70,18 +69,10 @@
 								
 								<!-- Nickname -->
 								<div class="box_wrapper" style="margin-bottom: 30px;">
-									<input class="joinbox name" id="nickname" name="nickname" placeholder="닉네임" size="30" type="text" />
-										<label for="nickname">닉네임</label>
+									<input class="joinbox name" id="name" name="name" placeholder="이름" size="30" type="text" />
+										<label for="nickname">이름</label>
 									<div class="validation_check"></div>
 									<div class="warning" id="nicknameWarning"></div>
-								</div>
-								
-								<!-- Mobile -->
-								<div class="box_wrapper last" style="margin-bottom: 30px;">
-									<input class="joinbox mobile" id="mobile" name="mobile" placeholder="핸드폰 번호 ( ex : xxx-xxxx-xxxx)" size="30"type="text" /> 
-									<label for="mobile">핸드폰 번호</label>
-									<div class="validation_check"></div>
-									<div class="warning" id="mobileWarning"></div>
 								</div>
 								
 								<!-- Birth -->
@@ -104,29 +95,24 @@
 									<div class="warning" id="genderWarning"></div>
 								</div>
 								
-								<!-- Job 
+								<!-- Mobile -->
 								<div class="box_wrapper last" style="margin-bottom: 30px;">
-									<input class="joinbox job" id="job" name="job" placeholder="직업" size="30" type="text" />
-									<label for="job">직업</label>
+									<input class="joinbox mobile" id="mobile" name="mobile" placeholder="핸드폰 번호 ( ex : xxx-xxxx-xxxx)" size="30"type="text" /> 
+									<label for="mobile">핸드폰 번호</label>
 									<div class="validation_check"></div>
-									<div class="warning" id="jobWarning"></div>
+									<div class="warning" id="mobileWarning"></div>
 								</div>
-								-->
 								
-								<!-- Job -->
-								<div class="box_wrapper last" style="margin-bottom: 30px;">
-									<select name="job" id="job" style="width:200px; height:48px;">
-										<option selected="selected" value="empty">직업</option>
-										<option value="중/고등학생">중/고등학생</option>
-										<option value="대학생">대학생</option>
-										<option value="교사">교사</option>
-										<option value="대학교수">대학교수</option>
-										<option value="IT관련직종">IT관련직종</option>
-										<option value="기타">기타</option>
-									</select>
+								<!-- E-mail -->
+								<div class="box_wrapper first" style="margin-bottom: 30px;">
+									<input autofocus="autofocus" class="joinbox userid" id="email" name="email" placeholder="E-mail" size="30" type="email" /> 
+									<label for="userid">Email</label>
 									<div class="validation_check"></div>
-									<div class="warning" id="jobWarning"></div>
+									<div class="warning" id="useridWarning"></div>
 								</div>
+								
+								
+								
 							</div>
 
 							<!-- Register -->
