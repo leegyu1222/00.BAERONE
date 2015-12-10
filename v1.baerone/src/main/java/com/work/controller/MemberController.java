@@ -199,4 +199,15 @@ public class MemberController {
 		
 		return mv;
 	}
+	
+	/**
+	 * 회원가입 페이지 이동 요청 
+	 * @return
+	 */
+
+	@RequestMapping("joinView.do")
+	public String joinView() {
+		return "member/join2";
+	}
+	
 }

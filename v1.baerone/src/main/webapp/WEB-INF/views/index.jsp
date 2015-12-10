@@ -136,7 +136,7 @@
     margin-bottom: 5px;
 " placeholder="Password"onblur="if (this.value == '') {this.value = 'Password';}">
 	        <p><a href="mailto:feedback@startbootstrap.com" style="color:#AAAAAA">비밀번호 찾기</a>
-	        <span style="color:#AAAAAA">/</span> <a href="mailto:feedback@startbootstrap.com" style="color:#AAAAAA">회원가입</a>
+	        <span style="color:#AAAAAA">/</span> <a href="joinView.do" style="color:#AAAAAA">회원가입</a>
                 </p>
             <div class="loginArea_but">
                 <label class="btn1 btn3 btn-1 btn-1b"><input type="submit" value="로그인"></label>

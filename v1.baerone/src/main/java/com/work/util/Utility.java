@@ -175,7 +175,8 @@ public class Utility {
 	
 
 	//GCM 보내는사람에게 드론출발 알림
-	public static void sendMessageToSender() throws IOException {
+
+	public static void sendMessageToSender() throws Exception {
 
 		Sender sender = new Sender("AIzaSyAXZCm3cKCA-ipzXeR3nVlh7ObgJd8A-UU");
 
@@ -201,7 +202,6 @@ public class Utility {
 			}
 		}
 	}
-	
 
 	
 
