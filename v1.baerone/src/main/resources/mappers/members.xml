@@ -58,15 +58,8 @@
 			select count(*) from members
 		</select>
 		
-		<!-- 전체배송 수 -->
-		<select id ="deliveryCount" resultType="int">
-			select count(*) from delivery
-		</select>
 		
-		<!-- 운임합계 -->
-		<select id="fareSum">
-			select sum(fare) delivery
-		</select>
+		
 		
 		
 		<!-- 조건검색 (관리자) 이렇게하면 셀렉트시 none 이나 값을 입력하지 않았을때 SQL구문오류

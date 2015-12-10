@@ -42,7 +42,7 @@
                                     <i class="fa fa-krw fa-5x"></i>
                                 </div>
                                 <div class="col-xs-5 text-center">
-                                    <p class="alerts-heading">13500</p>
+                                    <p class="alerts-heading">${thisIncome }</p>
                                 </div>
                             </div>
                             <div class="row alert-danger col-lg-4">
@@ -50,7 +50,7 @@
                                     <i class="fa fa-shopping-cart fa-5x"></i>
                                 </div>
                                 <div class="col-xs-5 text-right">
-                                    <p class="alerts-heading">7</p>
+                                    <p class="alerts-heading">${thisOrder }</p>
                                 </div>
                             </div>
                         </div>   

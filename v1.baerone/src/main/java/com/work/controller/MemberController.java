@@ -50,6 +50,8 @@ public class MemberController {
 		
 		if(grade.equals("A")) {
 			mv.addObject("memberCount",adminService.memberCount());
+			mv.addObject("thisIncome",adminService.thisIncome());
+			mv.addObject("thisOrder",adminService.thisOrder());
 			System.out.println("######"+adminService.memberCount());
 			mv.setViewName("admin/adminMain");
 		} else {

@@ -22,4 +22,11 @@ public class AdminDAOImpl implements AdminDAO {
 		return sqlSession.selectList("deliveryList");
 	}
 
+	public int thisIncome() {
+		return sqlSession.selectOne("thisIncome");
+	}
+	
+	public int thisOrder() {
+		return sqlSession.selectOne("thisOrder");
+	}
 }

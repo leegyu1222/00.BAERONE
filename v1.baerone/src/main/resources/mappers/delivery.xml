@@ -79,6 +79,21 @@
 				where product_detail = #{productDetail}	    
 			</select>
 			
+		<!-- 운임합계 -->
+		<select id="fareSum" resultType="int">
+			select sum(fare) delivery
+		</select>
+		
+		<!-- 이번달 수입 -->
+		<select id="thisIncome" resultType="int" >
+		select sum(fare) from delivery where TO_CHAR(SYSDATE,'MM') = SUBSTR(delivery_date,6,2)
+		</select>
+		
+		<!-- 이번달 주문수 -->
+		<select id="thisOrder" resultType="int" >
+		select count(*) from delivery where TO_CHAR(SYSDATE,'MM') = SUBSTR(delivery_date,6,2)
+		</select>	
+			
 	<!-- delete -->
 		<!-- 배송 취소 -->
 			<delete id="cancelDelivery" parameterType="int">

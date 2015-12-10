@@ -25,4 +25,11 @@ public class AdminServiceImpl implements AdminService {
 		return adminDAO.deliveryList();
 	}
 
+	public int thisIncome() {
+		return adminDAO.thisIncome();
+	}
+	
+	public int thisOrder() {
+		return adminDAO.thisOrder();
+	}
 }
