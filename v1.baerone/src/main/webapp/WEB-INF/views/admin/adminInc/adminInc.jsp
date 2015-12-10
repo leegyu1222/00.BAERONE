@@ -10,7 +10,9 @@
 	<div class="collapse navbar-collapse navbar-ex1-collapse">
 		<ul class="nav navbar-nav side-nav" style="box-shadow: 1px 1px 10px">
 			<li class="active"><a href="adminMain.do"><i class="fa fa-bullseye"></i> 홈</a></li>
+
 			<li><a href="mgDelivery.do"><i class="fa fa-tasks"></i> 배송 관리</a></li>
+
 			<li><a href="mgMember.do"><i class="fa fa-globe"></i> 회원 관리</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right navbar-user">

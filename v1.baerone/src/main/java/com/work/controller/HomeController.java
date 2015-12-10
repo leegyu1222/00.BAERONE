@@ -23,9 +23,17 @@ public class HomeController {
 		return "index";
 	}
 	
+
+	//메인페이지 이동
+	@RequestMapping("main.do")
+	public String main(){
+		return "main";
+}
+
 	@RequestMapping("faq.do")
 	public String faq() {
 		return "faq";
+
 	}
 	
 }

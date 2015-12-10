@@ -56,14 +56,13 @@
 					 )SUB2 
 				WHERE RNUM BETWEEN #{start} AND #{end}
 			</select>
+		<!-- 배송 전체 목록 -->
+			<select id = "deliveryList" resultMap="deliveryResult">
+				select *from delivery order by delivery_no desc
+			</select>
 		<!-- 드론 출발 준비 목록 -->
 			<select id="deliveryReady" resultMap="deliveryResult">
 				select * from delivery where delivery_status = '결제완료'
-			</select>
-		
-		<!-- 드론 배송 목록 -->
-			<select id="deliveryList" resultMap="deliveryResult">
-				select * from delivery where delivery_status != '결제완료'
 			</select>
 			
 		<!-- 드론 배송 목록 조회 -->

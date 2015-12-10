@@ -34,6 +34,7 @@
  String today = formatter.format(new java.util.Date());
 %>
     <body>
+
         <!-- Start of Header -->
 		<jsp:include page="../inc/header.jsp" />
 		<!-- End of Header -->

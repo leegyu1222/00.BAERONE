@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.work.dto.Member;
+import com.work.service.AdminServiceImpl;
 import com.work.service.MemberServiceImpl;
 
 import org.springframework.stereotype.Controller;
@@ -19,14 +20,20 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class MemberController {
 	private MemberServiceImpl service;
+	private AdminServiceImpl adminService;
 	
 	@Autowired
 	public void setService(MemberServiceImpl service){
 		this.service = service;
 	}
 	
+	@Autowired
+	public void setService(AdminServiceImpl adminService){
+		this.adminService = adminService;
+	}
+	
 	/**
-	 * �α��� 
+	 * 로그인 
 	 * @param userid
 	 * @param userpw
 	 * @param request
@@ -42,6 +49,8 @@ public class MemberController {
 		session.setAttribute("grade", grade);
 		
 		if(grade.equals("A")) {
+			mv.addObject("memberCount",adminService.memberCount());
+			System.out.println("######"+adminService.memberCount());
 			mv.setViewName("admin/adminMain");
 		} else {
 			mv.setViewName("main");
@@ -50,7 +59,7 @@ public class MemberController {
 	}
 	
 	/**
-	 * �α׾ƿ� - > �α���������
+	 * 占싸그아울옙 - > 占싸깍옙占쏙옙占쏙옙占쏙옙占쏙옙
 	 * @param session
 	 * @return
 	 */
@@ -70,7 +79,7 @@ public class MemberController {
 	}
 	
 	/**
-	 * ��������ȸ
+	 * 占쏙옙占쏙옙占쏙옙占쏙옙회
 	 * @param member
 	 * @param request
 	 * @return
@@ -85,14 +94,14 @@ public class MemberController {
 		if(userid != null) {
 			Member member = service.myinfo(userid);
 			mv.addObject("member",member);
-			mv.addObject("message",userid + "�� ��ȸ ���� �Դϴ�.");
+			mv.addObject("message",userid + "占쏙옙 占쏙옙회 占쏙옙占쏙옙 占쌉니댐옙.");
 			mv.setViewName("member/myinfo");
 		}
 		return mv;
 	}
 	
 	/**
-	 * ���������� ��� �̵� => �������� ������
+	 * 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占� 占싱듸옙 => 占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙
 	 * @return
 	 */
 	@RequestMapping(value="myinfoModifyView.do")
@@ -105,7 +114,7 @@ public class MemberController {
 	}
 	
 	/**
-	 * ���������� ����
+	 * 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙
 	 * @param member
 	 * @param request
 	 * @return
@@ -118,7 +127,7 @@ public class MemberController {
 		
 		if(session.getAttribute("userid") != null) {
 			int check = service.myinfoModify(member);
-			mv.addObject("message", session.getAttribute("userid") + "�� ���� �Ǿ����ϴ�. �ٽ� ��ȸ ���ּ���.");
+			mv.addObject("message", session.getAttribute("userid") + "占쏙옙 占쏙옙占쏙옙 占실억옙占쏙옙占싹댐옙. 占쌕쏙옙 占쏙옙회 占쏙옙占쌍쇽옙占쏙옙.");
 			member = service.myinfo((String)session.getAttribute("userid"));
 			mv.addObject(member);
 			mv.setViewName("member/myinfo");
@@ -127,7 +136,7 @@ public class MemberController {
 	}
 	
 	/**
-	 * ȸ��Ż�� 
+	 * 회占쏙옙탈占쏙옙 
 	 * @param request
 	 * @return
 	 */
@@ -137,10 +146,10 @@ public class MemberController {
 		session = request.getSession(true);
 		
 		if(service.deleteMember((String)session.getAttribute("userid")) > 0) {
-			mv.addObject("message","ȸ���� �����Ǿ����ϴ�.");
+			mv.addObject("message","회占쏙옙占쏙옙 占쏙옙占쏙옙占실억옙占쏙옙占싹댐옙.");
 			mv.setViewName("login");
 		}else {
-			mv.addObject("message","Ż�� �����Ͽ����ϴ�.");
+			mv.addObject("message","탈占쏙옙 占쏙옙占쏙옙占싹울옙占쏙옙占싹댐옙.");
 			mv.setViewName("deleteMember");
 		}
 		return mv;
@@ -148,7 +157,7 @@ public class MemberController {
 	}
 
 	/**
-	 * �������Ʈ ���� 
+	 * 占쏙옙占쏙옙占쏙옙占싣� 占쏙옙載ο옙占� 
 	 * @param userid
 	 * @param request
 	 * @return
@@ -166,7 +175,7 @@ public class MemberController {
 	}
 	
 	/**
-	 * ���ǰ˻� 
+	 * 占쏙옙占실검삼옙 
 	 * @param request
 	 * @return
 	 */
@@ -175,14 +184,14 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		
 		if(memberListInput != null ) {
-			System.out.println("if��");
+			System.out.println("if占쏙옙");
 			List<Member> list = service.memberListChoose(memberListSelect, memberListInput);
 			mv.addObject("memberList", list);
 			mv.setViewName("admin/memberList");
 		}else {
-			System.out.println("else��");
+			System.out.println("else占쏙옙");
 			service.memberListChoose(memberListSelect, memberListInput);
-			mv.addObject("message","�Է����ּ���.");
+			mv.addObject("message","占쌉뤄옙占쏙옙占쌍쇽옙占쏙옙.");
 			mv.setViewName("admin/memberList");
 		}
 		

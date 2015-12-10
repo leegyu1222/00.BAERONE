@@ -16,15 +16,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.work.dto.Delivery;
+import com.work.dto.Paging;
+import com.work.service.AdminServiceImpl;
+import com.work.service.DeliveryServiceImpl;
 
 import jdk.nashorn.internal.ir.RuntimeNode.Request;
 
 @Controller
 public class AdminController {
-
+	private AdminServiceImpl adminService;
+	private DeliveryServiceImpl deliveryService;
 	
-	   
-
+	@Autowired
+	public void setService(AdminServiceImpl adminService){
+		this.adminService = adminService;
+	}
+	
+	@Autowired
+	public void setDeliveryService(DeliveryServiceImpl deliveryService) {
+		this.deliveryService = deliveryService;
+	}
+	
 	@RequestMapping(value = "adminMain.do")
 	public ModelAndView goAdminMain() {
 		ModelAndView mav = new ModelAndView();
@@ -38,9 +51,12 @@ public class AdminController {
 	@RequestMapping(value = "mgDelivery.do")
 	public ModelAndView goMgDelivery() {
 		ModelAndView mav = new ModelAndView();
-		/* List<Lecture> list = adminService.lectureList();
+		
+		List<Delivery> list = adminService.deliveryList();
 		System.out.println(list);
-		*/
+		mav.addObject("list", list);
+		
+		
 		mav.setViewName("admin/mgDelivery");
 		return mav;
 	}

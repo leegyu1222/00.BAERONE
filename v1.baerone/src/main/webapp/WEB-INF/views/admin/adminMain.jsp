@@ -34,7 +34,7 @@
                                     <h2 style="display:inline"><samll>전체사용자</samll></h2>
                                 </div>
                                 <div class="col-xs-5 text-center">
-                                    <p class="alerts-heading">343</p>
+                                    <p class="alerts-heading">${memberCount }</p>
                                 </div>
                             </div>
                             <div class="row alert-success col-lg-4">
@@ -42,7 +42,7 @@
                                     <i class="fa fa-krw fa-5x"></i>
                                 </div>
                                 <div class="col-xs-5 text-center">
-                                    <p class="alerts-heading">1256</p>
+                                    <p class="alerts-heading">13500</p>
                                 </div>
                             </div>
                             <div class="row alert-danger col-lg-4">
@@ -50,7 +50,7 @@
                                     <i class="fa fa-shopping-cart fa-5x"></i>
                                 </div>
                                 <div class="col-xs-5 text-right">
-                                    <p class="alerts-heading">4</p>
+                                    <p class="alerts-heading">7</p>
                                 </div>
                             </div>
                         </div>   
@@ -260,8 +260,8 @@
                     seriesType: "pie",
                     collectionAlias: "Usage",
                     data: [
-                      ["남", 75],
-                      ["여", 25],
+                      ["남", 8],
+                      ["여", 4],
                     ]
                 }]
             });
