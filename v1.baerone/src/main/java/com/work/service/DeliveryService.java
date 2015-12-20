@@ -24,7 +24,7 @@ public interface DeliveryService {
 	
 	public List<Delivery> sendDrone(Delivery dto);
 	
-	public List<Delivery> searchList(String searchBox, String category);
+	public List<Delivery> searchList(String category);
 	
 	public String searchUserId(String phone);
 	

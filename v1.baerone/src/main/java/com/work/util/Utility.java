@@ -6,6 +6,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
+import com.google.android.gcm.server.Message;
+import com.google.android.gcm.server.MulticastResult;
+import com.google.android.gcm.server.Result;
+import com.google.android.gcm.server.Sender;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -168,5 +172,35 @@ public class Utility {
 		double distance = Double.parseDouble(String.format("%.2f", d));
 		return distance;
 	}
+	
+
+	//GCM 보내는사람에게 드론출발 알림
+
+		public static void sendMessageToSender() throws Exception {
+
+			Sender sender = new Sender("AIzaSyAXZCm3cKCA-ipzXeR3nVlh7ObgJd8A-UU");
+
+			String regId = "APA91bEHobEqhGCo6Kc4GnbVllXHgWxVU5mg5TX1Mg_mV968YL7x4j_q5_n9TR-Jy1nO3VeB4Qa9KsCI4nWR2UE9IxaS29c268SXezvsPbOqcZyRmBo20-frYIGt_w7zsVP8kikKN0zD";
+
+			int dronepw = 3820;
+			
+			Message message = new Message.Builder().addData("msg", URLEncoder.encode("<드론출발> 잠금장치 비밀번호 : "+dronepw,"EUC-KR")).build();
+
+			List<String> list = new ArrayList<String>();
+
+			list.add(regId);
+
+			MulticastResult multiResult = sender.send(message, list, 5);
+
+			if (multiResult != null) {
+
+				List<Result> resultList = multiResult.getResults();
+
+				for (Result result : resultList) {
+
+					System.out.println(result.getMessageId());
+				}
+			}
+		}
 	
 }

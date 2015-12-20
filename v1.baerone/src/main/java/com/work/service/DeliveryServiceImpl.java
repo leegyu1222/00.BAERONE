@@ -85,8 +85,8 @@ public class DeliveryServiceImpl implements DeliveryService {
 	}
 
 	@Override
-	public List<Delivery> searchList(String searchBox, String category) {
-		return deliveryDAO.searchList(searchBox, category);
+	public List<Delivery> searchList(String category) {
+		return deliveryDAO.searchList(category);
 	}
 	public String searchUserId(String phone){
 		return deliveryDAO.searchUserId(phone);

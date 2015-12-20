@@ -179,6 +179,17 @@ public class DeliveryController {
 		return mv;
 	}
 	
+	@RequestMapping(value="mobileMyDelivery.do")
+	public ModelAndView mobileMyDelivery(String userid, ModelAndView mv, int page){
+		
+		HashMap<String, Object> resultMap = deliveryService.getAllBoard(page, userid);
+			mv.addObject("list", (List<Delivery>) resultMap.get("list"));
+			mv.addObject("paging", (Paging) resultMap.get("paging"));
+			mv.addObject("page", page);
+			mv.setViewName("delivery/myDelivery");
+		return mv;
+	}
+	
 	/**
 	 * @param session
 	 * @param deliveryNo
@@ -246,14 +257,17 @@ public class DeliveryController {
 			mv.addObject("list", list);
 			mv.setViewName("admin/mgDelivery");
 		//}
-			/**
+		
 		try {
 			Utility.sendMessageToSender();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		**/
+		
 		return mv;
 		
 	}
@@ -280,17 +294,15 @@ public class DeliveryController {
 	    * @return
 	    */
 	   @RequestMapping(value = "searchList.do", method=RequestMethod.POST )
-	   public ModelAndView searchList(String searchBox, String category) {
-		   System.out.println(searchBox + category);
-	      List<Delivery> list = deliveryService.searchList(searchBox, category);
+	   public ModelAndView searchList(String category) {
+	      List<Delivery> list = deliveryService.searchList(category);
 	      ModelAndView mv = new ModelAndView();
-	      System.out.println("!!!!!!!!!!!!"+list.toString());
 	      if(list.size()>0) {
 	      mv.addObject("list", list);
-	      mv.setViewName("admin/deliveryList");
-	     System.out.println("####if");
+	      mv.setViewName("admin/mgDelivery");
 	      } else {
-	    	  mv.addObject("message", "占싯삼옙占쏙옙 占쏙옙占쏙옙占� 占쏙옙占쏙옙占싹댐옙.");
+	    	  mv.setViewName("admin/mgDelivery");
+	    	  mv.addObject("message", "검색결과 없음");
 	      }
 	      return mv;
 	   }
@@ -332,9 +344,10 @@ public class DeliveryController {
 	   }
 		@RequestMapping(value="myDeliveryDetail")
 		public ModelAndView myDeliveryDetail(String productDetail) {
+			System.out.println(productDetail);
 			ModelAndView mv = new ModelAndView();
 			List<Delivery> list = deliveryService.myDeliveryDetail(productDetail);
-			System.out.println(list.size());
+			System.out.println("list 테스트 " + list);
 			mv.addObject("list", list);
 			mv.setViewName("delivery/myDeliveryMore");
 			return mv;

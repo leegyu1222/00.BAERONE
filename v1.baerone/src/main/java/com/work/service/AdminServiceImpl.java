@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.work.dao.AdminDAOImpl;
 import com.work.dto.Delivery;
+import com.work.dto.Member;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -23,6 +24,10 @@ public class AdminServiceImpl implements AdminService {
 	
 	public List<Delivery> deliveryList(){
 		return adminDAO.deliveryList();
+	}
+	
+	public List<Member> memberList() {
+		return adminDAO.memberList();
 	}
 
 	public int thisIncome() {

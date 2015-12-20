@@ -194,7 +194,7 @@
      <script type="text/javascript">
         $(function () {
         	var allCount = ${memberCount};
-      		var year10 = ${years10};
+     		var year10 = ${years10};
       		var year20 = ${years20};
       		var year30 = ${years30};
       		var year40 = ${years40};

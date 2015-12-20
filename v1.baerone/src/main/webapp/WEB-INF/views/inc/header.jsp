@@ -52,6 +52,12 @@
 								<div class="mainmenu-submenu-inner"> 
 									<div>
 										<ul>
+											<li><a href="contestList.do?page=1">공지사항</a></li>
+										</ul>
+										
+									</div>
+									<div>
+										<ul>
 											<li><a href="serviceCenter.do">고객센터</a></li>
 										</ul>
 										

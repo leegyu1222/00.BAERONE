@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.work.dto.Delivery;
+import com.work.dto.Member;
 import com.work.dto.Paging;
 import com.work.service.AdminServiceImpl;
 import com.work.service.DeliveryServiceImpl;
@@ -64,9 +65,9 @@ public class AdminController {
 	@RequestMapping(value = "mgMember.do")
 	public ModelAndView goMgLecture() {
 		ModelAndView mav = new ModelAndView();
-		/* List<Lecture> list = adminService.lectureList();
-		System.out.println(list);
-		*/
+		 List<Member> list = adminService.memberList();
+		
+		mav.addObject("list", list);
 		mav.setViewName("admin/mgMember");
 		return mav;
 	}

@@ -73,11 +73,11 @@
 									<c:forEach var="dto" items="${list}">
 										<tbody>
 											<tr class="gradeA">
-												<td><a href="memberInfo.do?userid=${dto.userid}">${dto.userid}</a></td>
-												<td>${dto.nickname}</td>
+												<td>${dto.userid}</td>
+												<td>${dto.name}</td>
+												<td>${dto.phone}</td>
+												<td>${dto.email}</td>
 												<td>${dto.grade}</td>
-												<td>${dto.entryDate}</td>
-												<td>${dto.lastDate}</td>
 											</tr>
 										</tbody>
 									</c:forEach>

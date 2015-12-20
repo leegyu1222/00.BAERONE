@@ -69,14 +69,14 @@
 			<select id="searchList" parameterType="hashmap" resultMap="deliveryResult">
 				select *
 				from delivery
-				where ${category} like '%' || #{searchBox} || '%'
+				where delivery_status = #{category}
 				
 			</select>
 		<!-- 드론 신청 목록 상세보기  -->
 			<select id = "myDeliveryDetail" resultMap="deliveryResult" parameterType="String">
 				select *
 				from delivery
-				where product_detail = #{productDetail}	    
+				where product_detail = #{productDetail}
 			</select>
 		<!-- 드론 신청 수정 페이지 이동 요청 -->
 			<select id = "deliveryUpdateInfo" resultMap="deliveryResult" parameterType="int">

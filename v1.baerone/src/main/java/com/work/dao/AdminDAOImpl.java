@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.work.dto.Delivery;
+import com.work.dto.Member;
 
 @Repository
 public class AdminDAOImpl implements AdminDAO {
@@ -28,6 +29,10 @@ public class AdminDAOImpl implements AdminDAO {
 	
 	public int thisOrder() {
 		return sqlSession.selectOne("thisOrder");
+	}
+	
+	public List<Member> memberList() {
+		return sqlSession.selectList("memberList");
 	}
 	
 	public int maleCount() {

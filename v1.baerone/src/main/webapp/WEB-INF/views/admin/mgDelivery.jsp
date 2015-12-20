@@ -33,6 +33,10 @@
 		document.mgDelivery.action="sendDrone.do?delveryNo="+deliveryNo+"&beaconName="+beaconName;
 		document.mgDelivery.submit();
 	}
+	function searchTrack() {
+		document.searchList.action="searchList.do";
+		document.searchList.submit();
+	}
 </script>
 </head>
 <body>
@@ -49,19 +53,19 @@
                         </div>
                         <div class="panel-body">
                             <div class="btn-group">
-                                <form action="mgLectureList.do">
+                                <form name = "searchList" id = "searchList" action="mgLectureList.do" method="post">
 									<div class="form-group">
 										<label for="id">배송 상태</label>
 										<div class="btn-group">
-											<select name="subject" id="subject">
+											<select name="category" id="category">
 												<option value="all">All</option>
-												<option value="">결제완료</option>
-												<option value="">배송준비</option>
-												<option value="">배송중</option>
-												<option value="">배송완료</option>
+												<option value="결제완료">결제완료</option>
+												<option value="배송준비">배송준비</option>
+												<option value="배송중">배송중</option>
+												<option value="배송완료">배송완료</option>
 											</select>
 										</div>
-										<button type="submit" class="btn btn-primary">조회</button>
+										<button onclick="searchTrack()" class="btn btn-primary">조회</button>
 									</div>
 								</form>
 							</div>

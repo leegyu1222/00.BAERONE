@@ -58,9 +58,8 @@ public class DeliveryDAOImpl implements DeliveryDAO {
 		return sqlSession.selectList("sendDrone", dto);
 	}
 	
-	public List<Delivery> searchList(String searchBox, String category) {
+	public List<Delivery> searchList(String category) {
 		HashMap<String, String> hashmap = new HashMap<String, String>();
-		hashmap.put("searchBox", searchBox);
 		hashmap.put("category", category);
 		return sqlSession.selectList("searchList", hashmap);
 	}
